@@ -45,6 +45,31 @@
                 slider();
                 sliderTeam();
             });
+
+
+
+            // scroll link
+            let lastId,
+                topMenu = $('#navbar-nav'),
+                topMneuHeight = topMenu.outerHeight() + 1,
+                menuItems = topMenu.find('a'),
+                scrollItems = menuItems.map(function() {
+                    let item = $($(this).attr('href'));
+                    if (item.length) {
+                        return item;
+                    }
+                });
+
+            menuItems.click(function(e) {
+                let href = $(this).attr('href'),
+                    offsetTopo = hreff === "#" ? 0 :
+                    $(href).offset().top - topMneuHeight + 1;
+
+                $('html,body').stop().animate({
+                    scrollTop: offsetTop
+                }, 850);
+                e.preventDefault();
+            })
         });
     </script>
 

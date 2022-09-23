@@ -79,7 +79,7 @@
 /* Service / Produk Layanan */
 /*  */
 #service{    
-    height: 140vh;
+    min-height: 140vh;
     overflow: hidden;        
 }
 .card-service{
@@ -144,8 +144,33 @@
 #article-homepage{
     overflow: hidden;
 }
+#portofolio{
+    margin-top: -150px;
+}
+#portofolio .img {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+#portofolio img.decoration{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    height: 350px;
+    position: absolute;
+    left: 0;
+    margin-top: -100px;
+    z-index: -2;
+}
+#article-homepage img.decoration{
+    height: 350px;
+    position: absolute;
+    right: 0;
+    margin-top: -100px;
+    z-index: -2;
+}
 
-
+.image-portofolio{
+    margin-top: 150px;
+}
 .image-portofolio img:hover{
     transform: scale(1.1);
     transition: ease-in .3s;
@@ -217,7 +242,7 @@
 
 /* Artikel Homepage */
 .card-article:hover{
-    background-color: rgb(226, 205, 226);
+    background-color: rgb(231, 229, 231);
     transition: all .3s;
 }
 
@@ -608,11 +633,21 @@ section#page-first {
 
 
 
-@media only screen and (max-width:992px){
+@media only screen and (max-width:992px){    
     .service-shadow{
         width: 400px;
         height: 200px;        
         transform: translate(45%,145%);   
+    }
+    #portofolio{
+        margin-top: 100px;
+    }
+    #portofolio .img {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }    
+    .container-milestone{
+        min-height: 130vh;        
     }
 }
 @media only screen and (max-width:768px){
@@ -620,6 +655,9 @@ section#page-first {
         width: 500px;
         height: 200px;        
         transform: translate(17%,145%);   
+    }
+    section#client{
+        height: 70vh;
     }
 
     /* Team */

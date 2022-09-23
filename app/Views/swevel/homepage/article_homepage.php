@@ -1,17 +1,17 @@
 <section id="article-homepage" class="pt-5 mb-5 pb-5">
     <div class="container pt-5">
         <div class="row">
-            <div class="col-lg-8 d-sm-none d-lg-block">
-                <!-- <div class="line-main-2"><?= line(); ?></div> -->
-            </div>
-            <div class="col-lg-4 text-lg-end">
-                <h2 class="text-purple">
+            <div class="col-lg-4">
+                <h1 class="text-purple">
                     <span>Newest <span class="fw-bold">Article</span></span>
                     <p> of Swevel</p>
-                </h2>
+                </h1>
+            </div>
+            <div class="col-lg-8 d-sm-none d-lg-block">
+                <img src="/img/GroupImg.png" alt="" class="decoration">
             </div>
         </div>
-        <div class="row mt-5 justify-content-center">
+        <div class="row mt-5 pt-5 justify-content-center">
             <?php for ($i = 0; $i < 3; $i++) : ?>
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-sm-4">
                     <div class="card card-article border-0 mx-2 cursor-pointer">

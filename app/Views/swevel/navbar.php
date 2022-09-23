@@ -7,26 +7,27 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-5 ps-lg-5">
                 <li class="nav-item mx-1 ms-lg-5 ps-lg-5">
-                    <a class="nav-link active" aria-current="page" href="#">About Us</a>
+                    <a class="nav-link active" aria-current="page" href="<?= ($title == 'Swevel') ? '#about-us' : '/#about-us'; ?>">About Us</a>
                 </li>
                 <li class="nav-item mx-1">
-                    <a class="nav-link" href="">Service</a>
+                    <a class="nav-link" href="<?= ($title == 'Swevel') ?  '#service' : '/#service'; ?>">Service</a>
                 </li>
                 <li class="nav-item mx-1">
-                    <a class="nav-link" href="">Portofolio</a>
+                    <a class="nav-link" href="<?= ($title == 'Swevel') ?  '#portofolio' : '/#portofolio'; ?>">Portofolio</a>
                 </li>
                 <li class="nav-item mx-1">
-                    <a class="nav-link" href="">Testimoni</a>
+                    <a class="nav-link" href="<?= ($title == 'Swevel') ?  '#customer-review' : '/#customer-review'; ?>">Testimoni</a>
                 </li>
                 <li class="nav-item mx-1">
                     <a class="nav-link" href="/faq">FAQ</a>
                 </li>
-                <li class="nav-item mx-1">
-                    <a class="nav-link" href="">Contact Us</a>
+                <li class=" nav-item mx-1">
+                    <a class="nav-link" href="<?= ($title == 'Swevel') ?  '#contactUs' : '/#contactUs'; ?>">Contact Us</a>
                 </li>
             </ul>
             <div>
                 <a href="/login" class="btn btn-purple text-decoration-none">Login</a>
+                <a href="/login#register" class="btn btn-purple text-decoration-none">Register</a>
             </div>
         </div>
     </div>

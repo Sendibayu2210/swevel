@@ -7,21 +7,15 @@ function line()
     }
 } ?>
 
-<style>
-    #portofolio .img {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-    }
-</style>
 <section id="portofolio">
     <div class="container mb-5 pb-5">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-6 d-sm-none d-lg-block d-md-none">
+                <img src="/img/GroupImg.png" alt="" class="decoration">
+            </div>
+            <div class="col-lg-6 text-end">
                 <h2 class="text-purple fw-bold">Portofolio</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem reiciendis dolorum doloremque eius facilis voluptatum corporis.</p>
-            </div>
-            <div class="col-lg-8 d-sm-none d-lg-block">
-                <!-- <div class="line-main-1"><?= line(); ?></div> -->
             </div>
         </div>
         <div class="image-portofolio text-center">

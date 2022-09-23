@@ -4,10 +4,16 @@ namespace App\Controllers;
 
 class Training extends BaseController
 {
-    public function index()
+    public function index($category = null)
     {
+        if ($category == null) {
+            $category = 'Software Development';
+        }
+
         $data = [
-            'title' => 'Training'
+            'title' => 'Training',
+            'category' => $category,
+
         ];
         return view('swevel/training/index', $data);
     }

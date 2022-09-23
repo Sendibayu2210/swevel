@@ -8,12 +8,12 @@
             <div class="col-lg-1"></div>
             <div class="col-lg-2">
                 <ul class="list-unstyled">
-                    <li>About Us</li>
-                    <li>Service</li>
-                    <li>Portofolio</li>
-                    <li>Testimoni</li>
-                    <li>FAQ</li>
-                    <li>Contact Us</li>
+                    <li><a class="text-decoration-none text-dark" href="<?= ($title == 'Swevel') ? '#about-us' : '/#about-us'; ?>">About Us</a></li>
+                    <li><a class="text-decoration-none text-dark" href="<?= ($title == 'Swevel') ? '#service' : '/#service'; ?>">Service</a></li>
+                    <li><a class="text-decoration-none text-dark" href="<?= ($title == 'Swevel') ? '#portofolio' : '/#portofolio'; ?>">Portofolio</a></li>
+                    <li><a class="text-decoration-none text-dark" href="<?= ($title == 'Swevel') ? '#customer-review' : '/#customer-review'; ?>">Testimoni</a></li>
+                    <li><a class="text-decoration-none text-dark" href="/faq">FAQ</a></li>
+                    <li><a class="text-decoration-none text-dark" href="<?= ($title == 'Swevel') ? '#contactUs' : '/#contactUs'; ?>">Contact Us</a></li>
                 </ul>
             </div>
             <div class="col-lg-4 text-center">

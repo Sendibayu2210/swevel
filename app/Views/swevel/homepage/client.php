@@ -71,10 +71,13 @@
 
     let sliderClient = () => {
         let mediaSm = window.matchMedia("(max-width: 576px)");
-        let mediaMd = window.matchMedia("(min-width: 577px)");
+        let mediaMd = window.matchMedia("(max-width: 768px)");
+        let mediaLg = window.matchMedia("(max-width: 100px)");
         if (mediaSm.matches) {
             var perPage = 1;
         } else if (mediaMd.matches) {
+            var perPage = 2;
+        } else if (mediaLg.matches) {
             var perPage = 4;
         } else {
             var perPage = 4;
