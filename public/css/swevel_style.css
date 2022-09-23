@@ -67,9 +67,21 @@
 /* end custom bootstrap */
 
 
+/* About Us */
+#about-us .box{
+    /* position: relative; */
+    height: calc(100vh - 60px);
+    background: rgb(216, 185, 255);
+    background: linear-gradient(340deg, rgba(159, 136, 195, 1) -20%, rgba(255, 255, 255, 1) 62%);
+}
+
 /*  */
 /* Service / Produk Layanan */
 /*  */
+#service{    
+    height: 140vh;
+    overflow: hidden;        
+}
 .card-service{
     max-width: 300px;
     max-height: 500px;
@@ -91,7 +103,7 @@
 }
 .circle-1{
     position: relative;
-    transform: translate(20%, -230%);
+    transform: translate(18%, -235%);
     z-index: -10;
     
 }
@@ -110,17 +122,16 @@
 }
 
 .service-shadow{
-    width: 1000px;
+    /* display: none; */
+    width: 800px;
     height: 400px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(17%,75%);
-    z-index: -20;
-    opacity: .2;
-    background-color: #773CD3;
+    position: absolute;            
+    z-index: -20;    
+    background-color: #ddcbfa;
+    opacity: .8;
     filter: blur(80px);
     border-radius: 45px;
+    margin: -360px 0 0 240px;    
 }
 
 
@@ -133,6 +144,8 @@
 #article-homepage{
     overflow: hidden;
 }
+
+
 .image-portofolio img:hover{
     transform: scale(1.1);
     transition: ease-in .3s;
@@ -200,6 +213,12 @@
     height: 50px;
     width: 10px;
     border-radius: 10px;
+}
+
+/* Artikel Homepage */
+.card-article:hover{
+    background-color: rgb(226, 205, 226);
+    transition: all .3s;
 }
 
 /* Team */

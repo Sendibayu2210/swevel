@@ -75,7 +75,7 @@
         if (mediaSm.matches) {
             var perPage = 1;
         } else if (mediaMd.matches) {
-            var perPage = 2;
+            var perPage = 4;
         } else {
             var perPage = 4;
         }

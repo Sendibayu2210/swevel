@@ -17,8 +17,8 @@
                 </ul>
             </div>
             <div class="col-lg-4 text-center">
-                <div class="footer-logo">
-                    <img src="/img/Visual-Studio-Logo.png" alt="" style="max-width: 130px;">
+                <div class="footer-logo mt-3">
+                    <img src="/img/logo-swevel.png" alt="" style="max-width: 200px;">
                 </div>
                 <div class="footer-sosmed mt-5">
                     <a href="" class="mx-2 text-dark h4"><i class="fa-brands fa-twitter"></i></a>

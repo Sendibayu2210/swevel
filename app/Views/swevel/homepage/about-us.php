@@ -21,48 +21,58 @@ function circle()
         width: 220px;
         height: 450px;
     }
+
+    #about-us .gambar::before {
+        content: ' ';
+        height: 100px;
+        width: 150px;
+        background-color: #45188B;
+        position: absolute;
+        z-index: 1;
+        margin: 230px 0 0 -50px;
+
+    }
+
+    #about-us .gambar::after {
+        content: ' ';
+        height: 100px;
+        width: 150px;
+        background-color: #a77fe7;
+        position: absolute;
+        z-index: 1;
+        margin: -20px 0 0 250px;
+    }
 </style>
-<main>
-    <!-- /.Desktop -->
-    <section1 class="box">
+<div id="about-us">
+    <div class="box">
         <div class="container">
-            <div class="col-lg-7 mt-5 mb-5">
-                <div class="text">
-                    <h1 class="fw-bold">One of <span class="ch_color">Information Technology</span> Service Industry</h1>
-                    <p class="cover-text my-5">PT. Swevel Universal Media is one of Information Technology Service Industry that gives service excellence quality. Point of product of PT. Swevel Universal Media prioritize System End User and gives creative solution IT. PT. Swevel
-                        Universal Media focus in WEB Developer and Mobile Smart Phone Application.</p>
-                </div>
-                <div class="button-wrapper">
-                    <button class="button5"><strong>MORE &nbsp;</strong>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
             <div class="row">
-                <div class="col">
-                    <div class="kotak"></div>
-                    <div class="kotak2"></div>
-                    <!-- <div class="cover"></div> -->
+                <div class="col-lg-8 mt-5 mb-5">
+                    <div class="text pt-5">
+                        <h1 class="fw-bold">One of <span class="ch_color">Information Technology</span> Service Industry</h1>
+                        <p class="cover-text my-5">PT. Swevel Universal Media is one of Information Technology Service Industry that gives service excellence quality. Point of product of PT. Swevel Universal Media prioritize System End User and gives creative solution IT. PT. Swevel
+                            Universal Media focus in WEB Developer and Mobile Smart Phone Application.</p>
+                    </div>
+                    <div class="button-wrapper">
+                        <button class="button5"><strong>MORE &nbsp;</strong>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <div class="col">
-                    <div class="gambar">
-                        <img src="/img/Gambar.png" class="img-fluid" alt="...">
+                <div class="col-lg-4 d-lg-block d-md-none d-sm-none">
+                    <div class="gambar mt-5 pt-5">
+                        <img src="/img/Gambar.png" class="img-fluid mt-5" alt="...">
+                        <div class="circle-3"><?= circle(); ?></div>
                     </div>
-                    <div class="circle-3 d-sm-none d-lg-block">
-                        <?= circle(); ?>
-                    </div>
-                    <!-- <div class="cover2"></div> -->
                 </div>
             </div>
         </div>
-    </section1>
-
-    <!-- /.Pengenalan -->
-    <section class="box2 pt-5">
+    </div>
+    <div class="box2 pt-5">
         <div class="container pt-5">
-            <div class="row" id="section2">
+            <div class="row">
                 <div class="col-lg-5 d-sm-none d-lg-block ">
                     <div class="big-O"></div>
                     <div class="big-1"></div>
@@ -143,6 +153,5 @@ function circle()
                 </div>
             </div>
         </div>
-    </section>
-
-</main>
+    </div>
+</div>
