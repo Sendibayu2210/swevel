@@ -24,4 +24,11 @@ class Course extends BaseController
         ];
         return view('swevel/course/detail_course', $data);
     }
+    public function detailKurikulum()
+    {
+        $data = [
+            'title' => 'Detail Kurikulum'
+        ];
+        return view('swevel/course/detail_kurikulum', $data);
+    }
 }

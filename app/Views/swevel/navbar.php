@@ -28,10 +28,10 @@
                     <a class="nav-link" href="/privacy">Privacy</a>
                 </li>
             </ul>
-            <div>
+            <!-- <div>
                 <a href="/login" class="btn btn-purple text-decoration-none">Login</a>
                 <a href="/login#register" class="btn btn-purple text-decoration-none">Register</a>
-            </div>
+            </div> -->
         </div>
     </div>
 </nav>

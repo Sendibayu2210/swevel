@@ -58,6 +58,7 @@ $routes->get('/detail-artikel', 'Artikel::detailArtikel');
 $routes->get('/course', 'Course::index');
 $routes->get('/course/(:any)', 'Course::index/$1');
 $routes->get('/detail-course', 'Course::detailCourse');
+$routes->get('/kurikulum', 'Course::detailKurikulum');
 
 
 
