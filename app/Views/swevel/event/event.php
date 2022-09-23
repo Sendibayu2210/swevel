@@ -8,7 +8,7 @@
             <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Beranda</a></li>
-                    <li class="breadcrumb-item"><a href="#">Software Development</a></li>
+                    <li class="breadcrumb-item"><a href="/event/software-development">Software Development</a></li>
                     <li class="breadcrumb-item ls-1" aria-current="page">Event</li>
                 </ol>
             </nav>
@@ -89,7 +89,7 @@
                                             </div>
                                             <div class="row justify-content-end">
                                                 <div class="col-6 text-center">
-                                                    <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
+                                                    <a href="/detail-event" class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</a>
                                                 </div>
                                                 <div class="col-3 my-auto text-end">
                                                     <span class="fa-regular fa-heart text-dark-purple fs-5"></span>
@@ -145,7 +145,7 @@
                                     <p class="ls-1">Millenials are basically keeping the summer blockbuster</p>
                                     <div class="row justify-content-end">
                                         <div class="col-6 text-center">
-                                            <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
+                                            <a href="/detail-event" class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</a>
                                         </div>
                                         <div class="col-3 my-auto text-end">
                                             <span class="fa-regular fa-heart text-dark-purple fs-5"></span>
@@ -164,7 +164,7 @@
                                     <p class="ls-1">Millenials are basically keeping the summer blockbuster</p>
                                     <div class="row justify-content-end">
                                         <div class="col-6 text-center">
-                                            <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
+                                            <a href="/detail-event" class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</a>
                                         </div>
                                         <div class="col-3 my-auto text-end">
                                             <span class="fa-regular fa-heart text-dark-purple fs-5"></span>
@@ -183,7 +183,7 @@
                                     <p class="ls-1">Millenials are basically keeping the summer blockbuster</p>
                                     <div class="row justify-content-end">
                                         <div class="col-6 text-center">
-                                            <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
+                                            <a href="/detail-event" class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</a>
                                         </div>
                                         <div class="col-3 my-auto text-end">
                                             <span class="fa-regular fa-heart text-dark-purple fs-5"></span>
@@ -202,7 +202,7 @@
                                     <p class="ls-1">Millenials are basically keeping the summer blockbuster</p>
                                     <div class="row justify-content-end">
                                         <div class="col-6 text-center">
-                                            <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
+                                            <a href="/detail-event" class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</a>
                                         </div>
                                         <div class="col-3 my-auto text-end">
                                             <span class="fa-regular fa-heart text-dark-purple fs-5"></span>
@@ -221,7 +221,7 @@
                                     <p class="ls-1">Millenials are basically keeping the summer blockbuster</p>
                                     <div class="row justify-content-end">
                                         <div class="col-6 text-center">
-                                            <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
+                                            <a href="/detail-event" class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</a>
                                         </div>
                                         <div class="col-3 my-auto text-end">
                                             <span class="fa-regular fa-heart text-dark-purple fs-5"></span>
@@ -240,7 +240,7 @@
                                     <p class="ls-1">Millenials are basically keeping the summer blockbuster</p>
                                     <div class="row justify-content-end">
                                         <div class="col-6 text-center">
-                                            <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
+                                            <a href="/detail-event" class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</a>
                                         </div>
                                         <div class="col-3 my-auto text-end">
                                             <span class="fa-regular fa-heart text-dark-purple fs-5"></span>
@@ -264,7 +264,7 @@
                                     <p class="ls-1">Millenials are basically keeping the summer blockbuster</p>
                                     <div class="row justify-content-end">
                                         <div class="col-6 text-center">
-                                            <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
+                                            <a href="/detail-event" class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</a>
                                         </div>
                                         <div class="col-3 my-auto text-end">
                                             <span class="fa-regular fa-heart text-dark-purple fs-5"></span>
@@ -283,7 +283,7 @@
                                     <p class="ls-1">Millenials are basically keeping the summer blockbuster</p>
                                     <div class="row justify-content-end">
                                         <div class="col-6 text-center">
-                                            <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
+                                            <a href="/detail-event" class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</a>
                                         </div>
                                         <div class="col-3 my-auto text-end">
                                             <span class="fa-regular fa-heart text-dark-purple fs-5"></span>

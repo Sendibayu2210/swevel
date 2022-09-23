@@ -54,11 +54,11 @@ function circle()
                             Universal Media focus in WEB Developer and Mobile Smart Phone Application.</p>
                     </div>
                     <div class="button-wrapper">
-                        <button class="button5"><strong>MORE &nbsp;</strong>
+                        <a href="#aboutUs" class="button5 text-decoration-none"><strong>MORE &nbsp;</strong>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                             </svg>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-4 d-lg-block d-md-none d-sm-none">
@@ -70,7 +70,7 @@ function circle()
             </div>
         </div>
     </div>
-    <div class="box2 pt-5">
+    <div id="aboutUs" class="box2 pt-5">
         <div class="container pt-5">
             <div class="row">
                 <div class="col-lg-5 d-sm-none d-lg-block ">
@@ -84,7 +84,7 @@ function circle()
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item homepage mb-3">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     <div class="row p-2">
                                         <div class="col-8">
                                             <h5><strong>Definition Of Swevel</strong></h5>
@@ -107,7 +107,7 @@ function circle()
                         </div>
                         <div class="accordion-item homepage mb-3">
                             <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <button class="accordion-button bg-light text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     <div class="row p-2">
                                         <div class="col-8">
                                             <h5><strong>Visi & Mision</strong></h5>
@@ -129,7 +129,7 @@ function circle()
                         </div>
                         <div class="accordion-item homepage mb-3">
                             <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <button class="accordion-button bg-light text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     <div class="row p-2">
                                         <div class="col-8">
                                             <h5><strong>Location</strong></h5>

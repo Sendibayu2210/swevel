@@ -129,6 +129,9 @@
             will-change: transform, opacity;
             z-index: 0;
         }
+        .button5:hover{
+            color: rgb(199, 199, 199);
+        }
         
         .ch_color {
             color: #5423a1;

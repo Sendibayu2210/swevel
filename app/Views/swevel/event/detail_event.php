@@ -8,8 +8,8 @@
             <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Beranda</a></li>
-                    <li class="breadcrumb-item"><a href="#">Software Development</a></li>
-                    <li class="breadcrumb-item"><a href="#">Event</a></li>
+                    <li class="breadcrumb-item"><a href="/event/software-development">Software Development</a></li>
+                    <li class="breadcrumb-item"><a href="/event">Event</a></li>
                     <li class="breadcrumb-item ls-1" aria-current="page">Detail Event</li>
                 </ol>
             </nav>
@@ -23,15 +23,15 @@
                 <div class="col-sm-12 col-md-5">
                     <div class="card border-0">
                         <div class="card-body p-0">
-                            <img src="asset/image/event/card1.png" alt="" width="100%">
+                            <img src="asset/image/event/card1.png" alt="" width="100%" class="img-primary">
                         </div>
                     </div>
                 </div>
 
 
                 <div id="smallImg" class="col-sm-12 col-md-2 my-auto">
-                    <img src="asset/image/event/card2.png" alt="">
-                    <img src="asset/image/event/card2.png" alt="">
+                    <img src="asset/image/event/card2.png" alt="" class="img-1">
+                    <img src="/img/Frame 58.png" alt="" class="img-2">
                 </div>
 
                 <div class="col-sm-12 col-md-5">
@@ -65,7 +65,7 @@
 
                     <div class="row mt-5">
                         <div class="col-7">
-                            <button class="btn btn-purple btn-event-lg rounded-5">ENROLL EVENT</button>
+                            <a href="/detail-event" class="btn btn-purple btn-event-lg rounded-5">ENROLL EVENT</a>
                         </div>
                         <div class="col-5 my-auto">
                             <span class="fa-regular fa-heart text-dark-purple fs-3"></span>
@@ -92,7 +92,7 @@
                             <p class="ls-1">Millenials are basically keeping the summer blockbuster</p>
                             <div class="row justify-content-end">
                                 <div class="col-6 text-center">
-                                    <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
+                                    <a href="/detail-event" class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</a>
                                 </div>
                                 <div class="col-3 my-auto text-end">
                                     <span class="fa-regular fa-heart text-dark-purple fs-5"></span>
@@ -111,7 +111,7 @@
                             <p class="ls-1">Millenials are basically keeping the summer blockbuster</p>
                             <div class="row justify-content-end">
                                 <div class="col-6 text-center">
-                                    <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
+                                    <a href="/detail-event" class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</a>
                                 </div>
                                 <div class="col-3 my-auto text-end">
                                     <span class="fa-regular fa-heart text-dark-purple fs-5"></span>
@@ -130,7 +130,7 @@
                             <p class="ls-1">Millenials are basically keeping the summer blockbuster</p>
                             <div class="row justify-content-end">
                                 <div class="col-6 text-center">
-                                    <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
+                                    <a href="/detail-event" class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</a>
                                 </div>
                                 <div class="col-3 my-auto text-end">
                                     <span class="fa-regular fa-heart text-dark-purple fs-5"></span>
@@ -146,6 +146,23 @@
     </section>
 
 </main>
+
+<script>
+    $(document).ready(function() {
+        $('.img-1').click(function() {
+            let src = $(this).attr('src');
+            let srcPrimary = $('.img-primary').attr('src');
+            $(this).attr('src', srcPrimary);
+            $('.img-primary').attr('src', src)
+        })
+        $('.img-2').click(function() {
+            let src = $(this).attr('src');
+            let srcPrimary = $('.img-primary').attr('src');
+            $(this).attr('src', srcPrimary);
+            $('.img-primary').attr('src', src)
+        })
+    })
+</script>
 
 <?= $this->include('swevel/homepage/footer'); ?>
 <?= $this->include('swevel/training/footer'); ?>

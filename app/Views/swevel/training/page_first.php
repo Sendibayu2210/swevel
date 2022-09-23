@@ -11,7 +11,7 @@
         <div class="search-event mt-4 w-50">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search more event here">
-                <button class="btn btn-purple" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                <button class="btn btn-purple" type="button">search</button>
             </div>
         </div>
     </div>

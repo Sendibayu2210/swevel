@@ -250,7 +250,7 @@ function circlecourse()
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="#" class="text-decoration-none btn btn-sm btn-light fw-bold course-btn-read-more">Read More</a>
+                                        <a href="/detail-course" class="text-decoration-none btn btn-sm btn-light fw-bold course-btn-read-more">Read More</a>
                                     </div>
                                 </div>
                             <?php endfor; ?>

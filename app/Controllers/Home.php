@@ -26,7 +26,7 @@ class Home extends BaseController
         ];
         return view('swevel/faq', $data);
     }
-    public function kebijakanPrvasi()
+    public function kebijakanPrivasi()
     {
         $data = [
             'title' => 'Kebijakan Privasi'

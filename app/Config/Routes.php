@@ -38,7 +38,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Home::auth');
 
-
+$routes->get("/privacy", 'Home::kebijakanPrivasi');
 
 // training page
 $routes->get('/training', 'Training::index');

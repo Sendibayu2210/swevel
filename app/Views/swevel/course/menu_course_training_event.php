@@ -31,7 +31,7 @@
                 <div class="search-event mt-4">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Search">
-                        <button class="btn btn-purple" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-purple" type="button" id="button-addon2">search</button>
                     </div>
                 </div>
             </div>
