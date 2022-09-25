@@ -1,6 +1,6 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('content'); ?>
-<?= $this->include('swevel/status/navbar'); ?>
+<?= $this->include('swevel/navbar'); ?>
 
 <body>
     <div id="status">

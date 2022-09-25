@@ -1,4 +1,4 @@
-<?= $this->extend('swevel/admin/admin-template'); ?>
+<?= $this->extend('layout/user-template'); ?>
 <?= $this->section('content'); ?>
 <section id="kuis">
     <div class="container">

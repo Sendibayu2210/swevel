@@ -1,17 +1,6 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('content'); ?>
 <?= $this->include('swevel/navbar'); ?>
-<style>
-    .title-banefits::before {
-        content: ' ';
-        background: black;
-        width: 100px;
-        height: 5px;
-        position: absolute;
-        margin-top: 35px;
-        left: 0;
-    }
-</style>
 <div id="detail-kurikulum" class="mb-5 pb-5">
     <div class="container mt-5">
         <div class="row">
@@ -209,30 +198,125 @@
             </div>
         </section>
 
-        <div class="col-lg-8 mx-auto">
-            <div class="fw-bold text-center h5">Silabus</div>
-            <div class="text-center">Materi yang akan Anda pelajari pada kelas ini.</div>
-            <div class="card mt-5">
-                <div class="card-header">
-                    <div class="fw-bold">Persiapan Kelas</div>
+        <div class="col-lg-9 mx-auto">
+            <div class="mt-5 text-center h2">Silabus</div>
+            <div class="text-center mb-5">Materi yang akan Anda pelajari pada kelas ini.</div>
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item mb-4">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            <div class="h4">Persipan Kelas</div>
+                            <div>Memperkenalkan sejarah Kotlin, mengapa harus mempelajari Kotlin, karakteristik Kotlin, dan bagaimana Kotlin berperan dalam pengembangan aplikasi. Akan dibahas juga tentang ekosistem Kotlin.</div>
+                            <div class="d-flex">
+                                <div class="mt-3 me-3">
+                                    <i class="fa-solid fa-file text-white"></i>
+                                    <span class="ms-3">5 Artikel</span>
+                                </div>
+                                <div class="mt-3">
+                                    <i class="fa-regular fa-clock text-purple"></i>
+                                    <span class="ms-3">50 Jam</span>
+                                </div>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                        <div class="accordion-body">
+                            <ul class="list-unstyled ps-4 lh-lg">
+                                <li>Persetujuan Hak Cipta > 1 Menit</li>
+                                <li>Mekanisme Belajar > 5 Menit</li>
+                                <li>Persetujuan Hak Cipta > 1 Menit</li>
+                                <li>Mekanisme Belajar > 5 Menit</li>
+                                <li>Persetujuan Hak Cipta > 1 Menit</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-
+                <div class="accordion-item mb-4">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                            <div class="h4">Pendahuluan</div>
+                            <div>Memperkenalkan sejarah Kotlin, mengapa harus mempelajari Kotlin, karakteristik Kotlin, dan bagaimana Kotlin berperan dalam pengembangan aplikasi. Akan dibahas juga tentang ekosistem Kotlin.</div>
+                            <div class="d-flex">
+                                <div class="mt-3 me-3">
+                                    <i class="fa-solid fa-file text-white"></i>
+                                    <span class="ms-3">5 Artikel</span>
+                                </div>
+                                <div class="mt-3">
+                                    <i class="fa-regular fa-clock text-purple"></i>
+                                    <span class="ms-3">50 Jam</span>
+                                </div>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                        <div class="accordion-body">
+                            <ul class="list-unstyled ps-4 lh-lg">
+                                <li>Persetujuan Hak Cipta > 1 Menit</li>
+                                <li>Mekanisme Belajar > 5 Menit</li>
+                                <li>Persetujuan Hak Cipta > 1 Menit</li>
+                                <li>Mekanisme Belajar > 5 Menit</li>
+                                <li>Persetujuan Hak Cipta > 1 Menit</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card mt-4">
-                <div class="card-body">
-                    <div class="h5 fw-bold">Pendahuluan</div>
+                <div class="accordion-item mb-4">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                            <div class="h4">Main Course</div>
+                            <div>Memperkenalkan sejarah Kotlin, mengapa harus mempelajari Kotlin, karakteristik Kotlin, dan bagaimana Kotlin berperan dalam pengembangan aplikasi. Akan dibahas juga tentang ekosistem Kotlin.</div>
+                            <div class="d-flex">
+                                <div class="mt-3 me-3">
+                                    <i class="fa-solid fa-file text-white"></i>
+                                    <span class="ms-3">5 Artikel</span>
+                                </div>
+                                <div class="mt-3">
+                                    <i class="fa-regular fa-clock text-purple"></i>
+                                    <span class="ms-3">50 Jam</span>
+                                </div>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                        <div class="accordion-body">
+                            <ul class="list-unstyled ps-4 lh-lg">
+                                <li>Persetujuan Hak Cipta > 1 Menit</li>
+                                <li>Mekanisme Belajar > 5 Menit</li>
+                                <li>Persetujuan Hak Cipta > 1 Menit</li>
+                                <li>Mekanisme Belajar > 5 Menit</li>
+                                <li>Persetujuan Hak Cipta > 1 Menit</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card mt-4">
-                <div class="card-body">
-                    <div class="h5 fw-bold">Pendahuluan</div>
-                </div>
-            </div>
-            <div class="card mt-4">
-                <div class="card-body">
-                    <div class="h5 fw-bold">Pendahuluan</div>
+                <div class="accordion-item mb-4">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                            <div class="h4">Penutup</div>
+                            <div>Memperkenalkan sejarah Kotlin, mengapa harus mempelajari Kotlin, karakteristik Kotlin, dan bagaimana Kotlin berperan dalam pengembangan aplikasi. Akan dibahas juga tentang ekosistem Kotlin.</div>
+                            <div class="d-flex">
+                                <div class="mt-3 me-3">
+                                    <i class="fa-solid fa-file text-white"></i>
+                                    <span class="ms-3">5 Artikel</span>
+                                </div>
+                                <div class="mt-3">
+                                    <i class="fa-regular fa-clock text-purple"></i>
+                                    <span class="ms-3">50 Jam</span>
+                                </div>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                        <div class="accordion-body">
+                            <ul class="list-unstyled ps-4 lh-lg">
+                                <li>Persetujuan Hak Cipta > 1 Menit</li>
+                                <li>Mekanisme Belajar > 5 Menit</li>
+                                <li>Persetujuan Hak Cipta > 1 Menit</li>
+                                <li>Mekanisme Belajar > 5 Menit</li>
+                                <li>Persetujuan Hak Cipta > 1 Menit</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

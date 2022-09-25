@@ -1,4 +1,4 @@
-<?= $this->extend('swevel/admin/admin-template'); ?>
+<?= $this->extend('layout/user-template'); ?>
 <?= $this->section('content'); ?>
 <div class="container">
     <div class="h4 mb-5 fw-bold">How to start being an Android Developer</div>

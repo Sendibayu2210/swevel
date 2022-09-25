@@ -632,7 +632,52 @@ section#page-first {
 
 
 /* USER */
+#user{
+    display: flex;    
+}
+#user .content{
+    background: #FCFCFC;
+}
+#user-sidebar{
+    width: 350px;
+    height: calc(100vh - 60px);
+    overflow: auto;
+    padding-top: 20px;
+}
+#user-sidebar .accordion-button-primary.active{
+    background: #ded2f1;    
+    color: black;
+}
 
+
+#user .content{
+    height: calc(100vh - 60px);
+    width: calc(100% - 350px);
+    overflow: auto;
+    padding: 25px;
+}
+/* kurikulum */
+#detail-kurikulum .title-banefits::before {
+    content: ' ';
+    background: black;
+    width: 100px;
+    height: 5px;
+    position: absolute;
+    margin-top: 35px;
+    left: 0;
+}
+#detail-kurikulum .accordion-item{
+    border: none;
+}
+#detail-kurikulum .accordion-button{
+    background: #D5BAFF;
+    color: black;
+    border-top-right-radius: 45px;    
+}
+#detail-kurikulum .accordion-body {
+    background: #f4f3f771;
+    border-bottom-left-radius: 35px;    
+}
 
 
 
@@ -690,8 +735,7 @@ section#page-first {
 
 
 /* Status */
- #status * {
-    font-family: 'Poppins';
+ #status * {    
     margin: 0;
     padding: 0;
   }
