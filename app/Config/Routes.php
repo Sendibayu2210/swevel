@@ -62,10 +62,20 @@ $routes->get('/kurikulum', 'Course::detailKurikulum');
 
 
 
-// ADMIN
+
+// ================== ADMIN ===================
 $routes->get('/dashboard', 'Admin::index');
+
+// profile
+$routes->get('/profile', 'Admin::profile');
+$routes->get('/profile/(:any)', 'Admin::editProfile/$1');
+$routes->post('/update-profile/(:any)', 'Admin::updateProfile/$1');
+// $routes->delete('/profile/(:any)', 'Admin::deleteProfile');
+
+
 $routes->get('/admin-faq', 'Admin::faq');
 $routes->get('/admin-about-us', 'Admin::aboutus');
+// artikel
 $routes->get('/admin-artikel', 'Admin::article');
 $routes->get('/edit-artikel', 'Admin::editArticle');
 $routes->post('/add-artikel', 'Admin::addArticle');
@@ -82,7 +92,7 @@ $routes->get('/status', 'User::status');
 $routes->get("/materi", "User::materi");
 $routes->get("/kuis", "User::kuis");
 $routes->get("/course-saved", "User::savedCourse");
-
+$routes->get('/submission', 'User::submission');
 
 //  PERCOBAAN
 // movie

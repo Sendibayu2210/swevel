@@ -82,73 +82,30 @@ function circle()
                 </div>
                 <div class="col-lg-7 col-12">
                     <div class="accordion" id="accordionExample">
-                        <div class="accordion-item homepage mb-3">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button bg-light text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <div class="row p-2">
-                                        <div class="col-8">
-                                            <h5><strong>Definition Of Swevel</strong></h5>
-                                            <p style="color: #474545">PT. Swevel Universal Media</p>
-                                        </div>
-                                        <div class="col-4 my-auto">
-                                            <div class="button-0">
-                                                <i class="fa-solid fa-chevron-down"></i>
+                        <?php foreach ($profile as $x) : ?>
+                            <div class="accordion-item homepage mb-3">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button bg-light text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $x['category']; ?>" aria-expanded="true" aria-controls="<?= $x['category']; ?>">
+                                        <div class="row p-2">
+                                            <div class="col-8">
+                                                <h5><strong><?= $x['title']; ?></strong></h5>
+                                                <p style="color: #474545">PT. Swevel Universal Media</p>
+                                            </div>
+                                            <div class="col-4 my-auto">
+                                                <div class="button-0">
+                                                    <i class="fa-solid fa-chevron-down"></i>
+                                                </div>
                                             </div>
                                         </div>
+                                    </button>
+                                </h2>
+                                <div id="<?= $x['category']; ?>" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p><?= $x['description']; ?></p>
                                     </div>
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>PT. Swevel Universal Media is one of Information Technology Service Industry that gives service excellence quality. Point of product of PT. Swevel Universal Media prioritize System End User and gives creative solution IT.
-                                        PT. Swevel Universal Media focus in WEB Developer and Mobile Smart Phone Application.</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item homepage mb-3">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button bg-light text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <div class="row p-2">
-                                        <div class="col-8">
-                                            <h5><strong>Visi & Mision</strong></h5>
-                                            <p style="color: #474545">PT. Swevel Universal Media</p>
-                                        </div>
-                                        <div class="col-4 my-auto">
-                                            <div class="button-0">
-                                                <i class="fa-solid fa-chevron-down"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p><strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item homepage mb-3">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button bg-light text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <div class="row p-2">
-                                        <div class="col-8">
-                                            <h5><strong>Location</strong></h5>
-                                            <p style="color: #474545">PT. Swevel Universal Media</p>
-                                        </div>
-                                        <div class="col-4 my-auto">
-                                            <div class="button-0">
-                                                <i class="fa-solid fa-chevron-down"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p><strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

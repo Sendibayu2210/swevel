@@ -53,7 +53,7 @@ function circlecourse()
                     <div class="row" id="hidden">
                         <h4><s>Rp. 500.000</s></h4>
                         <h4 style="color: red;">RP. 325.000</h4>
-                        <button class="btn btn-sm btn-purple-100">Join Now</button>
+                        <a href="/payment" class="btn btn-sm btn-purple-100">Join Now</a>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@ function circlecourse()
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-sm-3 text-sm-start">
-                        <button class="btn btn-sm btn-purple-100">Join Now</button>
+                        <a href="/payment" class="btn btn-sm btn-purple-100">Join Now</a>
                     </div>
                 </div>
             </div>
@@ -213,7 +213,7 @@ function circlecourse()
                     <?php endfor; ?>
                 </div>
                 <div class="text-center mt-4">
-                    <button class="btn btn-purple">Start Class</button>
+                    <a href="/materi" class="btn btn-purple">Start Class</a>
                 </div>
             </div>
         </div>
@@ -225,16 +225,16 @@ function circlecourse()
             <div class="row ">
                 <div class="splide related-course">
                     <div class="splide__track">
-                        <div class="splide__list">
+                        <div class="splide__list pb-5">
                             <?php for ($i = 0; $i < 5; $i++) : ?>
                                 <div class="col-md-4 splide__slide m-2">
                                     <div class="card card-course border-0 shadow">
                                         <div class="course-circle-time fw-bold">3 Weeks</div>
                                         <div class="image-content">
-                                            <span class="overlay"></span>
+                                            <!-- <span class="overlay"></span> -->
                                             <div class="card-image.">
                                                 <div class="course-img-polygon">
-                                                    <img src="https://img.freepik.com/premium-photo/astronaut-outer-open-space-planet-earth-stars-provide-background-erforming-space-planet-earth-sunrise-sunset-our-home-iss-elements-this-image-furnished-by-nasa_150455-16829.jpg?w=2000" alt="" class="card-img">
+                                                    <img src="https://img.freepik.com/premium-photo/astronaut-outer-open-space-planet-earth-rtrs-provide-background-erforming-space-planet-earth-sunrise-sunset-our-home-iss-elements-this-image-furnished-by-nasa_150455-16829.jpg?w=2000" alt="" class="card-img">
                                                 </div>
                                             </div>
                                         </div>
@@ -245,8 +245,8 @@ function circlecourse()
                                                     <p class="card-text h6 text-decoration-line-through text-secondary">Rp 500.000</p>
                                                     <p class="card-text h5 fw-bold text-danger">Rp 325.000</p>
                                                 </div>
-                                                <div class="col-sm-4 col-md-6 col-lg-12 text-sm-end  text-lg-start">
-                                                    <button class="btn btn-sm btn-purple-100 mt-2">Join Now</button>
+                                                <div class="col-sm-4 col-md-6 col-lg-12 text-sm-end text-lg-start">
+                                                    <a href="/payment" class="btn btn-sm btn-purple-100 mt-2">Join Now</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -280,10 +280,13 @@ function circlecourse()
 
     let relatedCourse = () => {
         let mediaSm = window.matchMedia("(max-width: 576px)");
-        let mediaMd = window.matchMedia("(max-width: 577px)");
+        let mediaMd = window.matchMedia("(max-width: 768px)");
+        let medialg = window.matchMedia("(max-width: 1200px)");
         if (mediaSm.matches) {
             var perPage = 1;
         } else if (mediaMd.matches) {
+            var perPage = 2;
+        } else if (medialg.matches) {
             var perPage = 3;
         } else {
             var perPage = 3;

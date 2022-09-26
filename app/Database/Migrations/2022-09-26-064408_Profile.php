@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Pegawai extends Migration
+class Profile extends Migration
 {
     public function up()
     {
@@ -14,13 +14,16 @@ class Pegawai extends Migration
                 'constraint' => 5,
                 'auto_increment' => true
             ],
-            'nama' => [
+            'category' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
             ],
-            'email' => [
+            'title' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
+            ],
+            'description' => [
+                'type' => 'text',
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -33,11 +36,11 @@ class Pegawai extends Migration
         ]);
 
         $this->forge->addKey('id', TRUE);
-        $this->forge->createTable('pegawai', true);
+        $this->forge->createTable('profile', true);
     }
 
     public function down()
     {
-        $this->forge->dropTable('pegawai');
+        $this->forge->dropTable('profile');
     }
 }

@@ -2,8 +2,14 @@
 
 namespace App\Controllers;
 
+use App\Models\ProfileModel;
+
 class Admin extends BaseController
 {
+    public function __construct()
+    {
+        $this->ProfileModel = new ProfileModel();
+    }
     public function index()
     {
         $data = [
@@ -76,5 +82,59 @@ class Admin extends BaseController
             'title' => 'Payment',
         ];
         return view('swevel/payment/payment', $data);
+    }
+
+    // profile
+    public function profile()
+    {
+        $data = [
+            'title' => 'profile',
+            'profile' => $this->ProfileModel->findAll(),
+        ];
+        return view('swevel/admin/admin-profile', $data);
+    }
+    public function editProfile($id)
+    {
+        $profile = $this->ProfileModel->find($id);
+        $data = [
+            'title' => "edit profile " . $profile['title'],
+            'profile' => $profile,
+        ];
+        return view('swevel/admin/admin-profile-edit', $data);
+    }
+    public function updateProfile($id)
+    {
+        if (!$this->validate([
+            'title' =>  [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Judul harus diisi',
+                ]
+            ],
+            'description' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Deskripsi harus diisi',
+                ]
+            ],
+
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            // session()->setFlashdata('error_add_kontak', 'error');
+            return redirect()->back()->withInput();
+        } else {
+            $data = [
+                'title' => $this->request->getVar('title'),
+                'description' => $this->request->getVar('description'),
+            ];
+            $this->ProfileModel->update($id, $data);
+            session()->setFlashdata('message', 'data ' . $this->request->getVar('title') . ' berhasil di update');
+            return redirect('profile');
+        }
+    }
+
+    public function deleteProfile()
+    {
+        dd($this->request->getVar());
     }
 }

@@ -25,6 +25,7 @@
 .btn-purple-50{
     background: #DDC2FF;    
 }
+
 .btn-purple-50:hover{
     background: #b38de0;    
     border: none;
@@ -48,6 +49,9 @@
 .bg-purple{
     background-color: #45188B;
 }
+.bg-purple-50{
+    background: #DDC2FF;        
+}
 
 .text-orange{
     color: orange;
@@ -61,12 +65,21 @@
 .border-bottom-purple{
     border-bottom: 3px solid #773CD3;
 }
+.border-radius-15px{
+    border-radius: 15px;
+}
+.border-start-purple{
+    border: none;
+    border-left: 4px solid #45188B;
+
+}
 
 /* custom bootstrap */
 .accordion-button:focus {
     box-shadow: none;
     border-color: rgba(0, 0, 0, .125);
 }
+
 /* end custom bootstrap */
 
 

@@ -11,7 +11,7 @@
                 <h1><strong>My <span style="color: #5423a1;">Course</span></strong></h1>
             </div>
             <div class="row mt-5 justify-content-center">
-                <div class="col-md-4">
+                <div class="col-md-4 mb-md-4 mb-sm-4">
                     <div class="card card-course p-3 mb-2 overflow-hidden shadow border-0 shadow">
                         <div class="card-body">
                             <div class="mt-3">
@@ -29,7 +29,7 @@
                         <button type="button" class="btn btn12">DONE</button>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 mb-md-4 mb-sm-4">
                     <div class="card card-course p-3 mb-2  overflow-hidden shadow border-0 shadow">
                         <div class="card-body">
                             <div class="mt-3">
@@ -57,13 +57,13 @@
             <div class="row ">
                 <div class="splide popular-course">
                     <div class="splide__track">
-                        <div class="splide__list">
+                        <div class="splide__list pb-5">
                             <?php for ($i = 0; $i < 5; $i++) : ?>
                                 <div class="col-md-4 splide__slide m-2">
                                     <div class="card card-course border-0 shadow">
                                         <div class="course-circle-time fw-bold">3 Weeks</div>
                                         <div class="image-content">
-                                            <span class="overlay"></span>
+                                            <!-- <span class="overlay"></span> -->
                                             <div class="card-image.">
                                                 <div class="course-img-polygon">
                                                     <img src="https://img.freepik.com/premium-photo/astronaut-outer-open-space-planet-earth-stars-provide-background-erforming-space-planet-earth-sunrise-sunset-our-home-iss-elements-this-image-furnished-by-nasa_150455-16829.jpg?w=2000" alt="" class="card-img">
@@ -75,7 +75,7 @@
                                             <div class="row">
                                                 <div class="col-sm-8 col-md-6 col-lg-12">
                                                     <p class="card-text h6 text-decoration-line-through text-secondary">Rp 500.000</p>
-                                                    <p class="card-text h5 fw-bold text-danger">Rp 325.000</p>
+                                                    <p class="card-text h5 fw-bold text-red">Rp 325.000</p>
                                                 </div>
                                                 <div class="col-sm-4 col-md-6 col-lg-12 text-sm-end  text-lg-start">
                                                     <button class="btn btn-sm btn-purple-100 mt-2">Join Now</button>
@@ -97,7 +97,7 @@
             <div class="row ">
                 <div class="splide sale-course">
                     <div class="splide__track">
-                        <div class="splide__list">
+                        <div class="splide__list pb-5">
                             <?php for ($i = 0; $i < 5; $i++) : ?>
                                 <div class="col-md-4 splide__slide m-2">
                                     <div class="card card-course border-0 shadow">
@@ -115,7 +115,7 @@
                                             <div class="row">
                                                 <div class="col-sm-8 col-md-6 col-lg-12">
                                                     <p class="card-text h6 text-decoration-line-through text-secondary">Rp 500.000</p>
-                                                    <p class="card-text h5 fw-bold text-danger">Rp 325.000</p>
+                                                    <p class="card-text h5 fw-bold text-red">Rp 325.000</p>
                                                 </div>
                                                 <div class="col-sm-4 col-md-6 col-lg-12 text-sm-end  text-lg-start">
                                                     <button class="btn btn-sm btn-purple-100 mt-2">Join Now</button>

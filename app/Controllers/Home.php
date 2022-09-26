@@ -2,12 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Models\ProfileModel;
+
 class Home extends BaseController
 {
+    public function __construct()
+    {
+        $this->ProfileModel = new ProfileModel();
+    }
     public function index()
     {
         $data = [
-            'title' => 'Swevel'
+            'title' => 'Swevel',
+            'profile' => $this->ProfileModel->findAll(),
         ];
         return view('swevel/index_homepage', $data);
     }
