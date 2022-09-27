@@ -63,7 +63,6 @@
         })
 
         $('.modal-content-milestone').css('border-radius', '20px');
-        $('.toast').toast('show');
     })
 </script>
 

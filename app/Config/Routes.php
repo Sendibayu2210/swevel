@@ -74,6 +74,9 @@ $routes->post('/save-milestone', 'Admin::saveMilestone');
 $routes->post('/update-milestone/(:any)', 'Admin::updateMilestone/$1');
 $routes->delete('/delete-milestone/(:any)', 'Admin::deleteMilestone/$1');
 
+// Kontak
+$routes->get('/admin-kontak', 'Admin::kontak');
+$routes->post('/add-kontak', 'Admin::addKontak');
 
 // profile
 $routes->get('/profile', 'Admin::profile');

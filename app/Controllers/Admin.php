@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ProfileModel;
 use App\Models\MilestoneModel;
+use App\Models\KontakModel;
 
 class Admin extends BaseController
 {
@@ -11,6 +12,7 @@ class Admin extends BaseController
     {
         $this->ProfileModel = new ProfileModel();
         $this->MilestoneModel = new MilestoneModel();
+        $this->KontakModel = new KontakModel();
     }
     public function index()
     {
@@ -267,5 +269,57 @@ class Admin extends BaseController
             session()->setFlashdata('message', 'data milestone gagal di hapus');
         }
         return redirect('admin-milestone');
+    }
+
+    // Kontak
+    public function kontak()
+    {
+        $data = [
+            'title' => 'Kontak',
+            'kontak_all' => $this->KontakModel->findAll(),
+            'kontak_show' => $this->KontakModel->where('status', 'show')->findAll(),
+            'validation' => \Config\Services::validation(),
+
+        ];
+        return view('swevel/admin/admin-kontak', $data);
+    }
+    public function addKontak()
+    {
+        if (!$this->validate([
+            'kontak' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Pilih salah satu kontak'
+                ]
+            ],
+            'number_link' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'isikan nomor atau link'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->back()->withInput();
+        }
+        $id = $this->request->getVar('kontak');
+        $status = $this->request->getVar('category_save');
+        if ($status == 'only_save') {
+            $status1 = 'hide';
+        } else if ($status == 'publish_display') {
+            $status1 = 'show';
+        }
+
+        $data = [
+            'description' => $this->request->getVar('number_link'),
+            'status' => $status1,
+        ];
+        $update = $this->KontakModel->update($id, $data);
+        if ($update) {
+            session()->setFlashdata('message', 'Data kontak berhasil di publish');
+        } else {
+            session()->setFlashdata('message', 'Data kontak gagal di publish');
+        }
+        return redirect('admin-kontak');
     }
 }

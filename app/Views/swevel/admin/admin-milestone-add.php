@@ -15,21 +15,21 @@
             <div class="col-lg-8">
                 <div class="">
                     <input name="year" class="form-control form-control-lg <?= ($validation->hasError('year')) ? 'is-invalid' : ''; ?> border-0 input-title" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;" placeholder="Year" value="<?= old('year'); ?>">
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    <div id="" class="invalid-feedback">
                         <?= $validation->getError('year'); ?>
                     </div>
                 </div>
                 <div class=" mt-4">
                     <label for="description" class="mb-2">Description</label>
                     <textarea name="description" class="form-control border-0  <?= ($validation->hasError('description')) ? 'is-invalid' : ''; ?> shadow" id="description" placeholder=""><?= old('description'); ?></textarea>
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    <div id="" class="invalid-feedback">
                         <?= $validation->getError('description'); ?>
                     </div>
                 </div>
                 <div class="mt-4">
                     <label for="formFile" class="form-label">Choose image here</label>
                     <input class="form-control  <?= ($validation->hasError('berkas')) ? 'is-invalid' : ''; ?>" type="file" id="formFile" name="berkas">
-                    <div id="validationServerUsernameFeedback" class="invalid-feedback">
+                    <div id="" class="invalid-feedback">
                         <?= $validation->getError('berkas'); ?>
                     </div>
                 </div>

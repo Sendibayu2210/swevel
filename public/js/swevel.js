@@ -11,7 +11,6 @@ $(".card-team").mouseleave(function() {
     $(this).find('.gradient').css({ 'display': 'none' })
 });
 
-
 // Admin
 
 
