@@ -229,6 +229,9 @@
     /* margin-bottom: 100px; */
     cursor: pointer;
 }
+.milestone-content.admin{
+    opacity: 1;
+}
 .milestone-content.active{
     opacity: 1;            
 }

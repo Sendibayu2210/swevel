@@ -35,7 +35,7 @@
                             <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             <input class="form-control" type="text" placeholder="search here" aria-label="Search">
                         </form>
-                        <a href="#" class="swevel-brand ms-auto">Swevel</a>
+                        <a href="/" class="swevel-brand ms-auto">Swevel</a>
                     </div>
                 </div>
             </header>

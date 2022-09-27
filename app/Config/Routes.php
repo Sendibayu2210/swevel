@@ -66,6 +66,15 @@ $routes->get('/kurikulum', 'Course::detailKurikulum');
 // ================== ADMIN ===================
 $routes->get('/dashboard', 'Admin::index');
 
+// milestone
+$routes->get('/admin-milestone', 'Admin::milestone');
+$routes->get('/add-milestone', 'Admin::addMilestone');
+$routes->get('/edit-milestone/(:any)', 'Admin::editMilestone/$1');
+$routes->post('/save-milestone', 'Admin::saveMilestone');
+$routes->post('/update-milestone/(:any)', 'Admin::updateMilestone/$1');
+$routes->delete('/delete-milestone/(:any)', 'Admin::deleteMilestone/$1');
+
+
 // profile
 $routes->get('/profile', 'Admin::profile');
 $routes->get('/profile/(:any)', 'Admin::editProfile/$1');

@@ -1,18 +1,18 @@
 <section id="milestone">
     <div class="mt-5 container-milestone bg-dark-blue text-white pt-5">
         <div class="h1 text-center mb-5 text-purple fw-bold">Milestone</div>
-        <?php for ($i = 0; $i < 2; $i++) : ?>
+        <?php foreach ($milestoneLimit as $x) : ?>
             <div class="row milestone-content">
-                <div class="col-lg-2 col-md-12 col-sm-12 text-lg-end text-md-center text-sm-center fw-bold h4">2022</div>
+                <div class="col-lg-2 col-md-12 col-sm-12 text-lg-end text-md-center text-sm-center fw-bold h4"><?= $x['year']; ?></div>
                 <div class="col-lg-1 col-md-12 col-sm-12 box-line d-sm-none d-md-none d-lg-block">
                     <div class="line-milestone-1"></div>
                     <div class="bead"></div>
                     <div class="line-milestone-2"></div>
                 </div>
-                <div class="col-lg-3 col-md-12 col-sm-12 text-center"><img src="/img/Gojek_Tokopedia-01.svg" alt="" style="max-width: 10rem;border-radius: 15px;"></div>
-                <div class="col-lg-5 col-md-12 col-sm-12 mb-5 pb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse possimus nemo minus corporis quibusdam perferendis sunt ipsa iste, dolore est dolores delectus exercitationem quos libero!</div>
+                <div class="col-lg-3 col-md-12 col-sm-12 text-center"><img src="/img/milestone/<?= $x['image']; ?>" alt="" style="max-width: 10rem;border-radius: 15px;"></div>
+                <div class="col-lg-5 col-md-12 col-sm-12 mb-5 pb-5"><?= $x['description']; ?></div>
             </div>
-        <?php endfor; ?>
+        <?php endforeach; ?>
         <div class="text-center mt-4">
             <button class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#modalMilestone">Lihat Semua Milestone</button>
         </div>
@@ -29,18 +29,18 @@
                 <div class="modal-body">
                     <div class="text-white">
                         <div class="h1 text-center mb-5 text-purple fw-bold">Milestone</div>
-                        <?php for ($i = 2017; $i <= 2022; $i++) : ?>
+                        <?php foreach ($milestone as $y) : ?>
                             <div class="row milestone-content">
-                                <div class="col-lg-2 col-md-12 col-sm-12 text-lg-end text-md-center text-sm-center fw-bold h4"><?= $i; ?></div>
+                                <div class="col-lg-2 col-md-12 col-sm-12 text-lg-end text-md-center text-sm-center fw-bold h4"><?= $y['year']; ?></div>
                                 <div class="col-lg-1 col-md-12 col-sm-12 box-line d-sm-none d-md-none d-lg-block">
                                     <div class="line-milestone-1"></div>
                                     <div class="bead"></div>
                                     <div class="line-milestone-2"></div>
                                 </div>
-                                <div class="col-lg-3 col-md-12 col-sm-12 text-center"><img src="/img/Gojek_Tokopedia-01.svg" alt="" style="max-width: 10rem;border-radius: 15px;"></div>
-                                <div class="col-lg-5 col-md-12 col-sm-12 mb-5 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse possimus nemo minus corporis quibusdam perferendis sunt ipsa iste, dolore est dolores delectus exercitationem quos libero!</div>
+                                <div class="col-lg-3 col-md-12 col-sm-12 text-center"><img src="/img/milestone/<?= $y['image']; ?>" alt="" style="max-width: 10rem;border-radius: 15px;"></div>
+                                <div class="col-lg-5 col-md-12 col-sm-12 mb-5 "><?= $y['description']; ?></div>
                             </div>
-                        <?php endfor; ?>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

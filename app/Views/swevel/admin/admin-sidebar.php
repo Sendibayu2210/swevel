@@ -27,7 +27,8 @@
         <div class="mx-auto mt-3" style="max-height: 10px;width:80%">
             <div class="sidebar-nav-item text-center" style="border-top: 1.5px solid #fff"></div>
         </div>
-        <a href="/admin-about-us" class="sidebar-nav-item active">About Us <i class="fa-solid fa-angle-right"></i></a>
+        <a href="/dashboard" class="sidebar-nav-item active">Dashboard <i class="fa-solid fa-angle-right."></i></a>
+        <a href="/profile" class="sidebar-nav-item">About Us <i class="fa-solid fa-angle-right."></i></a>
         <div class="sidebar-nav-dropdown">
             <a href="#" class="sidebar-nav-item sidebar-nav-dropdown-toggle">Services <i class="fa-solid fa-angle-right"></i></a>
             <div class="sidebar-nav-dropdown-menu">

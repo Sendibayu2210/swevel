@@ -14,6 +14,15 @@
                         </div>
                     </a>
                 </div>
+                <div class="col-lg-3">
+                    <a href="/admin-milestone" class="text-decoration-none">
+                        <div class="card border-start-purple">
+                            <div class="card-body text-dark">
+                                <div class="h5 text-center my-auto">Milestone</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
