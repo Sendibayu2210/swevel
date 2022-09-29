@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="/asset/vendor/jquery/jquery-3.6.1.min.js"></script>
+    <script src="/asset/custom_vendor/jquery/jquery-3.6.1.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 
-    <link rel="stylesheet" href="/asset/vendor/bootstrap5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/asset/vendor/fontawesome612/css/all.css">
+    <link rel="stylesheet" href="/asset/custom_vendor/bootstrap5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/asset/custom_vendor/fontawesome612/css/all.css">
     <link rel="stylesheet" href="/asset/css/admin.css">
     <link rel="stylesheet" href="/css/swevel_style.css">
 
@@ -48,7 +48,7 @@
     </div>
 
 
-    <script src="/asset/vendor/bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <script src="/asset/custom_vendor/bootstrap5/js/bootstrap.bundle.min.js"></script>
     <script src="/asset/js/admin.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
