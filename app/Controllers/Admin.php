@@ -277,7 +277,6 @@ class Admin extends BaseController
         $data = [
             'title' => 'Kontak',
             'kontak_all' => $this->KontakModel->findAll(),
-            'kontak_show' => $this->KontakModel->where('status', 'show')->findAll(),
             'validation' => \Config\Services::validation(),
 
         ];
@@ -299,26 +298,72 @@ class Admin extends BaseController
                 ]
             ],
         ])) {
-            session()->setFlashdata('error', $this->validator->listErrors());
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
             return redirect()->back()->withInput();
         }
-        $id = $this->request->getVar('kontak');
-        $status = $this->request->getVar('category_save');
-        if ($status == 'only_save') {
-            $status1 = 'hide';
-        } else if ($status == 'publish_display') {
-            $status1 = 'show';
+
+        $kontak = $this->request->getVar('kontak');
+
+        if ($kontak == 'phone') {
+            $icon = '<i class="fa-solid fa-' . $kontak . '"></i>';
+        } else {
+            $icon = '<i class="fa-brands fa-' . $kontak . '"></i>';
         }
 
         $data = [
-            'description' => $this->request->getVar('number_link'),
-            'status' => $status1,
+            'name' => $kontak,
+            'description' => htmlspecialchars($this->request->getVar('number_link')),
+            'icon' => $icon,
         ];
-        $update = $this->KontakModel->update($id, $data);
-        if ($update) {
+        $insert = $this->KontakModel->insert($data);
+        if ($insert) {
             session()->setFlashdata('message', 'Data kontak berhasil di publish');
+            session()->setFlashdata('message1', 'success');
         } else {
             session()->setFlashdata('message', 'Data kontak gagal di publish');
+            session()->setFlashdata('message1', 'Error');
+        }
+        return redirect('admin-kontak');
+    }
+    public function updateKontak()
+    {
+        if (!$this->validate([
+            'edit_number_link' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'isikan nomor atau link'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
+            return redirect()->back()->withInput();
+        }
+
+        $id = $this->request->getVar('edit_id_kontak');
+        $data = ['description' => htmlspecialchars($this->request->getVar('edit_number_link'))];
+        $update = $this->KontakModel->update($id, $data);
+        if ($update) {
+            session()->setFlashdata('message', 'Data kontak berhasil di perbaharui');
+            session()->setFlashdata('message1', 'success');
+        } else {
+            session()->setFlashdata('message', 'Data kontak gagal di perbaharui');
+            session()->setFlashdata('message1', 'Error');
+        }
+        return redirect('admin-kontak');
+    }
+
+    public function deleteKontak()
+    {
+        $id = $this->request->getVar('idKontak');
+        $delete = $this->KontakModel->delete($id);
+        if ($delete) {
+            session()->setFlashdata('message', 'Data kontak berhasil di hapus');
+            session()->setFlashdata('message1', 'success');
+        } else {
+            session()->setFlashdata('message', 'Data kontak gagal di hapus');
+            session()->setFlashdata('message1', 'error');
         }
         return redirect('admin-kontak');
     }

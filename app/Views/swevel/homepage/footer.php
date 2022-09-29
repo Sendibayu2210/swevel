@@ -21,10 +21,9 @@
                     <img src="/img/logo-swevel.png" alt="" style="max-width: 200px;">
                 </div>
                 <div class="footer-sosmed mt-5">
-                    <a href="" class="mx-2 text-dark h4"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="" class="mx-2 text-dark h4"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="" class="mx-2 text-dark h4"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="" class="mx-2 text-dark h4"><i class="fa-brands fa-facebook"></i></a>
+                    <?php foreach ($kontak_all as $x) : ?>
+                        <a href="<?= $x['description']; ?>" target="_blank" class="mx-2 text-dark h4"><?= $x['icon']; ?></a>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

@@ -26,10 +26,6 @@ class Kontak extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 50,
             ],
-            'status' => [
-                'type' => 'VARCHAR',
-                'constraint' => 5,
-            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true
