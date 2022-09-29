@@ -36,14 +36,16 @@ class Home extends BaseController
     public function faq()
     {
         $data = [
-            'title' => 'FAQ'
+            'title' => 'FAQ',
+            'kontak_all' => $this->KontakModel->findAll(),
         ];
         return view('swevel/faq', $data);
     }
     public function kebijakanPrivasi()
     {
         $data = [
-            'title' => 'Kebijakan Privasi'
+            'title' => 'Kebijakan Privasi',
+            'kontak_all' => $this->KontakModel->findAll(),
         ];
         return view('swevel/kebijakan_privasi', $data);
     }

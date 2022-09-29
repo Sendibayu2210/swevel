@@ -2,8 +2,14 @@
 
 namespace App\Controllers;
 
+use App\Models\KontakModel;
+
 class Training extends BaseController
 {
+    public function __construct()
+    {
+        $this->KontakModel = new KontakModel();
+    }
     public function index($category = null)
     {
         if ($category == null) {
@@ -13,6 +19,7 @@ class Training extends BaseController
         $data = [
             'title' => 'Training',
             'category' => $category,
+            'kontak_all' => $this->KontakModel->findAll(),
 
         ];
         return view('swevel/training/index', $data);
@@ -21,7 +28,8 @@ class Training extends BaseController
     public function detailTraining()
     {
         $data = [
-            'title' => 'Training'
+            'title' => 'Training',
+            'kontak_all' => $this->KontakModel->findAll(),
         ];
         return view('swevel/training/detail_training', $data);
     }

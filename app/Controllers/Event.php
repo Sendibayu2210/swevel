@@ -2,12 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Models\KontakModel;
+
 class Event extends BaseController
 {
+    public function __construct()
+    {
+        $this->KontakModel = new KontakModel();
+    }
     public function index()
     {
         $data = [
-            'title' => 'Event'
+            'title' => 'Event',
+            'kontak_all' => $this->KontakModel->findAll(),
         ];
         return view('swevel/event/event', $data);
     }
@@ -15,7 +22,8 @@ class Event extends BaseController
     public function detailevent()
     {
         $data = [
-            'title' => 'Detail Event'
+            'title' => 'Detail Event',
+            'kontak_all' => $this->KontakModel->findAll(),
         ];
         return view('swevel/event/detail_event', $data);
     }
