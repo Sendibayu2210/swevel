@@ -175,13 +175,6 @@
     </div>
 </div>
 
-
-
-<!-- Optional: Place to the bottom of scripts -->
-<script>
-    const myModal = new bootstrap.Modal(document.getElementById('modalId'), options)
-</script>
-
 <script>
     $(document).ready(function() {
         $('.card-kontak').hover(function() {

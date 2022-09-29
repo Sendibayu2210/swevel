@@ -71,7 +71,12 @@
 .border-start-purple{
     border: none;
     border-left: 4px solid #45188B;
-
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
 }
 
 /* custom bootstrap */

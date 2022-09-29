@@ -3,6 +3,7 @@
 
 <div id="dashboard">
     <div class="container">
+        <div class="mt-3 mb-5  h5">Dashboard</div>
         <div class="menu">
             <div class="row">
                 <div class="col-lg-3">
@@ -28,6 +29,15 @@
                         <div class="card border-start-purple">
                             <div class="card-body text-dark">
                                 <div class="h5 text-center my-auto">Kontak</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3">
+                    <a href="/admin-faq" class="text-decoration-none">
+                        <div class="card border-start-purple">
+                            <div class="card-body text-dark">
+                                <div class="h5 text-center my-auto">FAQ</div>
                             </div>
                         </div>
                     </a>

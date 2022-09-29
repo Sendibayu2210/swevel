@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\ProfileModel;
 use App\Models\MilestoneModel;
 use App\Models\KontakModel;
+use App\Models\FaqModel;
 
 class Admin extends BaseController
 {
@@ -13,6 +14,7 @@ class Admin extends BaseController
         $this->ProfileModel = new ProfileModel();
         $this->MilestoneModel = new MilestoneModel();
         $this->KontakModel = new KontakModel();
+        $this->FaqModel = new FaqModel();
     }
     public function index()
     {
@@ -28,14 +30,6 @@ class Admin extends BaseController
             'title' => 'About Us'
         ];
         return view('swevel/admin/admin-about-us', $data);
-    }
-
-    public function faq()
-    {
-        $data = [
-            'title' => 'FAQ',
-        ];
-        return view('swevel/admin/admin_faq', $data);
     }
 
     public function article()
@@ -366,5 +360,94 @@ class Admin extends BaseController
             session()->setFlashdata('message1', 'error');
         }
         return redirect('admin-kontak');
+    }
+
+    // Add FAQ
+    public function faq()
+    {
+        $data = [
+            'title' => 'FAQ',
+            'faq' => $this->FaqModel->findAll(),
+            'validation' => \Config\Services::validation(),
+        ];
+        return view('swevel/admin/admin_faq', $data);
+    }
+    public function addFaq()
+    {
+        if (!$this->validate([
+            'add-question' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Pertanyaan harus diisi'
+                ]
+            ],
+            'add-answer' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jawaban harus diisi'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
+            session()->setFlashdata('message2', 'ErrorAdd');
+            return redirect()->back()->withInput();
+        }
+
+        $data = [
+            'from' => 'Swevel',
+            'question' => $this->request->getVar('add-question'),
+            'answer' => $this->request->getVar('add-answer'),
+        ];
+        $insert = $this->FaqModel->insert($data);
+        if ($insert) {
+            session()->setFlashdata('message', 'Data faq berhasil di publish');
+            session()->setFlashdata('message1', 'success');
+        } else {
+            session()->setFlashdata('message', 'Data faq gagal di publish');
+            session()->setFlashdata('message1', 'Error');
+        }
+        return redirect('admin-faq');
+    }
+    public function updateAnswerFaq()
+    {
+        if (!$this->validate([
+            'update-answer' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jawaban harus diisi'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
+            session()->setFlashdata('message2', 'ErrorUpdate');
+            return redirect()->back()->withInput();
+        }
+
+        $id = $this->request->getVar('detail-id');
+        $data = ['answer' => $this->request->getVar('update-answer'),];
+        $update = $this->FaqModel->update($id, $data);
+        if ($update) {
+            session()->setFlashdata('message', 'Data faq berhasil di publish');
+            session()->setFlashdata('message1', 'success');
+        } else {
+            session()->setFlashdata('message', 'Data faq gagal di publish');
+            session()->setFlashdata('message1', 'Error');
+        }
+        return redirect('admin-faq');
+    }
+    public function deleteFaq()
+    {
+        $id = $this->request->getVar('idFaq');
+        $delete = $this->FaqModel->delete($id);
+        if ($delete) {
+            session()->setFlashdata('message', 'Data faq berhasil di hapus');
+            session()->setFlashdata('message1', 'success');
+        } else {
+            session()->setFlashdata('message', 'Data faq gagal di hapus');
+            session()->setFlashdata('message1', 'error');
+        }
+        return redirect('admin-faq');
     }
 }

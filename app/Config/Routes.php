@@ -86,8 +86,12 @@ $routes->get('/profile/(:any)', 'Admin::editProfile/$1');
 $routes->post('/update-profile/(:any)', 'Admin::updateProfile/$1');
 // $routes->delete('/profile/(:any)', 'Admin::deleteProfile');
 
-
+// FAQ
 $routes->get('/admin-faq', 'Admin::faq');
+$routes->post('/add-faq', 'Admin::addFaq');
+$routes->post('/answer-question', 'Admin::updateAnswerFaq');
+$routes->delete('/delete-faq', 'Admin::deleteFaq');
+
 $routes->get('/admin-about-us', 'Admin::aboutus');
 // artikel
 $routes->get('/admin-artikel', 'Admin::article');
