@@ -35,7 +35,7 @@ function circlecourse()
 <section id="detail-course">
     <div class="container">
         <div class="row mt-5 mb-5 justify-content-center">
-            <img src="/img/poster.png" class="detail-img">
+            <img src="/img/course/<?= $course['gambar']; ?>" class="detail-img">
         </div>
         <div class="row" id="section1" style="height: 200px; margin:auto;">
             <div class="col" style="margin: auto;">
@@ -45,12 +45,12 @@ function circlecourse()
             </div>
             <div class="col" style="margin: auto;">
                 <div class="kotak-text">
-                    <div class="row" style="color: white;">
-                        <h3>How to start being a Software Developer.</h3>
+                    <div class="row">
+                        <h3 class="text-white"><?= $course['nama_course']; ?></h3>
                     </div>
                 </div>
-                <div class="responsive">
-                    <div class="row" id="hidden">
+                <div class="responsive" id="hidden">
+                    <div class="row">
                         <h4><s>Rp. 500.000</s></h4>
                         <h4 style="color: red;">RP. 325.000</h4>
                         <a href="/payment" class="btn btn-sm btn-purple-100">Join Now</a>
@@ -62,27 +62,30 @@ function circlecourse()
             </div>
             <div class="col align-self-start" style="margin: auto;">
                 <div class="row">
-                    <h4><s>Rp. 500.000</s></h4>
-                    <h4 style="color: red;">RP. 325.000</h4>
+                    <h4><s>Rp <?= number_format($course['harga'], 0, ',', '.'); ?></s></h4>
+                    <h4 style="color: red;">Rp <?= number_format($course['harga'] - $course['diskon'], 0, ',', '.'); ?></h4>
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-sm-3 text-sm-start">
-                        <a href="/payment" class="btn btn-sm btn-purple-100">Join Now</a>
+                        <a href="/payment/<?= $course['slug_course']; ?>" class="btn btn-sm btn-purple-100">Join Now</a>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="row mb-5 pb-5" id="section2">
-            <div class="row justify-content-start" style="height: 80px;">
-                <div class="line"></div>
-                <div class="col">
-                    <div class="text2">
-                        <h1 style="color: black;">Benefits you get when join our course</h1>
+            <div class="text2. mb-5 mt-5 h2 title-benefits-course">Benefits you get when join our course</div>
+
+            <div class="row">
+                <?php for ($i = 0; $i < 3; $i++) : ?>
+                    <div class="col-lg-4 mb-3">
+                        <div class="text-purple">Fleksible</div>
+                        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nulla voluptate vero molestiae quisquam tempora possimus hic eius animi aut.</div>
                     </div>
-                </div>
+                <?php endfor; ?>
             </div>
-            <div class="row align-items-start">
+
+            <!-- <div class="row align-items-start">
                 <div class="col-1">
                     <i class="bi-alarm-fill"></i>
                 </div>
@@ -122,12 +125,12 @@ function circlecourse()
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
 
         <div class="mt-5 mb-5 pb-5 text-center">
-            <div class="h2 text-purple fw-bold mb-4">Android Developer</div>
+            <div class="h2 text-purple fw-bold mb-4"><?= $course['nama_course']; ?></div>
             <div class="d-flex justify-content-center">
                 <div class="col-lg-8">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Est provident repellat mollitia blanditiis possimus assumenda alias sequi laudantium perferendis. Dolore a, odio cum eaque vitae perferendis nam voluptatibus, atque iusto, iure molestias quaerat dicta neque pariatur officia maiores! Voluptatem perspiciatis minus dolorem reprehenderit magni minima est unde, eum aliquam facilis!
@@ -137,13 +140,11 @@ function circlecourse()
 
         <div class="row mt-4 pt-4 mb-5 pb-5 justify-content-center" id="section3">
             <div class="col">
-                <img src="/img/poster2.png" class="detail-img2">
+                <img src="/img/course/<?= $course['gambar']; ?>" class="detail-img2">
             </div>
             <div class="col">
                 <h4><strong>Penjelasan Course</strong></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam nulla porttitor massa id neque. Dui vivamus arcu felis bibendum ut.</p>
-                <p>Tristique senectus et netus et. Sed cras ornare arcu dui vivamus. Molestie ac feugiat sed lectus. Cursus metus aliquam eleifend mi in nulla. Eget arcu dictum varius duis at. Tempor nec feugiat nisl pretium. Diam maecenas ultricies mi eget mauris pharetra et ultrices.</p>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam nulla porttitor massa id neque. Dui vivamus arcu felis bibendum ut. </p>
+                <div><?= $course['deskripsi']; ?></div>
             </div>
             <div class="circle-5 d-sm-none d-lg-block">
                 <?= circlecourse(); ?>
@@ -204,7 +205,7 @@ function circlecourse()
             <?php endfor; ?>
 
             <div class="mt-5 text-center">
-                <div class="fw-bold text-capitalize">Jadilah android Developer seperti mereka</div>
+                <div class="fw-bold text-capitalize">Jadilah <?= $course['nama_course']; ?> seperti mereka</div>
                 <div class="d-flex justify-content-center mt-3">
                     <?php for ($i = 0; $i < 8; $i++) : ?>
                         <div class="card-img-circle-50">
@@ -226,34 +227,33 @@ function circlecourse()
                 <div class="splide related-course">
                     <div class="splide__track">
                         <div class="splide__list pb-5">
-                            <?php for ($i = 0; $i < 5; $i++) : ?>
+                            <?php foreach ($related_course as $x) : ?>
                                 <div class="col-md-4 splide__slide m-2">
                                     <div class="card card-course border-0 shadow">
                                         <div class="course-circle-time fw-bold">3 Weeks</div>
                                         <div class="image-content">
-                                            <!-- <span class="overlay"></span> -->
                                             <div class="card-image.">
                                                 <div class="course-img-polygon">
-                                                    <img src="https://img.freepik.com/premium-photo/astronaut-outer-open-space-planet-earth-rtrs-provide-background-erforming-space-planet-earth-sunrise-sunset-our-home-iss-elements-this-image-furnished-by-nasa_150455-16829.jpg?w=2000" alt="" class="card-img">
+                                                    <img src="/img/course/<?= $x['gambar']; ?>" alt="" class="card-img">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="card-content ps-4 py-4">
-                                            <h5 class="card-title fw-bold lh-base">How to start being a Software Developer </h5>
+                                            <h5 class="card-title fw-bold lh-base"><?= $x['nama_course']; ?> </h5>
                                             <div class="row">
                                                 <div class="col-sm-8 col-md-6 col-lg-12">
-                                                    <p class="card-text h6 text-decoration-line-through text-secondary">Rp 500.000</p>
-                                                    <p class="card-text h5 fw-bold text-danger">Rp 325.000</p>
+                                                    <p class="card-text h6 text-decoration-line-through text-secondary">Rp <?= number_format($x['harga'], 0, ',', '.'); ?></p>
+                                                    <p class="card-text h5 fw-bold text-red">Rp <?= number_format($x['harga'] - $x['diskon'], 0, ',', '.'); ?></p>
                                                 </div>
-                                                <div class="col-sm-4 col-md-6 col-lg-12 text-sm-end text-lg-start">
-                                                    <a href="/payment" class="btn btn-sm btn-purple-100 mt-2">Join Now</a>
+                                                <div class="col-sm-4 col-md-6 col-lg-12 text-sm-end  text-lg-start">
+                                                    <button class="btn btn-sm btn-purple-100 mt-2">Join Now</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="/detail-course" class="text-decoration-none btn btn-sm btn-light fw-bold course-btn-read-more">Read More</a>
+                                        <a href="/course/<?= $x['slug_course']; ?>" class="text-decoration-none btn btn-sm btn-light fw-bold course-btn-read-more">Read More</a>
                                     </div>
                                 </div>
-                            <?php endfor; ?>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
