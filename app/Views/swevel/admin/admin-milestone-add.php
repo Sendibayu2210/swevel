@@ -27,10 +27,18 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <label for="formFile" class="form-label">Choose image here</label>
-                    <input class="form-control  <?= ($validation->hasError('berkas')) ? 'is-invalid' : ''; ?>" type="file" id="formFile" name="berkas">
-                    <div id="" class="invalid-feedback">
-                        <?= $validation->getError('berkas'); ?>
+                    <div class="row">
+                        <div class="col-8">
+                            <label for="formFile" class="form-label">Choose image here</label>
+                            <input class="form-control  <?= ($validation->hasError('berkas')) ? 'is-invalid' : ''; ?>" type="file" id="fileMilestone" name="berkas" onchange="imgPreview()">
+                            <div id="" class="invalid-feedback">
+                                <?= $validation->getError('berkas'); ?>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="" class="d-block">Image Preview</label>
+                            <img src="" alt="" class="img-thumbnail img-preview" style="width:150px;">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -43,6 +51,17 @@
 
 
 <script>
+    function imgPreview() {
+        let sampul = document.querySelector('#fileMilestone');
+        let imgPreview = document.querySelector('.img-preview');
+
+        const fileSampul = new FileReader();
+        fileSampul.readAsDataURL(sampul.files[0]);
+        fileSampul.onload = function(e) {
+            imgPreview.src = e.target.result;
+        }
+    }
+
     ClassicEditor
         .create(document.querySelector('#description'))
         .catch(error => {
