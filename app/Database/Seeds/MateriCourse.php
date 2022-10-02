@@ -11,10 +11,11 @@ class MateriCourse extends Seeder
     {
         $data = [
             [
+                'id_course' => '1',
                 'id_sub_course' => '1',
                 'kategori' => 'materi',
                 'bab' => 'Pendahuluan',
-                'sub_bab' => 'Pengertian Kotlin',
+                'sub_bab' => 'Pengertian Android',
                 'konten_materi' => 'konten materi kfjdslfjadlkfjlskafj dsfjdsklfjdslkfk dsjfsdlksdjfluadofjaklf hjkadvamcbjkafndjsgfuiefndsfsdf',
                 'gambar' => '',
                 'video' => '',
@@ -23,10 +24,24 @@ class MateriCourse extends Seeder
                 'updated_at' => Time::now(),
             ],
             [
+                'id_course' => '2',
                 'id_sub_course' => '2',
                 'kategori' => 'materi',
                 'bab' => 'Pendahuluan',
-                'sub_bab' => 'Pengertian Kotlin 2',
+                'sub_bab' => 'Pengertian web pendahuluan',
+                'konten_materi' => 'konten materi kfjdslfjadlkfjlskafj dsfjdsklfjdslkfk dsjfsdlksdjfluadofjaklf hjkadvamcbjkafndjsgfuiefndsfsdf',
+                'gambar' => '',
+                'video' => '',
+                'file' => '',
+                'created_at' => Time::now(),
+                'updated_at' => Time::now(),
+            ],
+            [
+                'id_course' => '2',
+                'id_sub_course' => '2',
+                'kategori' => 'materi',
+                'bab' => 'Pengenalan',
+                'sub_bab' => 'Pengertian web pengenalan',
                 'konten_materi' => 'konten materi kfjdslfjadlkfjlskafj dsfjdsklfjdslkfk dsjfsdlksdjfluadofjaklf hjkadvamcbjkafndjsgfuiefndsfsdf',
                 'gambar' => '',
                 'video' => '',

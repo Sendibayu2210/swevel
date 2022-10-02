@@ -22,6 +22,10 @@ class SubCourse extends Migration
                 'type' => 'varchar',
                 'constraint' => 100,
             ],
+            'slug_sub_course' => [
+                'type' => 'varchar',
+                'constraint' => 100,
+            ],
             'deskripsi' => [
                 'type' => 'varchar',
                 'constraint' => 255,

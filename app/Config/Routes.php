@@ -104,8 +104,10 @@ $routes->get('/more-event', 'Admin::moreEvent');
 $routes->get('/payment', 'Admin::payment');
 
 
-// User
-
+// ===================== User =====================
+// materi
+$routes->get('/course-materi/(:any)/', 'Course::materi/$1');
+$routes->get('/course-materi/(:any)/(:num)', 'Course::materi/$1/$2');
 $routes->get('/status', 'User::status');
 $routes->get("/materi", "User::materi");
 $routes->get("/kuis", "User::kuis");

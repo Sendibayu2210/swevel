@@ -83,56 +83,58 @@ function circlecourse()
         </div>
 
         <div>
-            <?php for ($i = 1; $i < 6; $i++) : ?>
+            <?php foreach ($step_course as $x) : ?>
                 <div class="row timeline">
                     <div class="col-lg-5 col-md-6 col-sm-12 col1">
-                        <div class="card border mb-lg-5 mb-md-5">
-                            <div class="card-body">
-                                <div class="small mb-3">
-                                    <i class="fa-solid fa-signal text-purple"></i>
-                                    <span class="ms-3">Langkah <?= $i; ?></span>
-                                </div>
-                                <div class="fw-bold">Memulai Pemrograman dengan kotlin</div>
-                                <div class="d-flex justify-content-between mt-3">
-                                    <div>
-                                        <i class="fa-regular fa-clock text-purple"></i>
-                                        <span class="ms-3">50 Jam</span>
+                        <a href="/course-materi/<?= $slug_course; ?>" class="text-dark text-decoration-none">
+                            <div class="card border mb-lg-5 mb-md-5">
+                                <div class="card-body">
+                                    <div class="small mb-3">
+                                        <i class="fa-solid fa-signal text-purple"></i>
+                                        <span class="ms-3">Langkah <?= $x['step']; ?></span>
                                     </div>
-                                    <div>
-                                        <i class="fa-solid fa-star text-orange"></i>
-                                        <span class="ms-3">4,8</span>
+                                    <div class="fw-bold"><?= $x['title']; ?></div>
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <div>
+                                            <i class="fa-regular fa-clock text-purple"></i>
+                                            <span class="ms-3"><?= $x['hours']; ?></span>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-star text-orange"></i>
+                                            <span class="ms-3">4,8</span>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-chart-simple text-purple"></i>
+                                            <span class="ms-3"><?= $x['level']; ?></span>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <i class="fa-solid fa-chart-simple text-purple"></i>
-                                        <span class="ms-3">Basic - Beginner</span>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between mt-4 mb-4">
-                                    <div>
-                                        <i class="fa-solid fa-book"></i>
-                                        <span class="ms-3">119 Modul</span>
-                                    </div>
-                                    <div>
-                                        <i class="fa-solid fa-users"></i>
-                                        <span class="ms-3">134 People join this course</span>
+                                    <div class="d-flex justify-content-between mt-4 mb-4">
+                                        <div>
+                                            <i class="fa-solid fa-book"></i>
+                                            <span class="ms-3">119 Modul</span>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-users"></i>
+                                            <span class="ms-3">134 People join this course</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-lg-2 text-center col2 d-lg-block d-md-none d-sm-none">
                         <div class="text-center">
                             <div class="pt-5 line-timeline line-before"></div>
-                            <div class="h5 step-number"><?= $i; ?></div>
+                            <div class="h5 step-number"><?= $x['step']; ?></div>
                             <div class="pt-5 line-timeline line-after"></div>
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6 col-sm-12 col3 mb-sm-5 pb-sm-5 mb-md-5 pb-md-5">
-                        <div class="fw-bold mb-3 h5 pt-5">Langkah <?= $i; ?></div>
-                        <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto impedit, assumenda ab at sequi beatae provident sint numquam quibusdam mollitia?</div>
+                        <div class="fw-bold mb-3 h5 pt-5">Langkah <?= $x['step']; ?></div>
+                        <div><?= $x['deskripsi']; ?></div>
                     </div>
                 </div>
-            <?php endfor; ?>
+            <?php endforeach; ?>
 
             <div class="mt-5 text-center">
                 <div class="fw-bold text-capitalize">Jadilah <?= $course['nama_course']; ?> seperti mereka</div>
@@ -204,7 +206,6 @@ function circlecourse()
         $('.line-before').css('height', (heightCol1 / 2) - heightStepNumber);
         // mengatur line kedua
         $('.line-after').css('height', (heightCol1 / 2) + heightStepNumber);
-
 
 
         $(".timeline").find('.card').hover(function() {

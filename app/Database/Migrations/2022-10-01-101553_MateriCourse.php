@@ -15,6 +15,10 @@ class MateriCourse extends Migration
                 'constraint' => 5,
                 'auto_increment' => true,
             ],
+            'id_course' => [
+                'type' => 'int',
+                'constraint' => 5,
+            ],
             'id_sub_course' => [
                 'type' => 'int',
                 'constraint' => 5,
