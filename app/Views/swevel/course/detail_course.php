@@ -2,17 +2,6 @@
 <?= $this->section('content'); ?>
 <?= $this->include('swevel/navbar'); ?>
 
-<style>
-    .detail-img {
-        max-width: 700px;
-    }
-
-    .detail-img2 {
-        max-width: 550px;
-        margin-left: 27;
-    }
-</style>
-
 <?php
 // untuk membuat lingkaran 4x4
 function circlecourse()
@@ -34,47 +23,32 @@ function circlecourse()
 
 <section id="detail-course">
     <div class="container">
-        <div class="row mt-5 mb-5 justify-content-center">
+        <div class="row mt-5 justify-content-center">
+            <div class="text-white kotak-text"><?= $course['nama_course']; ?></div>
+            <!-- <div class="borderkotak"></div> -->
+            <!-- <img src="/img/poster.png" class="detail-img"> -->
             <img src="/img/course/<?= $course['gambar']; ?>" class="detail-img">
         </div>
-        <div class="row" id="section1" style="height: 200px; margin:auto;">
+        <div class=" row" id="section1" style="margin:auto;">
             <div class="col" style="margin: auto;">
                 <div class="circle-4 d-sm-none d-lg-block">
                     <?= circlecourse(); ?>
                 </div>
             </div>
-            <div class="col" style="margin: auto;">
-                <div class="kotak-text">
-                    <div class="row">
-                        <h3 class="text-white"><?= $course['nama_course']; ?></h3>
-                    </div>
-                </div>
-                <div class="responsive" id="hidden">
-                    <div class="row">
-                        <h4><s>Rp. 500.000</s></h4>
-                        <h4 style="color: red;">RP. 325.000</h4>
-                        <a href="/payment" class="btn btn-sm btn-purple-100">Join Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col" style="margin: auto;">
-                <div class="borderkotak"></div>
-            </div>
-            <div class="col align-self-start" style="margin: auto;">
-                <div class="row">
-                    <h4><s>Rp <?= number_format($course['harga'], 0, ',', '.'); ?></s></h4>
-                    <h4 style="color: red;">Rp <?= number_format($course['harga'] - $course['diskon'], 0, ',', '.'); ?></h4>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-sm-3 text-sm-start">
-                        <a href="/payment/<?= $course['slug_course']; ?>" class="btn btn-sm btn-purple-100">Join Now</a>
-                    </div>
-                </div>
-            </div>
         </div>
+        <div class="col" style="margin: auto;">
 
-        <div class="row mb-5 pb-5" id="section2">
-            <div class="text2. mb-5 mt-5 h2 title-benefits-course">Benefits you get when join our course</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row mb-5 pb-5" id="section2.">
+            <div class="text-lg-end text-md-start mb-lg-0 mb-md-5 mb-sm-5 border-kotak">
+                <h5><s>Rp <?= formatRupiah($course['harga']); ?></s></h5>
+                <h4 class="text-red">Rp <?= formatRupiah($course['harga'] - $course['diskon']); ?></h4>
+                <a href="/payment/<?= $course['slug_course']; ?>" class="btn btn-sm btn-purple-100">Join Now</a>
+            </div>
+            <div class="text2. mb-5 h2 title-benefits-course col-lg-4">Benefits you get when join our course</div>
 
             <div class="row">
                 <?php for ($i = 0; $i < 3; $i++) : ?>
@@ -84,50 +58,7 @@ function circlecourse()
                     </div>
                 <?php endfor; ?>
             </div>
-
-            <!-- <div class="row align-items-start">
-                <div class="col-1">
-                    <i class="bi-alarm-fill"></i>
-                </div>
-
-                <div class="col-3">
-                    <div class="row pr-3" style="color: #45188B;">
-                        <h6>Fleksibel</h6>
-                    </div>
-                    <div class="row pr-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <i class="bi-alarm-fill"></i>
-                </div>
-
-                <div class="col-3">
-                    <div class="row pr-3" style="color: #45188B;">
-                        <h6>Fleksibel</h6>
-                    </div>
-                    <div class="row pr-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-1">
-                    <i class="bi-alarm-fill"></i>
-                </div>
-                <div class="col-3">
-                    <div class="row pr-3" style="color: #45188B;">
-                        <h6>Fleksibel</h6>
-                    </div>
-                    <div class="row pr-3">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
-                    </div>
-                </div>
-            </div> -->
         </div>
-
 
         <div class="mt-5 mb-5 pb-5 text-center">
             <div class="h2 text-purple fw-bold mb-4"><?= $course['nama_course']; ?></div>
@@ -139,24 +70,23 @@ function circlecourse()
         </div>
 
         <div class="row mt-4 pt-4 mb-5 pb-5 justify-content-center" id="section3">
-            <div class="col">
+            <div class="col-lg-6 d-lg-block d-md-none d-sm-none">
                 <img src="/img/course/<?= $course['gambar']; ?>" class="detail-img2">
             </div>
-            <div class="col">
+            <div class="col-lg-6">
                 <h4><strong>Penjelasan Course</strong></h4>
                 <div><?= $course['deskripsi']; ?></div>
             </div>
-            <div class="circle-5 d-sm-none d-lg-block">
+            <div class="circle-5 d-sm-none d-md-none d-lg-block">
                 <?= circlecourse(); ?>
             </div>
         </div>
-
 
         <div>
             <?php for ($i = 1; $i < 6; $i++) : ?>
                 <div class="row timeline">
                     <div class="col-lg-5 col-md-6 col-sm-12 col1">
-                        <div class="card shadow border-0 mb-lg-5 mb-md-5">
+                        <div class="card border mb-lg-5 mb-md-5">
                             <div class="card-body">
                                 <div class="small mb-3">
                                     <i class="fa-solid fa-signal text-purple"></i>
@@ -258,9 +188,9 @@ function circlecourse()
                     </div>
                 </div>
             </div>
-
         </section>
     </div>
+
 </section>
 
 <script>
@@ -274,6 +204,15 @@ function circlecourse()
         $('.line-before').css('height', (heightCol1 / 2) - heightStepNumber);
         // mengatur line kedua
         $('.line-after').css('height', (heightCol1 / 2) + heightStepNumber);
+
+
+
+        $(".timeline").find('.card').hover(function() {
+            $(this).addClass("shadow");
+        })
+        $(".timeline").find('.card').mouseleave(function() {
+            $(this).removeClass("shadow");
+        })
 
         relatedCourse();
     })

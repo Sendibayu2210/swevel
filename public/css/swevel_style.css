@@ -573,6 +573,7 @@ section#page-first {
 }
 .course-img-polygon {
     clip-path: polygon(11% 0, 89% 0, 97% 3%, 100% 17%, 100% 100%, 25% 85%);
+    min-height: 250px;
 }
 .course-btn-read-more {
     transform: translate(100%, 50%);
