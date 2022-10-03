@@ -98,6 +98,11 @@ $routes->get('/admin-artikel', 'Admin::article');
 $routes->get('/edit-artikel', 'Admin::editArticle');
 $routes->post('/add-artikel', 'Admin::addArticle');
 
+// Course
+$routes->get('/admin-course', "Admin::course");
+$routes->get('/admin-course/(:any)', "Admin::detailCourse/$1");
+
+
 $routes->get('/admin-event', 'Admin::event');
 $routes->get('/admin-portofolio', 'Admin::portofolio');
 $routes->get('/more-event', 'Admin::moreEvent');

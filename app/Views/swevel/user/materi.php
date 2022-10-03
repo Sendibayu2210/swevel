@@ -4,7 +4,7 @@
     <div class="container">
         <div class="h4 mb-5 fw-bold">How to start being an Android Developer</div>
         <div class="d-flex justify-content-center">
-            <iframe width="640" height="360" src="https://www.youtube.com/embed/2PkWBWhHiwE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!-- <iframe width="640" height="360" src="https://www.youtube.com/embed/2PkWBWhHiwE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
         </div>
         <div class="text-end mt-3 mb-4">
             <a href="#" class="text-purple me-5">Download Materi</a>

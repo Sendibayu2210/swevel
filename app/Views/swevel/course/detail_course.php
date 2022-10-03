@@ -24,9 +24,7 @@ function circlecourse()
 <section id="detail-course">
     <div class="container">
         <div class="row mt-5 justify-content-center">
-            <div class="text-white kotak-text"><?= $course['nama_course']; ?></div>
-            <!-- <div class="borderkotak"></div> -->
-            <!-- <img src="/img/poster.png" class="detail-img"> -->
+            <div class="text-white kotak-text"><?= $course['nama_course']; ?></div>            
             <img src="/img/course/<?= $course['gambar']; ?>" class="detail-img">
         </div>
         <div class=" row" id="section1" style="margin:auto;">

@@ -51,11 +51,11 @@ class Course extends BaseController
     }
 
     public function materi($slug_course, $id_materi = null)
-    {
-        $get_id = $this->CourseModel->where('slug_course', $slug_course)->first();
+    {        
+        $get_id = $this->CourseModel->where('slug_course', $slug_course)->first();                
         $get_sub = $this->SubCourseModel->where('id_course', $get_id['id'])->orderBy('step', 'asc')->findAll();
         $get_title_materi = $this->MateriModel->where('id_course', $get_id['id'])->findAll();
-
+        
         if ($id_materi) {
             $get_materi = $this->MateriModel->where('id_course', $get_id['id'])->where('id_materi', $id_materi)->first();
             if (!$get_materi) {
@@ -66,7 +66,7 @@ class Course extends BaseController
         }
 
         $data = [
-            'title' => 'Materi',
+            'title' => 'Materi ' . $get_id['nama_course'],
             'step_course' => $get_sub,
             'title_materi' => $get_title_materi,
             'slug_course' => $slug_course,

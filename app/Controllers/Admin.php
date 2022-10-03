@@ -6,6 +6,8 @@ use App\Models\ProfileModel;
 use App\Models\MilestoneModel;
 use App\Models\KontakModel;
 use App\Models\FaqModel;
+use App\Models\CourseModel;
+use App\Models\SubCourseModel;
 
 class Admin extends BaseController
 {
@@ -15,6 +17,8 @@ class Admin extends BaseController
         $this->MilestoneModel = new MilestoneModel();
         $this->KontakModel = new KontakModel();
         $this->FaqModel = new FaqModel();
+        $this->CourseModel = new CourseModel();
+        $this->SubCourseModel = new SubCourseModel();
     }
     public function index()
     {
@@ -449,5 +453,27 @@ class Admin extends BaseController
             session()->setFlashdata('message1', 'error');
         }
         return redirect('admin-faq');
+    }
+
+    // Admin Course
+    public function course()
+    {
+        $data = [
+            'title' => 'Admin Course',
+            'course' => $this->CourseModel->findAll(),
+        ];
+        return view('swevel/admin/admin-course', $data);
+    }
+    public function detailCourse($slug)
+    {
+        $course = $this->CourseModel->where('slug_course', $slug)->first();
+        $step_course = $this->SubCourseModel->where('id_course', $course['id'])->findAll();
+        $data = [
+            'title' => 'View Course ' . $course['nama_course'],
+            'course' => $course,
+            'step_course' => $step_course,
+            'slug_course' => $slug,
+        ];
+        return view('swevel/admin/admin-detail-course', $data);
     }
 }

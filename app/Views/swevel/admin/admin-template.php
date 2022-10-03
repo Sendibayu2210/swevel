@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="/asset/custom_vendor/jquery/jquery-3.6.1.min.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
+    <script src="/js/classic.ckeditor.js"></script>
 
     <link rel="stylesheet" href="/asset/custom_vendor/bootstrap5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/asset/custom_vendor/fontawesome612/css/all.css">
     <link rel="stylesheet" href="/asset/css/admin.css">
     <link rel="stylesheet" href="/css/swevel_style.css">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="/css/bootstrap-datepicker.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,300&display=swap" rel="stylesheet">
 
@@ -50,18 +50,19 @@
 
     <script src="/asset/custom_vendor/bootstrap5/js/bootstrap.bundle.min.js"></script>
     <script src="/asset/js/admin.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0-rc.1/chartjs-plugin-datalabels.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
+    <!-- <script src="/js/chart.min.js"></script>
+    <script src="/js/chart.js"></script>
+    <script src="/js/chartjs-plugin-datalabels.min.js"></script>
+
+    <script src="/js/moment.min.js"></script>
+    <script src="/js/bootstrap-datepicker.js"></script> -->
 
 
     <script src="/js/swevel.js"></script>
 
 
-    <script>
+    <!-- <script>
         $(document).ready(function() {
             barChart = function() {
                 const bar = document.getElementById('barChart');
@@ -134,7 +135,7 @@
             }
             pieChart();
         })
-    </script>
+    </script> -->
 
 
 </body>

@@ -12,6 +12,7 @@ class Artikel extends BaseController
     }
     public function index()
     {
+
         $data = [
             'title' => 'Artikel',
             'kontak_all' => $this->KontakModel->findAll(),
