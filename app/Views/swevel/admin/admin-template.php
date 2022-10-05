@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title><?= $title; ?></title>
+    <link rel="shortcut icon" href="/img/logo-swevel-top2.png" type="image/x-icon">
     <script src="/asset/custom_vendor/jquery/jquery-3.6.1.min.js"></script>
-    <script src="/js/classic.ckeditor.js"></script>
+    <!-- <script src="/js/classic.ckeditor.js"></script> -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 
     <link rel="stylesheet" href="/asset/custom_vendor/bootstrap5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/asset/custom_vendor/fontawesome612/css/all.css">
@@ -18,7 +20,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,300&display=swap" rel="stylesheet">
 
-    <title><?= $title; ?></title>
+
 </head>
 
 <body>

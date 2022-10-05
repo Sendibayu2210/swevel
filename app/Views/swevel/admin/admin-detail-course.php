@@ -4,26 +4,29 @@
 <section id="detail-course">
 
     <div class="container">
-        <div class="text-dark h3 my-3 fw-bold kotak-text"><?= $course['nama_course']; ?></div>
-        <div class="row mb-5 pb-5" id="section2.">
-            <div class="text-lg-end text-md-start mb-lg-0 mb-md-5 mb-sm-5 border-kotak">
+        <div class="mb-5 d-flex">
+            <a href="/add-step-course/<?= $course['slug_course']; ?>" class="btn btn-purple btn-sm">Tambah step course</a>
+            <button class="btn btn-purple btn-sm ms-3">Edit course</button>
+        </div>
+        <div class="row mb-5 pb-3 border-bottom">
+            <div class="text-dark h3 my-3 fw-bold kotak-text col-lg-7"><?= $course['nama_course']; ?></div>
+            <div class="text-lg-end text-md-start border-kotak col-lg-5">
                 <h5><s>Rp <?= formatRupiah($course['harga']); ?></s></h5>
                 <h4 class="text-red">Rp <?= formatRupiah($course['harga'] - $course['diskon']); ?></h4>
             </div>
-            <div class="text2. mb-5 h5 title-benefits-course">Benefits you get when join our course</div>
-
-            <div class="row">
-                <?php for ($i = 0; $i < 3; $i++) : ?>
-                    <div class="col-lg-4 mb-3">
-                        <div class="text-purple">Fleksible</div>
-                        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nulla voluptate vero molestiae quisquam tempora possimus hic eius animi aut.</div>
-                    </div>
-                <?php endfor; ?>
-            </div>
-            <div class="mt-5">
-                <div class="h2 text-purple fw-bold mb-4 text-"><?= $course['nama_course']; ?></div>
-                <div><?= $course['deskripsi']; ?> </div>
-            </div>
+        </div>
+        <div class="mb-5 h5 title-benefits-course">Benefits you get when join our course</div>
+        <div class="row">
+            <?php for ($i = 0; $i < 3; $i++) : ?>
+                <div class="col-lg-4 mb-3">
+                    <div class="text-purple">Fleksible</div>
+                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nulla voluptate vero molestiae quisquam tempora possimus hic eius animi aut.</div>
+                </div>
+            <?php endfor; ?>
+        </div>
+        <div class="mt-5 mb-5">
+            <div class="h2 text-purple fw-bold mb-4 text-"><?= $course['nama_course']; ?></div>
+            <div><?= $course['deskripsi']; ?> </div>
         </div>
         <div>
             <?php foreach ($step_course as $x) : ?>
@@ -40,7 +43,7 @@
                                     <div class="d-flex justify-content-between mt-3">
                                         <div>
                                             <i class="fa-regular fa-clock text-purple"></i>
-                                            <span class="ms-3"><?= $x['hours']; ?></span>
+                                            <span class="ms-3"><?= $x['hours']; ?> Jam</span>
                                         </div>
                                         <div>
                                             <i class="fa-solid fa-star text-orange"></i>

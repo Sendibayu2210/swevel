@@ -9,7 +9,7 @@ class SubCourseModel extends Model
     protected $table            = 'sub_course';
     protected $primaryKey       = 'id_sub_curse';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = ['title', 'deskripsi', 'step', 'level', 'hours'];
+    protected $allowedFields    = ['id_course', 'title', 'slug_sub_course', 'deskripsi', 'step', 'level', 'hours'];
 
     // Dates
     protected $useTimestamps = false;

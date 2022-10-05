@@ -8,6 +8,7 @@ use App\Models\KontakModel;
 use App\Models\FaqModel;
 use App\Models\CourseModel;
 use App\Models\SubCourseModel;
+use App\Models\TeamModel;
 
 class Admin extends BaseController
 {
@@ -19,6 +20,7 @@ class Admin extends BaseController
         $this->FaqModel = new FaqModel();
         $this->CourseModel = new CourseModel();
         $this->SubCourseModel = new SubCourseModel();
+        $this->TeamModel = new TeamModel();
     }
     public function index()
     {
@@ -475,5 +477,100 @@ class Admin extends BaseController
             'slug_course' => $slug,
         ];
         return view('swevel/admin/admin-detail-course', $data);
+    }
+
+    public function addStepCourse($slug)
+    {
+        $course = $this->CourseModel->where('slug_course', $slug)->first();
+        $count_step = $this->SubCourseModel->where('id_course', $course['id'])->countAllResults();
+        $step_course = $this->SubCourseModel->where('id_course', $course['id'])->findAll();
+
+        $data = [
+            'title' => 'Tambah Step Course ' . $course['nama_course'],
+            'course' => $course,
+            'step_course' => $step_course,
+            'count_step' => $count_step + 1,
+            'validation' => Validation(),
+        ];
+        return view('swevel/admin/admin-add-step-course', $data);
+    }
+
+    public function saveSubCourse()
+    {
+        if (!$this->validate([
+            'judul' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Judul step harus diisi'
+                ]
+            ],
+            'deskripsi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'deskripsi harus diisi'
+                ]
+            ],
+            'level' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'level tidak boleh kosong'
+                ]
+            ],
+            'jam' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'jam tidak boleh kosong'
+                ]
+            ],
+
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
+            return redirect()->back()->withInput();
+        }
+        $judul = $this->request->getVar('judul');
+        $slug_sub_course = strtolower(str_replace(' ', '-', $judul));
+        $data = [
+            'id_course' => $this->request->getVar('id'),
+            'title' => $judul,
+            'slug_sub_course' => $slug_sub_course,
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'level' => htmlspecialchars($this->request->getVar('level')),
+            'hours' => htmlspecialchars($this->request->getVar('jam')),
+            'step' => htmlspecialchars($this->request->getVar('step')),
+        ];
+        $insert = $this->SubCourseModel->insert($data);
+        if ($insert) {
+            session()->setFlashdata('message', 'Data step course berhasil di publish');
+            session()->setFlashdata('message1', 'success');
+        } else {
+            session()->setFlashdata('message', 'Data step course gagal di publish');
+            session()->setFlashdata('message1', 'Error');
+        }
+        // return redirect('admin-course/' . $this->request->getVar('slug'));
+        return redirect('admin-course');
+    }
+
+    public function team()
+    {
+        $data = [
+            'title' => 'Team',
+            'team' => $this->TeamModel->findAll(),
+        ];
+        return view('swevel/admin/admin-team', $data);
+    }
+
+    public function deleteTeam()
+    {
+        $id = $this->request->getVar('idTeam');
+        $delete = $this->TeamModel->delete($id);
+        if ($delete) {
+            session()->setFlashdata('message', 'Data team berhasil di hapus');
+            session()->setFlashdata('message1', 'success');
+        } else {
+            session()->setFlashdata('message', 'Data team gagal di hapus');
+            session()->setFlashdata('message1', 'error');
+        }
+        return redirect('admin-team');
     }
 }

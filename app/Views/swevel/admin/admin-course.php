@@ -3,6 +3,9 @@
 
 <div id="admin-course">
     <div class="container">
+        <div class="mb-5">
+            <a href="/add-course" class="btn btn-purple btn-sm">Tambah course</a>
+        </div>
         <div class="h4 fw-bold">Daftar Course</div>
         <div class="mt-5">
             <?php foreach ($course as $x) : ?>

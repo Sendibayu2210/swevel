@@ -35,6 +35,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Home::auth');
 
@@ -101,12 +102,19 @@ $routes->post('/add-artikel', 'Admin::addArticle');
 // Course
 $routes->get('/admin-course', "Admin::course");
 $routes->get('/admin-course/(:any)', "Admin::detailCourse/$1");
+$routes->get('/add-step-course/(:any)', 'Admin::addStepCourse/$1');
+$routes->post('/save-step-course', 'Admin::saveSubCourse');
 
+// Team
+$routes->get('/admin-team', 'Admin::team');
+$routes->delete('/delete-team', "Admin::deleteTeam");
 
 $routes->get('/admin-event', 'Admin::event');
 $routes->get('/admin-portofolio', 'Admin::portofolio');
 $routes->get('/more-event', 'Admin::moreEvent');
 $routes->get('/payment', 'Admin::payment');
+
+
 
 
 // ===================== User =====================
@@ -118,6 +126,8 @@ $routes->get("/materi", "User::materi");
 $routes->get("/kuis", "User::kuis");
 $routes->get("/course-saved", "User::savedCourse");
 $routes->get('/submission', 'User::submission');
+
+
 
 //  PERCOBAAN
 // movie
