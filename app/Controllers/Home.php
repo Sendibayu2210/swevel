@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\ProfileModel;
 use App\Models\MilestoneModel;
 use App\Models\KontakModel;
+use App\Models\TeamModel;
 
 class Home extends BaseController
 {
@@ -13,6 +14,7 @@ class Home extends BaseController
         $this->ProfileModel = new ProfileModel();
         $this->MilestoneModel = new MilestoneModel();
         $this->KontakModel = new KontakModel();
+        $this->TeamModel = new TeamModel();
     }
     public function index()
     {
@@ -22,6 +24,7 @@ class Home extends BaseController
             'milestoneLimit' => $this->MilestoneModel->orderBy('year', 'asc')->findAll(2),
             'milestone' => $this->MilestoneModel->orderBy('year', 'asc')->findAll(),
             'kontak_all' => $this->KontakModel->findAll(),
+            'team' => $this->TeamModel->findAll(),
         ];
         return view('swevel/index_homepage', $data);
     }

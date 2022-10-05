@@ -556,13 +556,114 @@ class Admin extends BaseController
         $data = [
             'title' => 'Team',
             'team' => $this->TeamModel->findAll(),
+            'validation' => \Config\Services::validation(),
         ];
         return view('swevel/admin/admin-team', $data);
     }
 
+    public function saveTeam()
+    {
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama Tidak boleh kosong'
+                ]
+            ],
+            'jabatan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jabatan Tidak boleh kosong'
+                ]
+            ],
+            'berkas' => [
+                'rules' => 'uploaded[berkas]|mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png]|max_size[berkas,2048]',
+                'errors' => [
+                    'uploaded' => 'Harus Ada File yang diupload',
+                    'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png',
+                    'max_size' => 'Ukuran File Maksimal 2 MB'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
+            session()->setFlashdata('message2', 'ErrorAdd');
+            return redirect()->back()->withInput();
+        }
+
+        $dataBerkas = $this->request->getFile('berkas');
+        $fileName = $dataBerkas->getRandomName();
+        $this->TeamModel->insert([
+            'nama' => htmlspecialchars($this->request->getVar('nama')),
+            'jabatan' => htmlspecialchars($this->request->getVar('jabatan')),
+            'image' => $fileName,
+            'linkedin' => htmlspecialchars($this->request->getVar('linkedin')),
+            'instagram' => htmlspecialchars($this->request->getVar('instagram')),
+            'facebook' => htmlspecialchars($this->request->getVar('facebook')),
+        ]);
+        $dataBerkas->move('img/team/', $fileName);
+        session()->setFlashdata('message1', 'success');
+        session()->setFlashdata('message', 'Data team Berhasil di Upload');
+        return redirect('admin-team');
+    }
+
+    public function updateTeam()
+    {
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama Tidak boleh kosong'
+                ]
+            ],
+            'jabatan' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Jabatan Tidak boleh kosong'
+                ]
+            ],
+            'berkas' => [
+                'rules' => 'uploaded[berkas]|mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png]|max_size[berkas,2048]',
+                'errors' => [
+                    'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png',
+                    'max_size' => 'Ukuran File Maksimal 2 MB'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
+            session()->setFlashdata('message2', 'ErrorUpdate');
+            return redirect()->back()->withInput();
+        }
+
+        $dataBerkas = $this->request->getFile('berkas');
+        if ($dataBerkas->getError() == 4) {
+            $fileName = $this->request->getVar('file_lama');
+        } else {
+            $fileName = $dataBerkas->getRandomName();
+            $dataBerkas->move('img/team/', $fileName);
+            $fileDelete = 'img/team/' . $this->request->getVar('file_lama');
+            unlink($fileDelete);
+        }
+        $id = $this->request->getVar('edit_id');
+        $data = [
+            'nama' => htmlspecialchars($this->request->getVar('nama')),
+            'jabatan' => htmlspecialchars($this->request->getVar('jabatan')),
+            'image' => $fileName,
+            'linkedin' => htmlspecialchars($this->request->getVar('linkedin')),
+            'instagram' => htmlspecialchars($this->request->getVar('instagram')),
+            'facebook' => htmlspecialchars($this->request->getVar('facebook')),
+        ];
+        $this->TeamModel->update($id, $data);
+        // $dataBerkas->move('img/team/', $fileName);
+        session()->setFlashdata('message1', 'success');
+        session()->setFlashdata('message', 'Data team Berhasil di update');
+        return redirect('admin-team');
+    }
     public function deleteTeam()
     {
         $id = $this->request->getVar('idTeam');
+        unlink('img/team/' . $this->request->getVar('file_old'));
         $delete = $this->TeamModel->delete($id);
         if ($delete) {
             session()->setFlashdata('message', 'Data team berhasil di hapus');

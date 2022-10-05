@@ -10,7 +10,7 @@ class TeamModel extends Model
     protected $table            = 'team';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['nama', 'jabatan', 'image', 'linkedin', 'instagram', 'facebook'];
 
     // Dates
     protected $useTimestamps = false;

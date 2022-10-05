@@ -17,34 +17,25 @@
             <div class="splide splide-team">
                 <div class="splide__track">
                     <div class="splide__list">
-                        <?php for ($i = 0; $i < 5; $i++) : ?>
+                        <?php foreach ($team as $x) : ?>
                             <div class="splide__slide">
                                 <div class="card card-team opacity-50 mx-0">
                                     <div class="gradient"></div>
                                     <div class="card-body">
-                                        <img src="/img/orang (3).png" alt="" class="img-primary">
+                                        <img src="/img/team/<?= $x['image']; ?>" alt="" class="img-primary">
                                     </div>
                                     <div class="card-footer bg-white pb-4 pt-3 border-0">
                                         <div class="social-media h4">
-                                            <a href="#" class="me-1"><i class="fa-brands fa-linkedin text-primary"></i></a>
-                                            <a href="#" class="me-1"><i class="fa-brands fa-square-facebook text-primary"></i></a>
-                                            <a href="#" class="me-1"><i class="fa-brands fa-square-instagram text-danger"></i></a>
+                                            <a href="<?= $x['linkedin']; ?>" class="me-1"><i class="fa-brands fa-linkedin text-primary"></i></a>
+                                            <a href="<?= $x['facebook']; ?>" class="me-1"><i class="fa-brands fa-square-facebook text-primary"></i></a>
+                                            <a href="<?= $x['instagram']; ?>" class="me-1"><i class="fa-brands fa-square-instagram text-danger"></i></a>
                                         </div>
-                                        <p class="ls-1 m-0 fw-bold text-purple-100">David Dell</p>
-                                        <p>Direktur Utama</p>
-                                        <div class="row justify-content-end d-none">
-                                            <div class="col-6 text-center">
-                                                <button class="btn btn-sm btn-purple btn-event fw-light ls-05 px-3 py-2 rounded-5">ENROLL EVENT</button>
-                                            </div>
-                                            <div class="col-3 my-auto text-end">
-                                                <span class="fa-regular fa-heart text-dark-purple fs-5"></span>
-                                                <span class="bi bi-share ms-3 text-dark-purple fs-5"></span>
-                                            </div>
-                                        </div>
+                                        <p class="ls-1 m-0 fw-bold text-purple-100"><?= $x['nama']; ?></p>
+                                        <p><?= $x['jabatan']; ?></p>
                                     </div>
                                 </div>
                             </div>
-                        <?php endfor; ?>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

@@ -107,6 +107,8 @@ $routes->post('/save-step-course', 'Admin::saveSubCourse');
 
 // Team
 $routes->get('/admin-team', 'Admin::team');
+$routes->post('/add-team', 'Admin::saveTeam');
+$routes->post('/update-team', 'Admin::updateTeam');
 $routes->delete('/delete-team', "Admin::deleteTeam");
 
 $routes->get('/admin-event', 'Admin::event');
