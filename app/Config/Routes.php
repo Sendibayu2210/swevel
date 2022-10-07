@@ -111,8 +111,12 @@ $routes->post('/add-team', 'Admin::saveTeam');
 $routes->post('/update-team', 'Admin::updateTeam');
 $routes->delete('/delete-team', "Admin::deleteTeam");
 
-$routes->get('/admin-event', 'Admin::event');
+// Portofolio
 $routes->get('/admin-portofolio', 'Admin::portofolio');
+$routes->post('/add-portofolio', 'Admin::addPortofolio');
+$routes->delete('/delete-portofolio', 'Admin::deletePortofolio');
+
+$routes->get('/admin-event', 'Admin::event');
 $routes->get('/more-event', 'Admin::moreEvent');
 $routes->get('/payment', 'Admin::payment');
 

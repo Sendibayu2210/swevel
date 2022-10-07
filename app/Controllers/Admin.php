@@ -9,6 +9,7 @@ use App\Models\FaqModel;
 use App\Models\CourseModel;
 use App\Models\SubCourseModel;
 use App\Models\TeamModel;
+use App\Models\PortofolioModel;
 
 class Admin extends BaseController
 {
@@ -21,6 +22,7 @@ class Admin extends BaseController
         $this->CourseModel = new CourseModel();
         $this->SubCourseModel = new SubCourseModel();
         $this->TeamModel = new TeamModel();
+        $this->PortofolioModel = new PortofolioModel();
     }
     public function index()
     {
@@ -77,9 +79,56 @@ class Admin extends BaseController
     {
         $data = [
             'title' => 'Portofolio',
+            'portofolio' => $this->PortofolioModel->findAll(),
+            'validation' => \Config\Services::validation(),
         ];
         return view('swevel/admin/admin-portofolio', $data);
     }
+    public function addPortofolio()
+    {
+        if (!$this->validate([
+            'berkas' => [
+                'rules' => 'uploaded[berkas]|mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png]|max_size[berkas,2048]',
+                'errors' => [
+                    'uploaded' => 'Harus Ada File yang diupload',
+                    'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png',
+                    'max_size' => 'Ukuran File Maksimal 2 MB'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
+
+            return redirect()->back()->withInput();
+        }
+
+        // $berkas = new BerkasModel();
+        $dataBerkas = $this->request->getFile('berkas');
+        $fileName = $dataBerkas->getRandomName();
+        $this->PortofolioModel->insert([
+            'image' => $fileName,
+        ]);
+        $dataBerkas->move('img/portofolio/', $fileName);
+        session()->setFlashdata('message', 'Data portofolio Berhasil di Upload');
+        session()->setFlashdata('message1', 'Success');
+        return redirect('admin-portofolio');
+    }
+
+    public function deletePortofolio()
+    {
+        $id = $this->request->getVar('id_portofolio');
+        unlink('img/portofolio/' . $this->request->getVar('old_file'));
+        $delete = $this->PortofolioModel->delete($id);
+        if ($delete) {
+            session()->setFlashdata('message', 'data portofolio berhasil di hapus');
+            session()->setFlashdata('message1', 'Success');
+        } else {
+            session()->setFlashdata('message', 'data portofolio gagal di hapus');
+            session()->setFlashdata('message1', 'Error');
+        }
+        return redirect('admin-portofolio');
+    }
+
     public function payment()
     {
         $data = [
@@ -286,9 +335,11 @@ class Admin extends BaseController
     {
         if (!$this->validate([
             'kontak' => [
-                'rules' => 'required',
+                'rules' => 'required|is_unique[kontak.name]',
                 'errors' => [
-                    'required' => 'Pilih salah satu kontak'
+                    'required' => 'Pilih salah satu kontak',
+                    'is_unique' => 'Data sudah ada, silahkan pilih kontak lain',
+
                 ]
             ],
             'number_link' => [
