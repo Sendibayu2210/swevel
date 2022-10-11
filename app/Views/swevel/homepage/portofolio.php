@@ -21,9 +21,9 @@ function line()
         <div class="image-portofolio text-center">
             <div class="mt-3 mb-3">
                 <div class="img">
-                    <?php for ($i = 0; $i < 10; $i++) : ?>
-                        <img src="https://img.business.com/w/700/aHR0cHM6Ly9pbWFnZXMuYnVzaW5lc3NuZXdzZGFpbHkuY29tL2FwcC91cGxvYWRzLzIwMjIvMDQvMDQwNzQ1NTMvMTU1NDI0NDAxMC5qcGVn" alt="" style="width: 200px;" class="mx-2 mb-3">
-                    <?php endfor; ?>
+                    <?php foreach ($portofolio as $x) : ?>
+                        <img src="/img/portofolio/<?= $x['image']; ?>" alt="" style="width: 200px;" class="mx-2 mb-3">
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

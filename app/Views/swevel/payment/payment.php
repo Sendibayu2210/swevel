@@ -25,9 +25,9 @@
                             <div class="row flex-row-reverse">
                                 <div class="col-sm-12 col-md-12 col-lg-12 my-auto">
                                     <h3><img src="/img/Visual-Studio-Logo.png" alt="" class="rounded float-end" style="max-width: 60px;"></h3>
-                                    <h3 class="fw-bold">BIM Revit All Discline Basic</h3>
+                                    <h3 class="fw-bold judul-course">BIM Revit All Discline Basic</h3>
                                     <p class="text-muted">Introduction to BIM and Autodesk Revit </p>
-                                    <p>Apakah kamu ingin berpindah karir menjadi seorang Engineer dan memulai dari awal hingga mahir? Apakah kamu ingin menjadi seorang engineer yang siap kerja? Apakah kamu seorang engineer yang ingin menambah skills? Kelas ini cocok untuk kamu!</p>
+                                    <p class="deskripsi-course">Apakah kamu ingin berpindah karir menjadi seorang Engineer dan memulai dari awal hingga mahir? Apakah kamu ingin menjadi seorang engineer yang siap kerja? Apakah kamu seorang engineer yang ingin menambah skills? Kelas ini cocok untuk kamu!</p>
                                     <h4 class="text-end mt-4 text-red">RP 1.500.000</h4>
                                 </div>
                             </div>
@@ -207,6 +207,21 @@
         $('.bank').click(function() {
             let norek = $(this).data('norek');
             $('#virtual_kode').html(norek)
+        })
+
+        let id_course = '<?= $id; ?>';
+        $.ajax({
+            url: 'http://www.omdbapi.com',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                apikey: '9fd3ac6f',
+                i: id_course,
+            },
+            success: function(result) {
+                $('.judul-course').html(result.Title);
+                $('.deskripsi-course').html(result.Plot);
+            }
         })
     })
 

@@ -10,6 +10,7 @@ use App\Models\CourseModel;
 use App\Models\SubCourseModel;
 use App\Models\TeamModel;
 use App\Models\PortofolioModel;
+use App\Models\ArtikelModel;
 
 class Admin extends BaseController
 {
@@ -22,7 +23,7 @@ class Admin extends BaseController
         $this->CourseModel = new CourseModel();
         $this->SubCourseModel = new SubCourseModel();
         $this->TeamModel = new TeamModel();
-        $this->PortofolioModel = new PortofolioModel();
+        $this->ArtikelModel = new ArtikelModel();
     }
     public function index()
     {
@@ -44,15 +45,75 @@ class Admin extends BaseController
     {
         $data = [
             'title' => 'Artikel',
-            'category' => 'add'
         ];
         return view('swevel/admin/admin-article', $data);
     }
-
     public function addArticle()
     {
-        $data = $this->request->getVar();
+        $data = [
+            'title' => 'Artikel',
+            'category' => 'add',
+            'validation' => \Config\Services::validation(),
+        ];
+        return view('swevel/admin/admin-add-article', $data);
     }
+    public function saveArticle()
+    {
+        if (!$this->validate([
+            'judul' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Judul Tidak boleh kosong'
+                ]
+            ],
+            'deskripsi' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Deskripsi Tidak boleh kosong'
+                ]
+            ],
+            'tanggal' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Tanggal Tidak boleh kosong'
+                ]
+            ],
+            'kategori' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kategori Tidak boleh kosong'
+                ]
+            ],
+            'berkas' => [
+                'rules' => 'uploaded[berkas]|mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png,image/svg/]|max_size[berkas,2048]',
+                'errors' => [
+                    'uploaded' => 'Harus Ada File yang diupload',
+                    'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png,svg',
+                    'max_size' => 'Ukuran File Maksimal 2 MB'
+                ]
+
+            ]
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
+            return redirect()->back()->withInput();
+        }
+
+        // $berkas = new BerkasModel();
+        $dataBerkas = $this->request->getFile('berkas');
+        $fileName = $dataBerkas->getRandomName();
+        $this->ArtikelModel->insert([
+            'judul' => htmlspecialchars($this->request->getVar('judul')),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'kategori' => $this->request->getVar('kategori'),
+            'tanggal' => $this->request->getVar('tanggal'),
+            // 'gambar' => $this->request->getVar('berkas'),
+        ]);
+        $dataBerkas->move('img/artikel/', $fileName);
+        session()->setFlashdata('message', 'Data Artikel Berhasil di Upload');
+        return redirect('admin-artikel');
+    }
+
     public function editArticle()
     {
         $data = [

@@ -55,11 +55,6 @@ $routes->get('/kebijakan-privasi', 'Home::kebijakanPrvasi');
 $routes->get('/artikel', 'Artikel::index');
 $routes->get('/detail-artikel', 'Artikel::detailArtikel');
 
-// Course
-$routes->get('/course', 'Course::index');
-$routes->get('/course/(:any)', 'Course::detailCourse/$1');
-// $routes->get('/detail-course', 'Course::detailCourse');
-$routes->get('/kurikulum', 'Course::detailKurikulum');
 
 
 
@@ -97,13 +92,27 @@ $routes->get('/admin-about-us', 'Admin::aboutus');
 // artikel
 $routes->get('/admin-artikel', 'Admin::article');
 $routes->get('/edit-artikel', 'Admin::editArticle');
-$routes->post('/add-artikel', 'Admin::addArticle');
+$routes->get('/add-artikel', 'Admin::addArticle');
+$routes->post('/save-artikel', 'Admin::saveArticle');
 
+// =============================================
 // Course
 $routes->get('/admin-course', "Admin::course");
 $routes->get('/admin-course/(:any)', "Admin::detailCourse/$1");
 $routes->get('/add-step-course/(:any)', 'Admin::addStepCourse/$1');
 $routes->post('/save-step-course', 'Admin::saveSubCourse');
+
+$routes->get('/course', 'Course::index');
+$routes->get('/course/detail/(:any)', 'Course::detailCourse/$1');
+$routes->get('/kurikulum', 'Course::detailKurikulum');
+
+// API Course 
+$routes->get('/getCourse', 'Course::getApiCourse');
+$routes->get('/getDetailCourse/(:any)', 'Course::getApiDetailCourse/$1');
+$routes->post('/course-getApi', 'Course::getApi');
+$routes->get('/course-getApi', 'Course::getApi');
+
+// =============================================
 
 // Team
 $routes->get('/admin-team', 'Admin::team');
@@ -119,6 +128,7 @@ $routes->delete('/delete-portofolio', 'Admin::deletePortofolio');
 $routes->get('/admin-event', 'Admin::event');
 $routes->get('/more-event', 'Admin::moreEvent');
 $routes->get('/payment', 'Admin::payment');
+$routes->get('/payment/(:any)', 'User::payment/$1');
 
 
 

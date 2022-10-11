@@ -33,29 +33,24 @@ class Course extends BaseController
         return view('swevel/course/course', $data);
     }
 
-    public function detailCourse($slug)
+    public function detailCourse($id)
     {
-        $course = $this->CourseModel->where('slug_course', $slug)->first();
-        if (!$course) {
-            pageNotFound();
-        }
         $data = [
-            'title' => $course['nama_course'],
+            'title' => 'Detail Course',
             'kontak_all' => $this->KontakModel->findAll(),
-            'course' => $course,
+            'id' => $id,
             'related_course' => $this->CourseModel->findAll(),
-            'step_course' => $this->SubCourseModel->where('id_course', $course['id'])->orderBy('step', 'asc')->findAll(),
-            'slug_course' => $slug,
+            // 'step_course' => $this->SubCourseModel->where('id_course', $detail_course['id'])->orderBy('step', 'asc')->findAll(),
         ];
         return view('swevel/course/detail_course', $data);
     }
 
     public function materi($slug_course, $id_materi = null)
-    {        
-        $get_id = $this->CourseModel->where('slug_course', $slug_course)->first();                
+    {
+        $get_id = $this->CourseModel->where('slug_course', $slug_course)->first();
         $get_sub = $this->SubCourseModel->where('id_course', $get_id['id'])->orderBy('step', 'asc')->findAll();
         $get_title_materi = $this->MateriModel->where('id_course', $get_id['id'])->findAll();
-        
+
         if ($id_materi) {
             $get_materi = $this->MateriModel->where('id_course', $get_id['id'])->where('id_materi', $id_materi)->first();
             if (!$get_materi) {
@@ -82,5 +77,27 @@ class Course extends BaseController
             'kontak_all' => $this->KontakModel->findAll(),
         ];
         return view('swevel/course/detail_kurikulum', $data);
+    }
+
+
+    public function getApiCourse()
+    {
+        $ch = curl_init();
+        // curl_setopt($ch, CURLOPT_URL, "https://lms.lazy2.codes/api/course");
+        curl_setopt($ch, CURLOPT_URL, "http://www.omdbapi.com/?apikey=9fd3ac6f&s=course");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        echo $output;
+        curl_close($ch);
+    }
+
+    public function getApiDetailCourse($id)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://lms.lazy2.codes/api/course/detail/" . $id);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        echo $output;
+        curl_close($ch);
     }
 }
