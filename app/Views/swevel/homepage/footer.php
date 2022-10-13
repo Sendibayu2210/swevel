@@ -21,7 +21,7 @@
                     <img src="/img/logo-swevel.png" alt="" style="max-width: 200px;">
                 </div>
                 <div class="footer-sosmed mt-5">
-                    <?php foreach ($kontak_all as $x) : ?>
+                    <?php foreach ($kontak as $x) : ?>
                         <a href="<?= $x['description']; ?>" target="_blank" class="mx-2 text-dark h4"><?= $x['icon']; ?></a>
                     <?php endforeach; ?>
                 </div>

@@ -19,7 +19,7 @@ class Training extends BaseController
         $data = [
             'title' => 'Training',
             'category' => $category,
-            'kontak_all' => $this->KontakModel->findAll(),
+            'kontak' => $this->KontakModel->findAll(),
 
         ];
         return view('swevel/training/index', $data);
@@ -29,7 +29,7 @@ class Training extends BaseController
     {
         $data = [
             'title' => 'Training',
-            'kontak_all' => $this->KontakModel->findAll(),
+            'kontak' => $this->KontakModel->findAll(),
         ];
         return view('swevel/training/detail_training', $data);
     }

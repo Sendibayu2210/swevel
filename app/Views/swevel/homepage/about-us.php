@@ -2,47 +2,9 @@
 // untuk membuat lingkaran 4x4
 function circle()
 {
-    $star = 4;
-    for ($a = 0; $a < $star; $a++) {
-        echo '<div class="d-flex">';
-        for ($i = 1; $i <= $a; $i++) {
-            echo '<div class="circle"></div>';
-        }
-        for ($c = $star; $c > $a; $c -= 1) {
-            echo '<div class="circle"></div>';
-        }
-        echo '</div>';
-        echo '<br>';
-    }
+    makeCircle();
 }
 ?>
-<style>
-    .img-weight {
-        width: 220px;
-        height: 450px;
-    }
-
-    #about-us .gambar::before {
-        content: ' ';
-        height: 100px;
-        width: 150px;
-        background-color: #45188B;
-        position: absolute;
-        z-index: 1;
-        margin: 230px 0 0 -50px;
-
-    }
-
-    #about-us .gambar::after {
-        content: ' ';
-        height: 100px;
-        width: 150px;
-        background-color: #a77fe7;
-        position: absolute;
-        z-index: 1;
-        margin: -20px 0 0 250px;
-    }
-</style>
 <div id="about-us">
     <div class="box">
         <div class="container">
@@ -54,7 +16,7 @@ function circle()
                             Universal Media focus in WEB Developer and Mobile Smart Phone Application.</p>
                     </div>
                     <div class="button-wrapper">
-                        <a href="#aboutUs" class="button5 text-decoration-none"><strong>MORE &nbsp;</strong>
+                        <a href="#aboutUs" class="btn btn-purple text-white text-decoration-none fw-bold btn-more" style="border-radius: 30px;">MORE
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                             </svg>

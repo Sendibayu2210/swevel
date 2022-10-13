@@ -25,10 +25,10 @@
                             <div class="row flex-row-reverse">
                                 <div class="col-sm-12 col-md-12 col-lg-12 my-auto">
                                     <h3><img src="/img/Visual-Studio-Logo.png" alt="" class="rounded float-end" style="max-width: 60px;"></h3>
-                                    <h3 class="fw-bold judul-course">BIM Revit All Discline Basic</h3>
-                                    <p class="text-muted">Introduction to BIM and Autodesk Revit </p>
-                                    <p class="deskripsi-course">Apakah kamu ingin berpindah karir menjadi seorang Engineer dan memulai dari awal hingga mahir? Apakah kamu ingin menjadi seorang engineer yang siap kerja? Apakah kamu seorang engineer yang ingin menambah skills? Kelas ini cocok untuk kamu!</p>
-                                    <h4 class="text-end mt-4 text-red">RP 1.500.000</h4>
+                                    <h3 class="fw-bold judul-course"></h3>
+                                    <p class="text-muted"></p>
+                                    <p class="deskripsi-course"></p>
+                                    <h4 class="text-end mt-4 text-red new_price"></h4>
                                 </div>
                             </div>
                         </div>
@@ -48,8 +48,8 @@
                                                 <p class="text-muted">Potongan</p>
                                             </div>
                                             <div class="col-6">
-                                                <p class="text-end fw-bold text-red">Rp 1.500.000</p>
-                                                <p class="text-end fw-bold">-Rp 500.000</p>
+                                                <p class="text-end fw-bold text-red old_price"></p>
+                                                <p class="text-end fw-bold diskon_price"></p>
                                             </div>
                                         </div>
                                         <div class="row mt-4">
@@ -62,7 +62,7 @@
                                                 <p style="color: #666666;">Amount</p>
                                             </div>
                                             <div class="col-6">
-                                                <p class="text-end fw-bold">Rp 1.000.000</p>
+                                                <p class="text-end fw-bold new_price"></p>
                                             </div>
                                         </div>
                                     </div>
@@ -211,16 +211,18 @@
 
         let id_course = '<?= $id; ?>';
         $.ajax({
-            url: 'http://www.omdbapi.com',
+            url: '<?= base_url('getDetailCourse'); ?>',
             type: 'GET',
             dataType: 'json',
             data: {
-                apikey: '9fd3ac6f',
-                i: id_course,
+                id: id_course,
             },
             success: function(result) {
-                $('.judul-course').html(result.Title);
-                $('.deskripsi-course').html(result.Plot);
+                $('.judul-course').html(result.title);
+                $('.deskripsi-course').html(result.description);
+                $('.old_price').html('Rp ' + formatRupiah(result.old_price));
+                $('.new_price').html('Rp ' + formatRupiah(result.new_price));
+                $('.diskon_price').html('-Rp ' + formatRupiah(result.old_price - result.new_price));
             }
         })
     })
@@ -241,5 +243,6 @@
         $('.toast').toast('show');
     }
 </script>
+
 
 <?= $this->endSection(); ?>

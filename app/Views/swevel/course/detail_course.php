@@ -26,7 +26,7 @@ function circlecourse()
     <div class="container">
         <div class="row mt-5 justify-content-center">
             <div class="text-white kotak-text title-course"></div>
-            <img src="" class="detail-img">
+            <img src="/img/skeleton2.gif" class="detail-img" alt="course">
         </div>
         <div class=" row" id="section1" style="margin:auto;">
             <div class="col" style="margin: auto;">
@@ -68,7 +68,7 @@ function circlecourse()
 
         <div class="row mt-4 pt-4 mb-5 pb-5 justify-content-center" id="section3">
             <div class="col-lg-6 d-lg-block d-md-none d-sm-none">
-                <img src="" class="detail-img2">
+                <img src="/img/skeleton2.gif" class="detail-img2" alt="course">
             </div>
             <div class="col-lg-6">
                 <h4><strong>Penjelasan Course</strong></h4>
@@ -79,8 +79,8 @@ function circlecourse()
             </div>
         </div>
 
-        <div class="row mb-5 mt-5 pt-5 justify-content-start">
-            <h1 style="color: black; letter-spacing:normal"><strong>Related Course</strong></h1>
+        <div class="row mb-5 ">
+            <h2 class="fw-bold text-dark">Related Course</h2>
         </div>
 
     </div>
@@ -91,23 +91,29 @@ function circlecourse()
     $(document).ready(function() {
         let id_course = $('#id_course').val();
         $.ajax({
-            url: 'http://www.omdbapi.com',
+            url: 'https://lms.lazy2.codes/api/course/detail/' + id_course,
             type: 'GET',
             dataType: 'json',
-            data: {
-                apikey: '9fd3ac6f',
-                i: id_course,
-            },
+            // data: {
+            //     // apikey: '9fd3ac6f',
+            //     // i: id_course,
+            //     id: id_course
+            // },
             success: function(result) {
-                $('.title-course').html(result.Title);
-                $('.key_takeaways').html(result.Type);
-                $('.description-course').html(result.Plot);
-                $(".old_price").html('Rp ' + result.Year);
-                $(".new_price").html('Rp ' + result.Year);
-                $('.detail-img').attr('src', result.Poster);
-                $('.detail-img2').attr('src', result.Poster);
+                $('.title-course').html(result.title);
+                $('.key_takeaways').html(result.key_takeaways);
+                $('.description-course').html(result.description);
+                $(".old_price").html('Rp ' + formatRupiah(result.old_price));
+                $(".new_price").html('Rp ' + formatRupiah(result.new_price));
+                // $('.detail-img').attr('src', result.thumbnail);
+                $('.detail-img').attr('src', '/img/loaderpurple2.gif');
+                $('.detail-img2').attr('src', result.thumbnail);
             }
         })
+
+        $("img").bind("error", function() {
+            $(this).attr("src", "/img/loaderpurple2.gif");
+        });
 
 
         // mengatur tinggi line

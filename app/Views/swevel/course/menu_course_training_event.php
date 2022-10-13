@@ -28,32 +28,21 @@
             </div>
 
             <div class="d-flex justify-content-center">
+                <form action="" method="get">
+                </form>
                 <div class="search-event mt-4">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <button class="btn btn-purple" type="button" id="button-addon2">search</button>
+                        <input type="text" class="form-control" name="search" data-kategori="course" id="search-course-training" placeholder="Search">
+                        <button class="btn btn-purple" type="button" id="btn-search-course-training">search</button>
                     </div>
                 </div>
-            </div>
-            <div class="mt-5 d-flex justify-content-center">
-                <div class="mx-3">
-                    <button type="button" class="btn btn-light active">Webinar</button>
-                </div>
-                <div class="mx-3">
-                    <button type="button" class="btn btn-light">Bootcamp</button>
-                </div>
-                <div class="mx-3">
-                    <button type="button" class="btn btn-light">Technology</button>
-                </div>
-                <div class="mx-3">
-                    <button type="button" class="btn btn-light">Bootcamp</button>
-                </div>
-                <div class="mx-3">
-                    <button type="button" class="btn btn-light">Bootcamp</button>
-                </div>
+
             </div>
             <div class="row text-center mt-3">
-                <p><a href="#" style="color: #5423a1;" class="text-decoration-none">more</a></p>
+                <p class="text-purple">Tag</p>
+            </div>
+            <div class="mt-2 d-flex justify-content-center menu-tag">
+
             </div>
         </div>
     </section>

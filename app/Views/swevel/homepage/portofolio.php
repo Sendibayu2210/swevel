@@ -1,17 +1,8 @@
-<?php
-// untuk membuat gari
-function line()
-{
-    for ($i = 0; $i < 3; $i++) {
-        echo '<div class="line"></div>';
-    }
-} ?>
-
 <section id="portofolio">
     <div class="container mb-5 pb-5">
         <div class="row">
             <div class="col-lg-6 d-sm-none d-lg-block d-md-none">
-                <img src="/img/GroupImg.png" alt="" class="decoration">
+                <img src="/img/GroupImg.png" alt="" class="decoration" style="z-index: 5;">
             </div>
             <div class="col-lg-6 text-end">
                 <h2 class="text-purple fw-bold">Portofolio</h2>

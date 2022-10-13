@@ -42,6 +42,14 @@
                                     </label>
                                 </div>
                                 <div class="form-check mb-2">
+                                    <input class="form-check-input <?= ($validation->hasError('kontak')) ? 'is-invalid' : ''; ?>" type="radio" name="kontak" id="email" data-name="email" value='envelope'>
+                                    <label class="form-check-label" for="email">
+                                        <span class="me-2">
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </span><span class="text-capitalize">email</span>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
                                     <input class="form-check-input <?= ($validation->hasError('kontak')) ? 'is-invalid' : ''; ?>" type="radio" name="kontak" id="instagram" data-name="instagram" value='instagram'>
                                     <label class="form-check-label" for="instagram">
                                         <span class="me-2">

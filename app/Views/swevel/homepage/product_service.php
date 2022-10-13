@@ -1,19 +1,7 @@
 <?php
-// untuk membuat lingkaran 4x4
 function circle1()
 {
-    $star = 4;
-    for ($a = 0; $a < $star; $a++) {
-        echo '<div class="d-flex">';
-        for ($i = 1; $i <= $a; $i++) {
-            echo '<div class="circle"></div>';
-        }
-        for ($c = $star; $c > $a; $c -= 1) {
-            echo '<div class="circle"></div>';
-        }
-        echo '</div>';
-        echo '<br>';
-    }
+    makeCircle();
 }
 ?>
 
@@ -26,10 +14,9 @@ function circle1()
                 <span class="d-block">and Learning Management</span>
             </div>
         </div>
-
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-lg-end justify-content-md-center justify-content-sm-center">
-                <a href="/course/software-development" class="text-decoration-none text-dark">
+                <a href="/course" class="text-decoration-none text-dark">
                     <div class="card card-service shadow mb-md-4 mb-sm-4 mx-3">
                         <div class="card-body">
                             <h3 class="card-title">Software Development</h3>
@@ -40,7 +27,7 @@ function circle1()
                 </a>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 d-flex justify-content-lg-start justify-content-md-center justify-content-sm-center">
-                <a href="/course/learning-management" class="text-decoration-none text-dark">
+                <a href="/course" class="text-decoration-none text-dark">
                     <div class="card card-service shadow mb-md-4 mb-sm-4 mx-3">
                         <img src="https://img.business.com/w/700/aHR0cHM6Ly9pbWFnZXMuYnVzaW5lc3NuZXdzZGFpbHkuY29tL2FwcC91cGxvYWRzLzIwMjIvMDQvMDQwNzQ1NTMvMTU1NDI0NDAxMC5qcGVn" class="card-img-top" alt="...">
                         <div class="card-body">

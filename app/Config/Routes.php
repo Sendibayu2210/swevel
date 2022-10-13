@@ -108,9 +108,14 @@ $routes->get('/kurikulum', 'Course::detailKurikulum');
 
 // API Course 
 $routes->get('/getCourse', 'Course::getApiCourse');
-$routes->get('/getDetailCourse/(:any)', 'Course::getApiDetailCourse/$1');
+$routes->get('/searchCourse', 'Course::searchApiCourse');
+$routes->get('/getDetailCourse', 'Course::getApiDetailCourse');
 $routes->post('/course-getApi', 'Course::getApi');
 $routes->get('/course-getApi', 'Course::getApi');
+
+$routes->get('cobaApi', function () {
+    return view('swevel/course/coba-api');
+});
 
 // =============================================
 
@@ -139,7 +144,9 @@ $routes->get('/course-materi/(:any)/', 'Course::materi/$1');
 $routes->get('/course-materi/(:any)/(:num)', 'Course::materi/$1/$2');
 $routes->get('/status', 'User::status');
 $routes->get("/materi", "User::materi");
+$routes->get("/video", "Course::getVideo");
 $routes->get("/kuis", "User::kuis");
+$routes->get("/getKuis", "Course::getApiKuis");
 $routes->get("/course-saved", "User::savedCourse");
 $routes->get('/submission', 'User::submission');
 

@@ -9,54 +9,35 @@
 </head>
 
 <body>
+        <?php
+        $mhs = [
+                [
+                        'soal' => 'Lorem lorem lorem lorem lorem lorem',
+                        'jawaban' => [
+                                'a' => 'halo dek',
+                                'b' => '2006',
+                                'c' => 'jsf',
+                        ],
+                ],
+                [
+                        'soal' => 'Lorem lorem lorem lorem lorem lorem',
+                        'jawaban' => [
+                                'a' => 'halo mas',
+                                'b' => '2008',
+                                'c' => 'jsf',
+                        ],
+                ],
+        ]; ?>
 
-        <script>
-                $(document).ready(function() {
-                        $.ajax({
-                                url: 'http://www.omdbapi.com',
-                                type: 'GET',
-                                dataType: 'json',
-                                data: {
-                                        'apikey': '9fd3ac6f', //API Key
-                                        's': 'course',
-                                },
-                                success: function(result) {
-                                        console.log(result);
-                                        if (result.Response === "True") {
-                                                $.each(result, function(i, data) {
-                                                        $('#coba').append(`
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="` + result.Poster + `" class="img-fluid">
-                                </div>
-                                <div class="col-md-8">
-                                    <ul class="list-group">
-                                      <li class="list-group-item"><h4>` + result.Title + `</h4></li>
-                                      <li class="list-group-item">Released : ` + result.Released + `</li>
-                                      <li class="list-group-item">Genre : ` + result.Genre + `</li>
-                                      <li class="list-group-item">Writer : ` + result.Writer + `</li>
-                                      <li class="list-group-item">Actors : ` + result.Actors + `</li>
-                                      <li class="list-group-item">Production : ` + result.Production + `</li>
-                                      <li class="list-group-item">Plot : ` + result.Plot + `</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>    
-                        `);
-                                                })
-                                        }
-                                },
-                                error: function(result, ajaxOptions, thrownError) {
-                                        $('#card-popular-course').append(`
-                    <div class="alert alert-danger" role="alert">
-                    Maaf, untuk saat ini course belum bisa di akses.
-                    </div>
-                `)
-                                }
-                        })
-                })
-        </script>
+        <?php foreach ($mhs as $x) : ?>
+                <ul>
+                        <li><?= $x['soal']; ?></li>
+                        <li>a <?= $x['jawaban']['a']; ?></li>
+                        <li>b <?= $x['jawaban']['b']; ?></li>
+                        <li>c <?= $x['jawaban']['c']; ?></li>
+                </ul>
+        <?php endforeach; ?>
+
 </body>
 
 </html>

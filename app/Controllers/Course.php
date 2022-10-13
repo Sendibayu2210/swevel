@@ -27,7 +27,7 @@ class Course extends BaseController
         $data = [
             'title' => 'Course',
             'category' => $category,
-            'kontak_all' => $this->KontakModel->findAll(),
+            'kontak' => $this->KontakModel->findAll(),
             'course' => $this->CourseModel->findAll(),
         ];
         return view('swevel/course/course', $data);
@@ -37,7 +37,7 @@ class Course extends BaseController
     {
         $data = [
             'title' => 'Detail Course',
-            'kontak_all' => $this->KontakModel->findAll(),
+            'kontak' => $this->KontakModel->findAll(),
             'id' => $id,
             'related_course' => $this->CourseModel->findAll(),
             // 'step_course' => $this->SubCourseModel->where('id_course', $detail_course['id'])->orderBy('step', 'asc')->findAll(),
@@ -74,7 +74,7 @@ class Course extends BaseController
     {
         $data = [
             'title' => 'Detail Kurikulum',
-            'kontak_all' => $this->KontakModel->findAll(),
+            'kontak' => $this->KontakModel->findAll(),
         ];
         return view('swevel/course/detail_kurikulum', $data);
     }
@@ -83,18 +83,49 @@ class Course extends BaseController
     public function getApiCourse()
     {
         $ch = curl_init();
-        // curl_setopt($ch, CURLOPT_URL, "https://lms.lazy2.codes/api/course");
-        curl_setopt($ch, CURLOPT_URL, "http://www.omdbapi.com/?apikey=9fd3ac6f&s=course");
+        curl_setopt($ch, CURLOPT_URL, "https://lms.lazy2.codes/api/course");
+        // curl_setopt($ch, CURLOPT_URL, "http://www.omdbapi.com/?apikey=9fd3ac6f&s=course");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $output = curl_exec($ch);
         echo $output;
         curl_close($ch);
     }
 
-    public function getApiDetailCourse($id)
+    public function getApiDetailCourse()
     {
+        $id = $this->request->getVar('id');
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, "https://lms.lazy2.codes/api/course/detail/" . $id);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        echo $output;
+        curl_close($ch);
+    }
+    public function searchApiCourse()
+    {
+        $title = $this->request->getVar('search');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://lms.lazy2.codes/api/course/find/" . $title);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        echo $output;
+        curl_close($ch);
+    }
+    public function getApiKuis()
+    {
+        $title = $this->request->getVar('search');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://lms.lazy2.codes/public/api/quiz");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $output = curl_exec($ch);
+        echo $output;
+        curl_close($ch);
+    }
+    public function getVideo()
+    {
+        $id = $this->request->getVar('id');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://lms.lazy2.codes/public/api/course/video/" . $id);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $output = curl_exec($ch);
         echo $output;

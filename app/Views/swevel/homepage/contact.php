@@ -89,10 +89,14 @@
                                     <div class="col col-11">
                                         <div class="row">
                                             <div class="col-2">
-                                                <i class="bi bi-telephone fs-5"></i>
+                                                <i class="fa-solid fa-phone fs-5"></i>
                                             </div>
                                             <div class="col-10">
-                                                <span>+6281234567</span>
+                                                <?php foreach ($kontak as $x) : ?>
+                                                    <?php if ($x['name'] == 'phone') : ?>
+                                                        <span><?= $x['description']; ?></span>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -102,7 +106,11 @@
                                                 <i class="fa-regular fa-envelope fs-5"></i>
                                             </div>
                                             <div class="col-10">
-                                                <span>swevel@gmail.com</span>
+                                                <?php foreach ($kontak as $x) : ?>
+                                                    <?php if ($x['name'] == 'envelope') : ?>
+                                                        <span><?= $x['description']; ?></span>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
                                             </div>
                                         </div>
                                     </div>

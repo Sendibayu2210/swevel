@@ -386,7 +386,7 @@ class Admin extends BaseController
     {
         $data = [
             'title' => 'Kontak',
-            'kontak_all' => $this->KontakModel->findAll(),
+            'kontak' => $this->KontakModel->findAll(),
             'validation' => \Config\Services::validation(),
 
         ];
@@ -400,7 +400,6 @@ class Admin extends BaseController
                 'errors' => [
                     'required' => 'Pilih salah satu kontak',
                     'is_unique' => 'Data sudah ada, silahkan pilih kontak lain',
-
                 ]
             ],
             'number_link' => [
@@ -417,7 +416,7 @@ class Admin extends BaseController
 
         $kontak = $this->request->getVar('kontak');
 
-        if ($kontak == 'phone') {
+        if ($kontak == 'phone' || $kontak == 'envelope') {
             $icon = '<i class="fa-solid fa-' . $kontak . '"></i>';
         } else {
             $icon = '<i class="fa-brands fa-' . $kontak . '"></i>';

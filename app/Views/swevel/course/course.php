@@ -6,7 +6,7 @@
 
 <section id="course" class="pb-5 mb-5">
     <div class="container mt-5">
-        <div>
+        <!-- <div class="my-course">
             <div class="row justify-content-start">
                 <h1><strong>My <span style="color: #5423a1;">Course</span></strong></h1>
             </div>
@@ -39,7 +39,6 @@
                                     <div class="detail">
                                         <button type="button" class="btn btn11">See my course</button>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -48,16 +47,18 @@
                     <div class="button-done">
                         <button type="button" class="btn btn12">DONE</button>
                     </div>
-
                 </div>
             </div>
-        </div>
-        <div class="h1 mt-5 pt-4 pb-5 fw-bold">Popular <span class="text-purple-100">Course</span></div>
+        </div> -->
         <section id="popular-course">
-            <div class="row ">
-                <div class="splide popular-course">
-                    <div class="splide__track">
-                        <div class="splide__list pb-5" id="card-popular-course">
+            <div class="h1 mt-5 pt-4 pb-5 fw-bold">Popular <span class="text-purple-100">Course</span></div>
+            <div class="d-flex justify-content-center">
+                <img src="/img/loaderpurple1.gif" alt="" class="skeleton">
+            </div>
+            <div class="row.">
+                <div class="splide. popular-course">
+                    <div class="splide.__track">
+                        <div class="splide.__list pb-5 row" id="card-popular-course">
                         </div>
                     </div>
                 </div>
@@ -107,58 +108,120 @@
 
 <script>
     $(document).ready(function() {
+
+        getCourse('https://lms.lazy2.codes/api/course');
+
+        $("img").bind("error", function() {
+            $(this).attr("src", "/img/imagenotavailable.jpg");
+        });
+
+        $('#btn-search-course-training').click(function() {
+            refreshCourse();
+        })
+        $('#search-course-training').on('keypress', function(e) {
+            if (e.which == 13) {
+                refreshCourse();
+            }
+        });
+        // popularCourse();
+        saleCourse();
+    })
+
+    function refreshCourse() {
+        $('.skeleton').removeClass('hide')
+        $('#card-popular-course').html('');
+        let inputSearch = $('#search-course-training').val();
+        if (inputSearch == '') {
+            getCourse('https://lms.lazy2.codes/api/course');
+        } else {
+            getCourse('https://lms.lazy2.codes/api/course/find/'.inputSearch);
+        }
+    }
+
+    function getCourse(url, searchCourse) {
+        let getUrl = url;
         $.ajax({
-            url: 'http://www.omdbapi.com',
+            url: getUrl,
             type: 'GET',
             dataType: 'json',
             data: {
-                apikey: '9fd3ac6f',
-                s: 'course',
+                search: searchCourse,
             },
             success: function(result) {
-                let movie = result.Search;
-                $.each(movie, function(i, data) {
-                    $('#card-popular-course').append(`
-                    <div class="col-md-4 splide__slide m-2">
-                            <div class="card card-course border-0 shadow">
-                                <div class="course-circle-time fw-bold">3 Weeks</div>
-                                <div class="image-content">
-                                    <div class="card-image.">
-                                        <div class="course-img-polygon">
-                                            <img src="` + data.Poster + `" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-content ps-4 py-4">
-                                    <h5 class="card-title fw-bold lh-base">` + data.Title + ` </h5>
-                                    <div class="row">
-                                        <div class="col-sm-8 col-md-6 col-lg-12">
-                                            <p class="card-text h6 text-decoration-line-through text-secondary">Rp ` + data.Type + `</p>
-                                            <p class="card-text h5 fw-bold text-red">Rp ` + data.Type + `</p>
-                                        </div>
-                                        <div class="col-sm-4 col-md-6 col-lg-12 text-sm-end  text-lg-start">
-                                            <button class="btn btn-sm btn-purple-100 mt-2">Join Now</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="/course/detail/` + data.imdbID + `" class="text-decoration-none btn btn-sm btn-light fw-bold course-btn-read-more">Read More</a>
-                            </div>
-                        </div>
-                    `);
+                $.each(result, function(i, data) {
+                    $.each(data.tag, function(i, dataa) {
+                        $('.menu-tag').append(`                                                    
+                            <button type="button" class="btn btn-light mx-3 tag-name">` + dataa.name + `</button>
+                        `);
+
+                        // remove duplicate
+                        var seen = {};
+                        $('.tag-name').each(function() {
+                            var txt = $(this).text();
+                            if (seen[txt])
+                                $(this).remove();
+                            else
+                                seen[txt] = true;
+                        });
+                    })
                 })
+                let countData = result.length;
+                if (countData >= 1) {
+                    $('.skeleton').addClass('hide')
+                    $('#card-popular-course').html('');
+                    $.each(result, function(i, data) {
+                        $('#card-popular-course').append(`
+                        <div class="col-md-4 col-lg-4 col-sm-12 .splide__slide mb-5">
+                                <div class="card card-course border-0 shadow">
+                                    <div class="course-circle-time small"><small>3 Weeks</small></div>
+                                    <div class="image-content">
+                                        <div class="card-image.">
+                                            <div class="course-img-polygon">
+                                                <img src="` + data.thumbnail + `" alt="" class="card-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-content ps-4 py-4">
+                                        <h5 class="card-title fw-bold lh-base">` + data.title + ` </h5>
+                                        <div class="mb-2 text-purple small"><small>` + data.suitable_for + `</small></div>
+                                        <div class="row">
+                                            <div class="col-sm-8 col-md-6 col-lg-12">
+                                                <p class="card-text h6 text-decoration-line-through text-secondary">Rp ` + formatRupiah(data.old_price) + `</p>
+                                                <p class="card-text h5 fw-bold text-red">Rp ` + formatRupiah(data.new_price) + `</p>
+                                            </div>
+                                            <div class="col-sm-4 col-md-6 col-lg-12 text-sm-end  text-lg-start">
+                                                <button class="btn btn-sm btn-purple-100 mt-2">Join Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="/course/detail/` + data.course_id + `" class="text-decoration-none btn btn-sm btn-light fw-bold course-btn-read-more">Read More</a>
+                                </div>
+                            </div>
+                        `);
+                    })
+                    $("img").bind("error", function() {
+                        $(this).attr("src", "/img/loaderpurple2.gif");
+                    });
+                } else {
+                    $('.skeleton').addClass('hide')
+                    $('#card-popular-course').append(`
+                    <div class="alert alert-warning w-100 text-center" role="alert">
+                    Maaf, keyword yang anda cari tidak ditemukan.
+                    </div>
+                `)
+                }
             },
-            error: function(movie, ajaxOptions, thrownError) {
+            error: function(result, ajaxOptions, thrownError) {
+                $('.skeleton').addClass('hide')
                 $('#card-popular-course').append(`
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-danger w-100 text-center" role="alert">
                     Maaf, untuk saat ini course belum bisa di akses.
                     </div>
                 `)
             }
         })
+    }
 
-        popularCourse();
-        saleCourse();
-    })
     let popularCourse = () => {
         let mediaSm = window.matchMedia("(max-width: 576px)");
         let mediaMd = window.matchMedia("(max-width: 577px)");

@@ -14,7 +14,8 @@ class User extends BaseController
     public function materi()
     {
         $data = [
-            'title' => 'Materi'
+            'title' => 'Materi',
+            'materi' => 'yes'
         ];
         return view('swevel/user/materi', $data);
     }
@@ -23,7 +24,7 @@ class User extends BaseController
         $data = [
             'title' => 'Kuis'
         ];
-        return view('swevel/user/kuis', $data);
+        return view('swevel/user/quiz', $data);
     }
     public function savedCourse()
     {

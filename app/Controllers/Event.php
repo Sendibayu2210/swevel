@@ -14,7 +14,7 @@ class Event extends BaseController
     {
         $data = [
             'title' => 'Event',
-            'kontak_all' => $this->KontakModel->findAll(),
+            'kontak' => $this->KontakModel->findAll(),
         ];
         return view('swevel/event/event', $data);
     }
@@ -23,7 +23,7 @@ class Event extends BaseController
     {
         $data = [
             'title' => 'Detail Event',
-            'kontak_all' => $this->KontakModel->findAll(),
+            'kontak' => $this->KontakModel->findAll(),
         ];
         return view('swevel/event/detail_event', $data);
     }

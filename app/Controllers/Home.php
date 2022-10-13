@@ -25,7 +25,7 @@ class Home extends BaseController
             'profile' => $this->ProfileModel->findAll(),
             'milestoneLimit' => $this->MilestoneModel->orderBy('year', 'asc')->findAll(2),
             'milestone' => $this->MilestoneModel->orderBy('year', 'asc')->findAll(),
-            'kontak_all' => $this->KontakModel->findAll(),
+            'kontak' => $this->KontakModel->findAll(),
             'team' => $this->TeamModel->findAll(),
             'portofolio' => $this->PortofolioModel->findAll(),
         ];
@@ -43,7 +43,7 @@ class Home extends BaseController
     {
         $data = [
             'title' => 'FAQ',
-            'kontak_all' => $this->KontakModel->findAll(),
+            'kontak' => $this->KontakModel->findAll(),
         ];
         return view('swevel/faq', $data);
     }
@@ -51,7 +51,7 @@ class Home extends BaseController
     {
         $data = [
             'title' => 'Kebijakan Privasi',
-            'kontak_all' => $this->KontakModel->findAll(),
+            'kontak' => $this->KontakModel->findAll(),
         ];
         return view('swevel/kebijakan_privasi', $data);
     }
