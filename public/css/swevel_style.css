@@ -797,31 +797,35 @@ section#page-first {
 
 /* USER */
 
-#user {
-    display: flex;
-}
 
-#user .content {
-    background: #FCFCFC;
-}
+/* Materi */
 
-#user-sidebar {
-    width: 350px;
+#user-sidebar-materi {
+    width: 330px;
     height: calc(100vh - 60px);
     overflow: auto;
     padding-top: 20px;
 }
 
-#user-sidebar .accordion-button-primary.active {
+#user .content-materi {
+    height: calc(100vh - 60px);
+    width: calc(100% - 330px);
+    overflow: auto;
+    padding: 25px;
+    background: #fafafa;
+}
+
+#user-sidebar-materi .accordion-button-primary.active {
     background: #ded2f1;
     color: black;
 }
 
-#user .content {
-    height: calc(100vh - 60px);
-    width: calc(100% - 350px);
-    overflow: auto;
-    padding: 25px;
+.hover-purple.active {
+    background: #e5d9f8;
+    display: block;
+    border-radius: 5px;
+    padding: 5px;
+    transition: ease-in .2s;
 }
 
 

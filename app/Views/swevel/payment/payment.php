@@ -17,6 +17,7 @@
 </style>
 <main>
     <div class="container p-2 m-auto mt-5">
+        <input type="hidden" readonly id="id_course" value="<?= $id; ?>">
         <div class="row" id="section1">
             <div class="col-lg-8">
                 <div class="card border-3 bg-white">
@@ -24,7 +25,10 @@
                         <div class="container bg-transparent p-3">
                             <div class="row flex-row-reverse">
                                 <div class="col-sm-12 col-md-12 col-lg-12 my-auto">
-                                    <h3><img src="/img/Visual-Studio-Logo.png" alt="" class="rounded float-end" style="max-width: 60px;"></h3>
+                                    <div class="d-flex justify-content-center skeleton">
+                                        <img src="/img/skeleton4.gif" alt="">
+                                    </div>
+                                    <!-- <h3><img src="/img/Visual-Studio-Logo.png" alt="" class="rounded float-end" style="max-width: 60px;"></h3> -->
                                     <h3 class="fw-bold judul-course"></h3>
                                     <p class="text-muted"></p>
                                     <p class="deskripsi-course"></p>
@@ -209,15 +213,13 @@
             $('#virtual_kode').html(norek)
         })
 
-        let id_course = '<?= $id; ?>';
+        let id_course = $('#id_course').val();
         $.ajax({
-            url: '<?= base_url('getDetailCourse'); ?>',
+            url: 'https://lms.lazy2.codes/api/course/detail/' + id_course,
             type: 'GET',
             dataType: 'json',
-            data: {
-                id: id_course,
-            },
             success: function(result) {
+                $('.skeleton').addClass('hide').removeClass('d-flex');
                 $('.judul-course').html(result.title);
                 $('.deskripsi-course').html(result.description);
                 $('.old_price').html('Rp ' + formatRupiah(result.old_price));

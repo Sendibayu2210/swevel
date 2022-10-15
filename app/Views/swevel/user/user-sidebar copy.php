@@ -1,5 +1,5 @@
 <div id="user-sidebar">
-    <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion accordion-flush" id="menu-materi">
         <?php foreach ($step_course as $step) : ?>
             <div class="accordion-item mb-3 border-bottom">
                 <h2 class="accordion-header" id="flush-headingOne">
@@ -22,7 +22,7 @@
                         </div>
                     </button>
                 </h2>
-                <div id="flush-collapse<?= $step['id_sub_course']; ?>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div id="flush-collapse<?= $step['id_sub_course']; ?>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#menu-materi">
                     <div class="accordion-body">
                         <ol>
                             <?php foreach ($title_materi as $materi) : ?>

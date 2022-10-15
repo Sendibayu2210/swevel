@@ -60,13 +60,7 @@
         </div>
     </nav>
     <div id="user">
-        <?= $this->include('swevel/user/user-sidebar'); ?>
-
-        <!-- content -->
-        <div class="content">
-            <?= $this->renderSection('content'); ?>
-        </div>
-
+        <?= $this->renderSection('content'); ?>
     </div>
 
 
