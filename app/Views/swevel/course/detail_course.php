@@ -46,6 +46,7 @@ function circlecourse()
                 <h5><s class="old_price">Rp </s></h5>
                 <h4 class="text-red new_price">Rp </h4>
                 <a href="/payment/<?= $id; ?>" class="btn btn-sm btn-purple-100">Join Now</a>
+                <a href="/course/materi/<?= $id; ?>" class="btn btn-sm btn-purple-100">Start Class</a>
             </div>
             <div class="text2. mb-5 h2 title-benefits-course col-lg-4">Benefits you get when join our course</div>
 

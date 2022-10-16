@@ -807,7 +807,7 @@ section#page-first {
     padding-top: 20px;
 }
 
-#user .content-materi {
+.content-materi {
     height: calc(100vh - 60px);
     width: calc(100% - 330px);
     overflow: auto;

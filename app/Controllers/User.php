@@ -11,18 +11,37 @@ class User extends BaseController
         ];
         return view('swevel/admin/dashboard', $data);
     }
-    public function materi()
+    public function materi($id)
     {
         $data = [
             'title' => 'Materi',
-            'materi' => 'yes'
+            'category' => 'materi',
+            'course' => $id
         ];
         return view('swevel/user/materi', $data);
     }
+
+    public function confirmKuis()
+    {
+        $id = $this->request->getVar('k');
+        $course = $this->request->getVar('c');
+        $data = [
+            'title' => 'Mulai Kuis',
+            'category' => 'kuis',
+            'video' => $id,
+            'course' => $course,
+        ];
+        return view('swevel/user/start_quiz', $data);
+    }
     public function kuis()
     {
+        $id = $this->request->getVar('k');
+        $course = $this->request->getVar('c');
         $data = [
-            'title' => 'Kuis'
+            'title' => 'Kuis',
+            'category' => 'kuis',
+            'video' => $id,
+            'course' => $course,
         ];
         return view('swevel/user/quiz', $data);
     }

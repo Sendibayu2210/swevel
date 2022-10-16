@@ -1,8 +1,9 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('layout/template-materi'); ?>
 <?= $this->section('content'); ?>
-<?= $this->include('swevel/navbar'); ?>
 <div id="kuis">
-    <div class="container mt-5 py-3">
+    <div class="container py-3">
+        <input type="hidden" readonly id="course" value="<?= $course; ?>">
+        <input type="hidden" readonly id="video" value="<?= $video; ?>">
         <div class="row justify-content-between flex-row-reverse w-100">
             <h4 class="text-dark mb-3">Kuis Pemrograman dengan Kotlin</h4>
             <div class="text-dark">Kuis Latihan : <span class="ms-1 fw-bold text-purple">20 menit</span></div>
@@ -44,53 +45,112 @@
                 $('.daftar-soal:visible').next().addClass('hide');
             });
         }
+
         $.ajax({
             url: "https://lms.lazy2.codes/public/api/quiz",
             type: "GET",
             dataType: "JSON",
-            success: function(data) {
-                var result = JSON.parse(data[0].question);
-                $.each(result, function(i, data) {
-                    $.each(data, function(index, value) {
-                        var i = index + 1;
-                        $('.nomor-kuis').append(`
-                            <span class="nomor">` + i + `</span>
-                        `)
-                        $('#daftar-soal').append(`
-                        <div class="daftar-soal mt-3 no` + i + `">
-                            <div class="soal d-flex">
-                                <span class="me-2">` + i + `</span>
-                                <p class="ms-1">` + value.question + `</p>
-                            </div>
-                            <div class="point">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="` + i + `" id="` + i + `` + 0 + `">
-                                    <label class="form-check-label" for="` + i + `` + 0 + `">
-                                        ` + value.answer[0] + `
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="` + i + `" id="` + i + `` + 1 + `">
-                                    <label class="form-check-label" for="` + i + `` + 1 + `">
-                                        ` + value.answer[1] + `
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="` + i + `" id="` + i + `` + 2 + `">
-                                    <label class="form-check-label" for="` + i + `` + 2 + `">
-                                        ` + value.answer[2] + `
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="` + i + `" id="` + i + `` + 3 + `">
-                                    <label class="form-check-label" for="` + i + `` + 3 + `">
-                                        ` + value.answer[3] + `
-                                    </label>
-                                </div>
-                            </div>
-                        </div>`);
-                    })
-                });
+            success: function(result) {
+                console.log(result)
+                let video = $('#video').val()
+                // $.each(result, function(i, data) {
+                //     if (data.video_id == video) {
+                //         let result2 = JSON.parse(data.question);
+                //         $.each(result2, function(index, result3) {
+                //             $.each(result3, function(indexx, result4) {
+                //                 $.each(result4.answer, function(indexxx, result5) {
+                //                     $('#daftar-soal').append(`                                        
+                //                         <div class="form-check">
+                //                             <input class="form-check-input" type="radio" name="` + indexxx + `" id="` + indexxx + `` + 0 + `">
+                //                             <label class="form-check-label" for="` + indexxx + `` + 0 + `">
+                //                                 ` + result5 + `
+                //                             </label>
+                //                         </div>
+                //                     `)
+                //                 })
+                //             })
+                //         })
+
+
+
+                //         // $('#daftar-soal').append(`
+                //         //     <div class="daftar-soal mt-3 no` + i + `">
+                //         //         <div class="soal d-flex">
+                //         //             <span class="me-2">` + i + `</span>
+                //         //             <p class="ms-1">` + data.question + `</p>
+                //         //         </div>
+                //         //         <div class="point">
+                //         //             <div class="form-check">
+                //         //                 <input class="form-check-input" type="radio" name="` + i + `" id="` + i + `` + 0 + `">
+                //         //                 <label class="form-check-label" for="` + i + `` + 0 + `">
+                //         //                     ` + data.answer + `
+                //         //                 </label>
+                //         //             </div>
+                //         //             <div class="form-check">
+                //         //                 <input class="form-check-input" type="radio" name="` + i + `" id="` + i + `` + 1 + `">
+                //         //                 <label class="form-check-label" for="` + i + `` + 1 + `">
+                //         //                     ` + data.answer + `
+                //         //                 </label>
+                //         //             </div>
+                //         //             <div class="form-check">
+                //         //                 <input class="form-check-input" type="radio" name="` + i + `" id="` + i + `` + 2 + `">
+                //         //                 <label class="form-check-label" for="` + i + `` + 2 + `">
+                //         //                     ` + data.answer + `
+                //         //                 </label>
+                //         //             </div>
+                //         //             <div class="form-check">
+                //         //                 <input class="form-check-input" type="radio" name="` + i + `" id="` + i + `` + 3 + `">
+                //         //                 <label class="form-check-label" for="` + i + `` + 3 + `">
+                //         //                     ` + data.answer + `
+                //         //                 </label>
+                //         //             </div>
+                //         //         </div>
+                //         //     </div>`);
+                //     }
+
+                // })
+                // var result = JSON.parse(data[0].question);
+                // $.each(result, function(i, data) {
+                //     $.each(data, function(index, value) {
+                //         var i = index + 1;
+                //         $('.nomor-kuis').append(`
+                //             <span class="nomor">` + i + `</span>
+                //         `)
+                //         $('#daftar-soal').append(`
+                //         <div class="daftar-soal mt-3 no` + i + `">
+                //             <div class="soal d-flex">
+                //                 <span class="me-2">` + i + `</span>
+                //                 <p class="ms-1">` + value.question + `</p>
+                //             </div>
+                //             <div class="point">
+                //                 <div class="form-check">
+                //                     <input class="form-check-input" type="radio" name="` + i + `" id="` + i + `` + 0 + `">
+                //                     <label class="form-check-label" for="` + i + `` + 0 + `">
+                //                         ` + value.answer[0] + `
+                //                     </label>
+                //                 </div>
+                //                 <div class="form-check">
+                //                     <input class="form-check-input" type="radio" name="` + i + `" id="` + i + `` + 1 + `">
+                //                     <label class="form-check-label" for="` + i + `` + 1 + `">
+                //                         ` + value.answer[1] + `
+                //                     </label>
+                //                 </div>
+                //                 <div class="form-check">
+                //                     <input class="form-check-input" type="radio" name="` + i + `" id="` + i + `` + 2 + `">
+                //                     <label class="form-check-label" for="` + i + `` + 2 + `">
+                //                         ` + value.answer[2] + `
+                //                     </label>
+                //                 </div>
+                //                 <div class="form-check">
+                //                     <input class="form-check-input" type="radio" name="` + i + `" id="` + i + `` + 3 + `">
+                //                     <label class="form-check-label" for="` + i + `` + 3 + `">
+                //                         ` + value.answer[3] + `
+                //                     </label>
+                //                 </div>
+                //             </div>
+                //         </div>`);
+                //     })
+                // });
                 // soal();
             }
         });
