@@ -12,7 +12,7 @@
         </div>
 
         <div class="mt-5 text-end">
-            <a href="/kuis?k=<?= $video; ?>&c=<?= $course; ?>" class="btn btn-purple-50 w-150px text-decoration-none">Mulai Kuis</a>
+            <a href="/kuis?v=<?= $video; ?>&c=<?= $course; ?>" class="btn btn-purple-50 w-150px text-decoration-none">Mulai Kuis</a>
         </div>
 
         <div class="mt-5 border-top">

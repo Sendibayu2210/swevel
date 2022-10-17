@@ -55,6 +55,7 @@
     </nav>
     <div class="d-flex">
         <div id="user-sidebar-materi">
+            <div class="title-course d-flex justify-content-center text-center align-content-center p-2 pb-3 h5 text-purple fw-bold"></div>
             <div class="accordion accordion-flush" id="menu-materi"></div>
         </div>
         <div class="content-materi">

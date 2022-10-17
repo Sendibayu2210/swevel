@@ -23,7 +23,7 @@ class User extends BaseController
 
     public function confirmKuis()
     {
-        $id = $this->request->getVar('k');
+        $id = $this->request->getVar('v');
         $course = $this->request->getVar('c');
         $data = [
             'title' => 'Mulai Kuis',
@@ -35,7 +35,7 @@ class User extends BaseController
     }
     public function kuis()
     {
-        $id = $this->request->getVar('k');
+        $id = $this->request->getVar('v');
         $course = $this->request->getVar('c');
         $data = [
             'title' => 'Kuis',

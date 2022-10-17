@@ -134,7 +134,7 @@
         if (inputSearch == '') {
             getCourse('https://lms.lazy2.codes/api/course');
         } else {
-            getCourse('https://lms.lazy2.codes/api/course/find/'.inputSearch);
+            getCourse('https://lms.lazy2.codes/api/course/find/' + inputSearch);
         }
     }
 
@@ -144,9 +144,6 @@
             url: getUrl,
             type: 'GET',
             dataType: 'json',
-            data: {
-                search: searchCourse,
-            },
             success: function(result) {
                 $.each(result, function(i, data) {
                     $.each(data.tag, function(i, dataa) {
