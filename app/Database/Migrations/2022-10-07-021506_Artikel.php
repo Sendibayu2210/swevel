@@ -9,41 +9,45 @@ class Artikel extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id_artikel' => [
-                'type' => 'int',
-                'constraint' => 5,
+            'id' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'unsigned' => true,
                 'auto_increment' => true,
             ],
             'judul' => [
-                'type' => 'varchar',
-                'constraint' => 255
+                'type' => 'VARCHAR',
+                'constraint' => '255',
             ],
-            'deskripsi' => [
-                'type' => 'text'
+            'slug' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
             ],
-            'gambar' => [
-                'type' => 'varchar',
-                'constraint' => 100
+            'isi_artikel' => [
+                'type' => 'TEXT',
             ],
-            'kategori' => [
-                'type' => 'varchar',
-                'constraint' => 100,
+            'poster' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
             ],
-            'pembuat' => [
-                'type' => 'varchar',
-                'constraint' => 50
-            ],
-            'tanggal' => [
-                'type' => 'date',
+            'status' => [
+                'type' => 'ENUM',
+                'constraint' => ['publish', 'draft']
             ],
             'created_at' => [
-                'type' => 'datetime',
+                'type' => 'DATETIME',
+                'null' => true,
             ],
             'updated_at' => [
-                'type' => 'datetime',
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+            'deleted_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
             ],
         ]);
-        $this->forge->addKey('id_artikel', true);
+        $this->forge->addKey('id', true);
         $this->forge->createTable('artikel', true);
     }
 

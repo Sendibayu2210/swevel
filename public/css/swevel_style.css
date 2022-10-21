@@ -100,6 +100,10 @@
 .z-index-5 {
     z-index: 5;
 }
+.form-control:focus {
+    border-color: #45188B;
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075), 0 0 8px #9F88C3;
+}
 
 
 /* custom bootstrap */
@@ -157,7 +161,7 @@
 
 #service {
     margin-top: -200px;
-    min-height: 100vh;
+    min-height: 100vh;    
     /* overflow: hidden;         */
 }
 
@@ -800,6 +804,7 @@ section#page-first {
 
 /* Materi */
 
+
 #user-sidebar-materi {
     width: 330px;
     height: calc(100vh - 60px);
@@ -1026,15 +1031,16 @@ section#page-first {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border: var(--primary) 1px solid;
+    border: #AB8FD8 1px solid;
     border-radius: 50%;
     padding: 0.4rem 0.8rem;
     font-size: 10pt;
     margin: 0.25rem 0.1rem;
-    cursor: pointer;
+    cursor: pointer;    
 }
 
 #kuis .nomor-kuis span.active {
     background-color: #6f3bc4;
     color: #fff;
+    border:none;
 }

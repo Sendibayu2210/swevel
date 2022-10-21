@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // show sidebar materi
+    // show sidebar materi (first load)
     let course = $('#course').val()
     $.ajax({
         url: "https://lms.lazy2.codes/api/course/detail/" + course,
@@ -10,7 +10,7 @@ $(document).ready(function() {
             $.each(result.video, function(i, data) {
                 $("#menu-materi").append(`
                     <div class="accordion-item mb-3 border-bottom" data-order="` + data.order + `" data-video="` + data.video_id + `">
-                        <h2 class="accordion-header" id="flush-materi" data-video="` + data.video_id + `">
+                        <h2 class="accordion-header btn-list-materi" id="flush-materi" data-video="` + data.video_id + `">
                             <button class="accordion-button accordion-button-primary bg-white text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse` + data.order + `" aria-expanded="false" aria-controls="flush-collapseOne">
                                 <div class="row">
                                     <div class="col-3">
@@ -37,7 +37,8 @@ $(document).ready(function() {
                     </div>
                     `);
             });
-            // sort ascending list menu
+
+            // sorting ascending list menu sidebar materi
             var $parentMenu = $("#menu-materi"),
             $listMenu = $parentMenu.children("div.accordion-item");
             $listMenu.sort(function(a, b) {
@@ -52,30 +53,27 @@ $(document).ready(function() {
                 return 0;
             });
             $listMenu.detach().appendTo($parentMenu);     
+            // end sorting
 
             
-            // cek kuis apakah ada atau tidak        
-            // show video and title materi
-            $("#menu-materi .accordion-header").click(function() {                
-                let video = $(this).data("video");           
-                let btnKuis = $(this).find('li.btn-kuis');                    
+            // cek kuis apakah ada atau tidak dan show video and title materi            
+            $(".btn-list-materi").click(function() {      
+                $(".loader").removeClass("d-flex").addClass("hide");          
+                $('.skeleton-video').attr('src','/img/skeleton4.gif')
+
+                let video = $(this).data("video");                     
+                let getParent = $(this).parent();
+                let btnKuis = getParent.find('.btn-kuis')
+
                 $.ajax({
                     url: "https://lms.lazy2.codes/public/api/course/video/" + video,
                     type: "GET",
                     dataType: "JSON",
-                    success: function(result) { 
-                        // cek kuis apakah ada atau tidak 
-                        if(!result.quiz){
-                            btnKuis.addClass('hide');
-                        }else{
-                            btnKuis.removeClass('hide');
-                        }        
-
-                        $('#message-materi').addClass('hide')
-                        $('#materi').removeClass('hide')
+                    success: function(result) {                                             
                         $(".title").html(result.title);
                         $("title").html("Materi " + result.title);
-                        $(".loader").removeClass("d-flex").addClass("hide");
+                        $('.skeleton-video').addClass('hide');
+                        
 
                         let linkVideo = result.video;
                         linkVideo = linkVideo.split("&v=").pop();
@@ -85,7 +83,16 @@ $(document).ready(function() {
                         $(".link-video").html(linkVideo);
                         $(".video1").attr("src", linkVideo);
 
-                    
+                        // cek kuis apakah ada atau tidak 
+                        if(!result.quiz){
+                            btnKuis.addClass('hide');
+                        }else{
+                            if(result.quiz == ''){
+                                btnKuis.addClass('hide');
+                            }else{
+                                btnKuis.removeClass('hide');
+                            }
+                        }                                            
                     },
                 });
             });
@@ -106,7 +113,7 @@ $(document).ready(function() {
                     }
                 })
                 $(".btn-materi").attr("href", '/course/materi/' + course);                
-            }
+            }            
 
             $(".hover-purple").hover(function() {
                 $(this).addClass("active");

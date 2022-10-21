@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="shortcut icon" href="/img/logo-swevel-top2.png" type="image/x-icon">
     <script src="/asset/custom_vendor/jquery/jquery-3.6.1.min.js"></script>
-    <script src="/js/classic.ckeditor.js"></script>
+    <!-- <script src="/js/classic.ckeditor.js"></script> -->
 
     <link rel="stylesheet" href="/asset/custom_vendor/bootstrap5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/asset/custom_vendor/fontawesome612/css/all.css">
-    <link rel="stylesheet" href="/asset/css/admin.css">
+    <!-- <link rel="stylesheet" href="/asset/css/admin.css"> -->
     <link rel="stylesheet" href="/css/swevel_style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-white shadow">
+    <!-- <nav class="navbar navbar-expand-lg bg-white shadow">
         <div class="container">
             <a class="navbar-brand fw-bold" href="/"><img src="/img/logo-swevel.png" alt="" style="max-width: 110px;"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,18 @@
                 </ul>
             </div>
         </div>
+    </nav> -->
+
+    <nav class="navbar bg-white shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/"><img src="/img/logo-swevel.png" alt="" style="max-width: 110px;"></a>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Cari modul" id="nav-search-modul">
+            </form>
+        </div>
     </nav>
+
+
     <div class="d-flex">
         <div id="user-sidebar-materi">
             <div class="title-course d-flex justify-content-center text-center align-content-center p-2 pb-3 h5 text-purple fw-bold"></div>
@@ -65,94 +76,8 @@
 
 
     <script src="/asset/custom_vendor/bootstrap5/js/bootstrap.bundle.min.js"></script>
-    <script src="/asset/js/admin.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0-rc.1/chartjs-plugin-datalabels.min.js"></script> -->
-
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script> -->
-
-
+    <!-- <script src="/asset/js/admin.js"></script> -->
     <script src="/js/swevel.js"></script>
-
-
-    <!-- <script>
-        $(document).ready(function() {
-            barChart = function() {
-                const bar = document.getElementById('barChart');
-                const barChart = new Chart(bar, {
-                    type: 'bar',
-                    data: {
-                        labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
-                        datasets: [{
-                            label: 'Statistic',
-                            data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-                            backgroundColor: '#D41DCE',
-                            borderColor: '#D41DCE',
-                            borderWidth: 1
-                        }, {
-                            label: 'Statistic',
-                            data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-                            backgroundColor: '#A21CF6',
-                            borderColor: '#A21CF6',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                display: false
-                            }
-                        }
-                    }
-                });
-            }
-            barChart();
-
-            pieChart = function() {
-                const pie = document.getElementById('pieChart');
-                const pieChart = new Chart(pie, {
-                    type: 'pie',
-                    data: {
-                        labels: ['0', '1', '2'],
-                        datasets: [{
-                            label: 'Statistic',
-                            data: [217, 541, 477],
-                            backgroundColor: ['#B65EB1', '#D8B9FF', '#25005F'],
-                            borderColor: '#fff',
-                            borderWidth: 1,
-                            datalabels: {
-                                display: true,
-                                formatter: function(context, chart_obj) {
-                                    return calculate(chart_obj.dataIndex)
-                                },
-                            },
-                        }]
-                    },
-                    options: {
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            datalabels: {
-                                anchor: 'end',
-                                align: 'top'
-                            }
-                        }
-                    }
-                });
-            }
-            pieChart();
-        })
-    </script> -->
-
-
 </body>
 
 </html>

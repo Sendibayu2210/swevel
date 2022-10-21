@@ -52,8 +52,8 @@ $routes->get('/faq', 'Home::faq');
 $routes->get('/kebijakan-privasi', 'Home::kebijakanPrvasi');
 
 // Artikel
-$routes->get('/artikel', 'Artikel::index');
-$routes->get('/detail-artikel', 'Artikel::detailArtikel');
+$routes->get('/artikel', 'Home::artikel');
+$routes->get('/detail-artikel/(:any)', 'Home::detailArtikel/$1');
 
 
 
@@ -89,11 +89,17 @@ $routes->post('/answer-question', 'Admin::updateAnswerFaq');
 $routes->delete('/delete-faq', 'Admin::deleteFaq');
 
 $routes->get('/admin-about-us', 'Admin::aboutus');
+
 // artikel
-$routes->get('/admin-artikel', 'Admin::article');
+// $routes->get('/admin-artikel', 'Admin::article');
 $routes->get('/edit-artikel', 'Admin::editArticle');
 $routes->get('/add-artikel', 'Admin::addArticle');
-$routes->post('/save-artikel', 'Admin::saveArticle');
+$routes->post('/save-artikel', 'Admin::simpanArtikel');
+$routes->post('/update-artikel/(:segment)', 'Admin::updateArtikel/$1');
+$routes->get('/admin-artikel', 'Admin::daftar_artikel');
+$routes->get('/artikel/tambah', 'Admin::tambah_artikel');
+$routes->get('/artikel-edit/(:segment)', 'Admin::edit_artikel/$1');
+$routes->delete('/hapus-artikel', 'Admin::hapus_artikel');
 
 // =============================================
 // Course

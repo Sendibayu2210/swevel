@@ -23,25 +23,22 @@ class User extends BaseController
 
     public function confirmKuis()
     {
-        $id = $this->request->getVar('v');
-        $course = $this->request->getVar('c');
         $data = [
             'title' => 'Mulai Kuis',
             'category' => 'kuis',
-            'video' => $id,
-            'course' => $course,
+            'video' => $this->request->getVar('v'),
+            'course' => $this->request->getVar('c'),
         ];
         return view('swevel/user/start_quiz', $data);
     }
     public function kuis()
     {
-        $id = $this->request->getVar('v');
-        $course = $this->request->getVar('c');
         $data = [
             'title' => 'Kuis',
             'category' => 'kuis',
-            'video' => $id,
-            'course' => $course,
+            'video' => $this->request->getVar('v'),
+            'course' => $this->request->getVar('c'),
+            'soal' => $this->request->getVar('s'),
         ];
         return view('swevel/user/quiz', $data);
     }

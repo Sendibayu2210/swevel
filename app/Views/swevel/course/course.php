@@ -160,6 +160,7 @@
                             else
                                 seen[txt] = true;
                         });
+                        // end remove
                     })
                 })
                 let countData = result.length;

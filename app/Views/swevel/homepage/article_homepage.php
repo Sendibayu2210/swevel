@@ -12,19 +12,19 @@
             </div>
         </div>
         <div class="row mt-5 pt-5 justify-content-center">
-            <?php for ($i = 0; $i < 3; $i++) : ?>
+            <?php foreach ($artikel as $x) : ?>
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-sm-4">
-                    <a href="/detail-artikel" class="text-decoration-none text-dark">
+                    <a href="/detail-artikel/<?= $x['slug']; ?>" class="text-decoration-none text-dark">
                         <div class="card card-article border-0 mx-2 cursor-pointer">
-                            <img src="https://img.business.com/w/700/aHR0cHM6Ly9pbWFnZXMuYnVzaW5lc3NuZXdzZGFpbHkuY29tL2FwcC91cGxvYWRzLzIwMjIvMDQvMDQwNzQ1NTMvMTU1NDI0NDAxMC5qcGVn" class="card-img-top" alt="...">
+                            <img src="/img/artikel/<?= $x['poster']; ?>" class="card-img-top" alt="...">
                             <div class="card-body px-0">
-                                <h5 class="card-title">This Technology Allows a Device to Identify</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <h5 class="card-title"><?= $x['judul']; ?></h5>
+                                <p class="card-text"><?= substr($x['isi_artikel'], 0, 20); ?></p>
                             </div>
                         </div>
                     </a>
                 </div>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

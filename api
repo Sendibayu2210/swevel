@@ -1,0 +1,10 @@
+get course : https://lms.lazy2.codes/api/course
+get detail course : https://lms.lazy2.codes/api/course/detail/{id}
+get course (filter) :  https://lms.lazy2.codes/api/course/filter/{course/training}
+get latest : https://lms.lazy2.codes/api/course/latest/{total output data}
+find course by title : https://lms.lazy2.codes/api/course/find/{title}
+get video : https://lms.lazy2.codes/public/api/course/video/{id}
+get quiz : https://lms.lazy2.codes/public/api/quiz
+
+get bundling : https://lms.lazy2.codes/public/api/bundling
+ge detail bundling : https://lms.lazy2.codes/public/api/bundling/detail/1

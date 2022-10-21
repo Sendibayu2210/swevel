@@ -26,46 +26,46 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="my-3 fw-bold">Related Article</div>
-                    <?php for ($i = 0; $i < 3; $i++) : ?>
+                    <?php foreach ($artikel as $x) : ?>
                         <div class="card mb-3 border-0">
                             <div class="row g-0">
                                 <div class="col-md-4 my-auto">
-                                    <img src="https://cdn0-production-images-kly.akamaized.net/xilcF2WJtdfH5Qu3ssQ-luM_2qE=/640x358/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/thumbnails/4148628/original/010953600_1662458648-viral-petugas-spbu-emosi-ke-pelanggan-dua-kali-serobot-antrian-83b65f.jpg" class="img-fluid rounded-start" alt="...">
+                                    <img src="/img/artikel/<?= $x['poster']; ?>" class="img-fluid rounded-start" alt="...">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title small">A Place to Bookmark And Savour Quality</h5>
+                                        <h5 class="card-title small"><?= $x['judul']; ?></h5>
                                         <p class="card-text"></p>
-                                        <p class="card-text"><a href="#" class="text-decoration-none"><small class="text-muted">Read more</small></a></p>
+                                        <p class="card-text"><a href="/detail-artikel/<?= $x['slug']; ?>" class="text-decoration-none"><small class="text-muted">Read more</small></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
             <div class="lates-article">
                 <div class="mt-5 mb-4 h4 text-center">Lates Article</div>
                 <div class="row">
-                    <?php for ($i = 0; $i < 9; $i++) : ?>
+                    <?php foreach ($artikel as $x) : ?>
                         <div class="col-lg-4">
                             <div class="card mb-3 border-0">
                                 <div class="row g-0">
                                     <div class="col-md-4 my-auto">
-                                        <img src="https://cdn0-production-images-kly.akamaized.net/xilcF2WJtdfH5Qu3ssQ-luM_2qE=/640x358/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/thumbnails/4148628/original/010953600_1662458648-viral-petugas-spbu-emosi-ke-pelanggan-dua-kali-serobot-antrian-83b65f.jpg" class="img-fluid rounded-start" alt="...">
+                                        <img src="/img/artikel/<?= $x['poster']; ?>" class="img-fluid rounded-start" alt="...">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title small">A Place to Bookmark And Savour Quality</h5>
+                                            <h5 class="card-title small"><?= $x['judul']; ?></h5>
                                             <p class="card-text"></p>
-                                            <p class="card-text"><a href="#" class="text-decoration-none"><small class="text-muted">Read more</small></a></p>
+                                            <p class="card-text"><a href="/detail-artikel/<?= $x['slug']; ?>" class="text-decoration-none"><small class="text-muted">Read more</small></a></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                 </div>
 
             </div>

@@ -16,6 +16,7 @@ class Admin extends BaseController
 {
     public function __construct()
     {
+        $this->validation = \Config\Services::validation();
         $this->ProfileModel = new ProfileModel();
         $this->MilestoneModel = new MilestoneModel();
         $this->KontakModel = new KontakModel();
@@ -41,23 +42,61 @@ class Admin extends BaseController
         return view('swevel/admin/admin-about-us', $data);
     }
 
+
+    // -----------------Kelola Artikel-----------------
+    // -------------------------------------------------
+
+    public function daftar_artikel()
+    {
+        $artikel = $this->ArtikelModel->findAll();
+        $data['title'] = 'Daftar Artikel';
+        $data['artikel'] = $artikel;
+
+        return view('swevel/admin/artikel/daftar-artikel', $data);
+    }
+
+    public function tambah_artikel()
+    {
+        $data = [
+            'title' => 'Tambah Artikel',
+            'validation' => $this->validation,
+        ];
+        return view('swevel/admin/artikel/tambah-artikel', $data);
+    }
+    public function edit_artikel($slug)
+    {
+
+        $data = [
+            'title' => 'Edit Artikel',
+            'artikel' => $this->ArtikelModel->where('slug', $slug)->first(),
+            'validation' => $this->validation,
+        ];
+        return view('swevel/admin/artikel/edit-artikel', $data);
+    }
+    public function hapus_artikel()
+    {
+        $id = $this->request->getVar('id');
+        $artikel = $this->ArtikelModel->find($id);
+        if ($artikel['poster'] != 'default.jpg') {
+            unlink('img/artikel/' . $artikel['poster']);
+        }
+        $hapus = $this->ArtikelModel->delete($id);
+        if ($hapus) {
+            session()->setFlashdata('message', 'Data berhasil dihapus');
+        } else {
+            session()->setFlashdata('message', 'Data gagal dihapus');
+        }
+        return redirect()->to('/admin-artikel');
+    }
+
     public function article()
     {
         $data = [
             'title' => 'Artikel',
         ];
-        return view('swevel/admin/admin-article', $data);
+        return view('swevel/admin/admin-artikel', $data);
     }
-    public function addArticle()
-    {
-        $data = [
-            'title' => 'Artikel',
-            'category' => 'add',
-            'validation' => \Config\Services::validation(),
-        ];
-        return view('swevel/admin/admin-add-article', $data);
-    }
-    public function saveArticle()
+    public function simpanArtikel()
     {
         if (!$this->validate([
             'judul' => [
@@ -66,22 +105,10 @@ class Admin extends BaseController
                     'required' => 'Judul Tidak boleh kosong'
                 ]
             ],
-            'deskripsi' => [
+            'isi_artikel' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Deskripsi Tidak boleh kosong'
-                ]
-            ],
-            'tanggal' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Tanggal Tidak boleh kosong'
-                ]
-            ],
-            'kategori' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Kategori Tidak boleh kosong'
+                    'required' => 'isi artikel Tidak boleh kosong'
                 ]
             ],
             'berkas' => [
@@ -99,29 +126,78 @@ class Admin extends BaseController
             return redirect()->back()->withInput();
         }
 
-        // $berkas = new BerkasModel();
         $dataBerkas = $this->request->getFile('berkas');
         $fileName = $dataBerkas->getRandomName();
+        $judul = $this->request->getVar('judul');
+        $slug = str_replace(' ', '-', $judul);
         $this->ArtikelModel->insert([
-            'judul' => htmlspecialchars($this->request->getVar('judul')),
-            'deskripsi' => $this->request->getVar('deskripsi'),
-            'kategori' => $this->request->getVar('kategori'),
-            'tanggal' => $this->request->getVar('tanggal'),
-            // 'gambar' => $this->request->getVar('berkas'),
+            'judul' => htmlspecialchars($judul),
+            'slug' => $slug,
+            'isi_artikel' => $this->request->getVar('isi_artikel'),
+            'poster' => $fileName,
+            'status' => '1'
         ]);
         $dataBerkas->move('img/artikel/', $fileName);
         session()->setFlashdata('message', 'Data Artikel Berhasil di Upload');
         return redirect('admin-artikel');
     }
-
-    public function editArticle()
+    public function updateArtikel($id)
     {
+        if (!$this->validate([
+            'judul' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Judul Tidak boleh kosong'
+                ]
+            ],
+            'isi_artikel' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'isi artikel Tidak boleh kosong'
+                ]
+            ],
+            'berkas' => [
+                'rules' => 'mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png,image/svg/]|max_size[berkas,2048]',
+                'errors' => [
+                    'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png,svg',
+                    'max_size' => 'Ukuran File Maksimal 2 MB'
+                ]
+
+            ]
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
+            return redirect()->back()->withInput();
+        }
+
+        $dataBerkas = $this->request->getFile('berkas');
+        if ($dataBerkas->getError() == 4) {
+            $fileName = $this->request->getVar('file_lama');
+        } else {
+            $fileName = $dataBerkas->getRandomName();
+            $dataBerkas->move('img/artikel/', $fileName);
+            unlink('img/artikel/' . $this->request->getVar('file_lama'));
+        }
+        $judul = $this->request->getVar('judul');
+        $slug = str_replace(' ', '-', $judul);
         $data = [
-            'title' => 'Edit Artikel',
-            'category' => 'edit'
+            'judul' => htmlspecialchars($judul),
+            'slug' => $slug,
+            'isi_artikel' => $this->request->getVar('isi_artikel'),
+            'poster' => $fileName,
+            'status' => '1'
         ];
-        return view('swevel/admin/admin-article', $data);
+        $update = $this->ArtikelModel->update($id, $data);
+        if ($update) {
+            session()->setFlashdata('message', 'Data Artikel Berhasil di Upload');
+        } else {
+            session()->setFlashdata('message', 'Data Artikel Gagal di Upload');
+        }
+        return redirect('admin-artikel');
     }
+
+    // End Kelola Artikel
+
     public function event()
     {
         $data = [
@@ -141,7 +217,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Portofolio',
             'portofolio' => $this->PortofolioModel->findAll(),
-            'validation' => \Config\Services::validation(),
+            'validation' => $this->validation,
         ];
         return view('swevel/admin/admin-portofolio', $data);
     }
@@ -266,7 +342,7 @@ class Admin extends BaseController
     {
         $data = [
             'title' => 'Add Milestone',
-            'validation' => \Config\Services::validation(),
+            'validation' => $this->validation,
         ];
         return view('swevel/admin/admin-milestone-add', $data);
     }
@@ -275,7 +351,7 @@ class Admin extends BaseController
         $milestone = $this->MilestoneModel->find($id);
         $data = [
             'title' => 'Edit Milestone',
-            'validation' => \Config\Services::validation(),
+            'validation' => $this->validation,
             'milestone' => $milestone,
         ];
         return view('swevel/admin/admin-milestone-edit', $data);
@@ -387,7 +463,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Kontak',
             'kontak' => $this->KontakModel->findAll(),
-            'validation' => \Config\Services::validation(),
+            'validation' => $this->validation,
 
         ];
         return view('swevel/admin/admin-kontak', $data);
@@ -485,7 +561,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'FAQ',
             'faq' => $this->FaqModel->findAll(),
-            'validation' => \Config\Services::validation(),
+            'validation' => $this->validation,
         ];
         return view('swevel/admin/admin_faq', $data);
     }
@@ -667,7 +743,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Team',
             'team' => $this->TeamModel->findAll(),
-            'validation' => \Config\Services::validation(),
+            'validation' => $this->validation,
         ];
         return view('swevel/admin/admin-team', $data);
     }

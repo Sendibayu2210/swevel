@@ -5,9 +5,8 @@
     <div class="container mb-5">
         <nav aria-label="breadcrumb" class="my-4">
             <ol class="breadcrumb text-capitalize">
-                <li class="breadcrumb-item"><a href="#">beranda</a></li>
-                <li class="breadcrumb-item active" aria-current="page">artikel</li>
-                <li class="breadcrumb-item active" aria-current="page">detail artikel</li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="/artikel" class="text-decoration-none">artikel</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?= $artikel['judul']; ?></li>
             </ol>
         </nav>
 
@@ -15,40 +14,35 @@
             <div class="row">
                 <div class="col-lg-8 pt-4">
                     <div class="card mb-3 border-0">
-                        <img src="https://cdn0-production-images-kly.akamaized.net/xilcF2WJtdfH5Qu3ssQ-luM_2qE=/640x358/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/thumbnails/4148628/original/010953600_1662458648-viral-petugas-spbu-emosi-ke-pelanggan-dua-kali-serobot-antrian-83b65f.jpg" class="card-img-top" alt="...">
+                        <div class="text-center">
+                            <img src="/img/artikel/<?= $artikel['poster']; ?>" class="card-img-top" alt="..." style="max-width: 400px;">
+                        </div>
                         <div class="card-body mt-2">
-                            <h5 class="card-title h3 lh-lg">The Future of Education On The Blockchain</h5>
+                            <h5 class="card-title h3 lh-lg"><?= $artikel['judul']; ?></h5>
                             <p class="card-text">
-                                <?php for ($i = 0; $i < 5; $i++) :  ?>
-                                    PT. Swevel Universal Media is one of Information Technology Service Industry that gives service excellence quality. Point of product of PT. Swevel Universal Media prioritize System End User and gives creative solution IT.
-                                    PT. Swevel Universal Media focus in WEB Developer and Mobile Smart Phone Application. Swevel Universal Media is one of Information Technology Service Industry that gives service excellence quality. Point of product of PT. Swevel Universal Media prioritize System End User and gives creative solution IT.
-                                    PT. Swevel Universal Media focus in WEB Developer and Mobile Smart Phone Application..
-                                    <br>
-                                    <br>
-                                <?php endfor; ?>
+                                <?= $artikel['isi_artikel']; ?>
                             </p>
-                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="my-3 fw-bold">Related Article</div>
-                    <?php for ($i = 0; $i < 5; $i++) : ?>
+                    <?php foreach ($artikel_all as $x) : ?>
                         <div class="card  border-0">
-                            <div class="row g-0">
-                                <div class="col-md-4 my-auto">
-                                    <img src="https://cdn0-production-images-kly.akamaized.net/xilcF2WJtdfH5Qu3ssQ-luM_2qE=/640x358/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/thumbnails/4148628/original/010953600_1662458648-viral-petugas-spbu-emosi-ke-pelanggan-dua-kali-serobot-antrian-83b65f.jpg" class="img-fluid rounded-start" alt="...">
+                            <div class="row">
+                                <div class="col-lg-4 my-auto">
+                                    <img src="/img/artikel/<?= $x['poster']; ?>" class="img-fluid rounded-start" alt="...">
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-lg-8">
                                     <div class="card-body">
-                                        <h5 class="card-title small">A Place to Bookmark And Savour Quality</h5>
+                                        <h5 class="card-title small"><?= $x['judul']; ?></h5>
                                         <p class="card-text"></p>
-                                        <p class="card-text"><a href="#" class="text-decoration-none"><small class="text-muted">Read more</small></a></p>
+                                        <p class="card-text"><a href="/detail-artikel/<?= $x['slug']; ?>" class="text-decoration-none"><small class="text-muted">Read more</small></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

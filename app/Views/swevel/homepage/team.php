@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/css/splide.min.css">
+
 <section id="team" class="bg-purple pt-5">
     <div class="container pt-5 mb-4">
         <div class="row text-white">
@@ -41,33 +43,9 @@
             </div>
         </div>
     </div>
-
-    <!-- <div class="slide-container swiper">
-        <div class="slide-content">
-            <div class="card-wrapper swiper-wrapper">
-                <?php for ($i = 1; $i < 10; $i++) : ?>
-                    <div class="card-team swiper-slide border">
-                        <div class="image-content-team">
-                            <span class="overlay"></span>
-                            <div class="card-image">
-                                <img src="/img/team.png" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content ps-4">
-                            <h2 class="name fw-bold text-purple">David Dell</h2>
-                            <p class="description">Direktur</p>
-                        </div>
-                    </div>
-                <?php endfor; ?>
-            </div>
-        </div>
-        <div class="swiper-button-next swiper-navBtn"></div>
-        <div class="swiper-button-prev swiper-navBtn"></div>
-        <div class="swiper-pagination bullet-white"></div>
-    </div> -->
-
-
 </section>
+
+<script src="/js/splide.min.js"></script>
 <script>
     $(document).ready(function() {
         // Slider Team
