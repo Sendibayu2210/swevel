@@ -1022,7 +1022,8 @@ section#page-first {
 }
 
 #kuis .nomor-kuis {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
 }
 
 #kuis .nomor-kuis span {

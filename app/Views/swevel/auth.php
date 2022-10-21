@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="asset/vendor/jquery/jquery-3.6.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
-    <link rel="stylesheet" href="/asset/vendor/bootstrap5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/asset/vendor/fontawesome612/css/all.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="asset/custom_vendor/jquery/jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="/asset/custom_vendor/bootstrap5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/asset/custom_vendor/fontawesome612/css/all.css">
     <link rel="stylesheet" href="/asset/css/custom.css">
     <title>Swevel | Login</title>
 </head>
@@ -17,6 +15,7 @@
 <body id="auth">
     <div class="container h-100 w-100">
         <div class="wave1"></div>
+
         <section id="login">
             <div class="row justify-content-center h-100">
                 <div class="col-sm-12 col-md-5 my-auto px-4">
@@ -50,6 +49,7 @@
                 </div>
             </div>
         </section>
+
         <section id="register" class="d-none">
             <div class="row justify-content-center h-100">
                 <div class="col-sm-12 col-md-9 my-auto px-4">
@@ -94,10 +94,11 @@
                 </div>
             </div>
         </section>
+
         <div class="wave2"></div>
     </div>
-    <script src="/asset/vendor/bootstrap5/js/bootstrap.bundle.min.js"></script>
-    <script src="/asset/vendor/fontawesome612/js/all.min.js"></script>
+    <script src="/asset/custom_vendor/bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <script src="/asset/custom_vendor/fontawesome612/js/all.min.js"></script>
 
     <script>
         $(document).ready(function() {
