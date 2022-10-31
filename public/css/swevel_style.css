@@ -729,9 +729,14 @@ section#page-first {
     z-index: 5;
 }
 
-.card-course {
+.card-course,
+.card-bundling {
     background: rgb(159, 136, 195);
     background: linear-gradient(16deg, rgba(159, 136, 195, 1) -20%, rgba(255, 255, 255, 1) 26%);
+}
+.card-bundling:hover{
+    transform: scale(1.1);
+    transition: all .5s;
 }
 
 #detail-course .line-timeline {

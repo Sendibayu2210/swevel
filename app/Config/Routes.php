@@ -36,12 +36,12 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-// percobaan
-$routes->get('/json', 'Movie::cobaJson');
-
-
+// login 
 $routes->get('/', 'Home::index');
-$routes->get('/login', 'Home::auth');
+$routes->get('/login', 'Auth::auth');
+$routes->get('/logout','Auth::logout');
+$routes->post('/verifikasi-login','Auth::verifikasi_login');
+$routes->post('/verifikasi-register','Auth::verifikasi_register');
 
 $routes->get("/privacy", 'Home::kebijakanPrivasi');
 
@@ -49,9 +49,9 @@ $routes->get("/privacy", 'Home::kebijakanPrivasi');
 $routes->get('/training', 'Training::index');
 $routes->get('/detail-training', 'Training::detailTraining');
 
-// Event
 $routes->get('/event', 'Event::index');
 $routes->get('/detail-event', 'Event::detailEvent');
+
 $routes->get('/faq', 'Home::faq');
 $routes->get('/kebijakan-privasi', 'Home::kebijakanPrvasi');
 
@@ -60,12 +60,8 @@ $routes->get('/artikel', 'Home::artikel');
 $routes->get('/detail-artikel/(:any)', 'Home::detailArtikel/$1');
 
 
-
-
-
 // ================== ADMIN ===================
 $routes->get('/dashboard', 'Admin::index');
-
 // milestone
 $routes->get('/admin-milestone', 'Admin::milestone');
 $routes->get('/add-milestone', 'Admin::addMilestone');
@@ -106,12 +102,8 @@ $routes->get('/artikel-edit/(:segment)', 'Admin::edit_artikel/$1');
 $routes->delete('/hapus-artikel', 'Admin::hapus_artikel');
 
 // =============================================
-// Course
-$routes->get('/admin-course', "Admin::course");
-$routes->get('/admin-course/(:any)', "Admin::detailCourse/$1");
-$routes->get('/add-step-course/(:any)', 'Admin::addStepCourse/$1');
-$routes->post('/save-step-course', 'Admin::saveSubCourse');
 
+// Course
 $routes->get('/course', 'Course::index');
 $routes->get('/course/detail/(:any)', 'Course::detailCourse/$1');
 $routes->get('/kurikulum', 'Course::detailKurikulum');
@@ -124,7 +116,8 @@ $routes->post('/course-getApi', 'Course::getApi');
 $routes->get('/course-getApi', 'Course::getApi');
 
 $routes->get('cobaApi', function () {
-    return view('swevel/course/coba-api');
+    $data = ['title' => 'percobaan API'];
+    return view('swevel/course/coba-api',$data);
 });
 
 // =============================================
@@ -141,6 +134,7 @@ $routes->post('/add-portofolio', 'Admin::addPortofolio');
 $routes->delete('/delete-portofolio', 'Admin::deletePortofolio');
 
 $routes->get('/admin-event', 'Admin::event');
+
 $routes->get('/more-event', 'Admin::moreEvent');
 $routes->get('/payment', 'Admin::payment');
 $routes->get('/payment/(:any)', 'User::payment/$1');
@@ -161,13 +155,6 @@ $routes->get("/getKuis", "Course::getApiKuis");
 $routes->get("/course-saved", "User::savedCourse");
 $routes->get('/submission', 'User::submission');
 
-
-
-//  PERCOBAAN
-// movie
-$routes->get('/movie', 'Movie::index');
-// Rest API
-$routes->resource('pegawai');
 
 
 /*

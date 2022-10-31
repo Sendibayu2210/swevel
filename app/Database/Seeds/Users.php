@@ -11,19 +11,19 @@ class Users extends Seeder
     {
         $data = [
             [
-                'username' => 'admin',
+                'nama' => 'admin',
                 'email' => 'admin@gmail.com',
                 'password' => password_hash('admin123', PASSWORD_DEFAULT),
-                'foto' => 'default.jpg',
+                'foto' => 'default_admin.jpg',
                 'level' => 'admin',
                 'created_at' => Time::now(),
                 'updated_at' => Time::now(),
             ],
             [
-                'username' => 'user',
+                'nama' => 'user',
                 'email' => 'user@gmail.com',
                 'password' => password_hash('user123', PASSWORD_DEFAULT),
-                'foto' => 'default.jpg',
+                'foto' => 'default_pengguna.jpg',
                 'level' => 'pengguna',
                 'created_at' => Time::now(),
                 'updated_at' => Time::now(),

@@ -23,6 +23,8 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'isLoggedIn'    => \App\Filters\AuthFilter::class,
+        'FilterAdmin'    => \App\Filters\FilterAdmin::class,
     ];
 
     /**
@@ -68,5 +70,56 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+        'isLoggedIn' => ['before' => 
+            [
+                'dashboard',            
+            ]
+        ],
+        'FilterAdmin' => ['before' =>
+            [
+                'admin-milestone',
+                'add-milestone',
+                'edit-milestone/*',                
+                'update-milestone/*',                
+                'delete-milestone/*',                
+
+                'admin-kontak',
+                'add-kontak',
+                'update-kontak',
+                'delete-kontak',
+
+                'profile',
+                'profile/*',
+                'update-profile/*',
+
+                'admin-faq',
+                'add-faq',
+                'answer-question',
+                'delete-faq',
+
+                'admin-about-us',
+
+                'edit-artikel',
+                'add-artikel',
+                'save-artikel',
+                'update-artikel/*',
+                'admin-artikel',
+                'artikel/tambah',
+                'artikel/edit/*',
+                'hapus-artikel',
+
+                'admin-team',
+                'add-team',
+                'update-team',
+                'delete-team',
+
+                'admin-portofolio',
+                'add-portofolio',
+                'delete-fortofolio',
+
+                'admin-event',                
+            ]
+        ],
+    ];
 }

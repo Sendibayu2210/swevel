@@ -60,6 +60,9 @@ body {
   font-family: "Gill Sans MT", sans-serif;
   font-weight: 100;
 } */
+.cursor-pointer{
+  cursor: pointer;
+}
 main {
   width: 100%;
 }
@@ -676,12 +679,13 @@ margin-top: 120px;
   padding-bottom: 0.875rem;
 }
 #auth input,
-#auth .btn-login {
+#auth .btn-login,
+.btn-register {
   border-radius: 30px;
   box-shadow: none;
   border: none;
 }
-.btn-login {
+.btn-login, .btn-register {
   font-family: monospace;
   color: #fff;
   font-weight: 700;

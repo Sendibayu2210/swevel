@@ -4,7 +4,7 @@
             <a href="#!" class="menu-toggle"><i class="fas fa-xmark"></i></a>
         </div>
     </header>
-    <nav class="sidebar-nav-list">
+    <nav class="sidebar-nav-list pb-5">
         <div class="sidebar-top">
             <div class="row">
                 <div class="col-6">
@@ -19,8 +19,8 @@
                     <img src="../asset/image/event/pablo.png" width="200px" alt="...">
                 </div>
                 <div class="col-12 col-md-12 profile text-white text-center mt-2">
-                    <h6 class="fw-bold">Administrator</h6>
-                    <p class="mt-1">swevelid@gmail.com</p>
+                    <h6 class="fw-bold"><?= $user['nama']; ?></h6>
+                    <p class="mt-1"><?= $user['email']; ?></p>
                 </div>
             </div>
         </div>
@@ -42,5 +42,6 @@
         <a href="#" class="sidebar-nav-item">Testimoni <i class="fa-solid fa-angle-right"></i></a>
         <a href="/admin-faq" class="sidebar-nav-item">FAQ <i class="fa-solid fa-angle-right"></i></a>
         <a href="#" class="sidebar-nav-item">Contact Us <i class="fa-solid fa-angle-right"></i></a>
+        <a href="/logout" class="sidebar-nav-item">Keluar</a>
     </nav>
 </div>

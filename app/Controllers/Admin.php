@@ -11,11 +11,12 @@ use App\Models\SubCourseModel;
 use App\Models\TeamModel;
 use App\Models\PortofolioModel;
 use App\Models\ArtikelModel;
+use App\Models\UsersModel;
 
 class Admin extends BaseController
 {
     public function __construct()
-    {
+    {        
         $this->validation = \Config\Services::validation();
         $this->ProfileModel = new ProfileModel();
         $this->MilestoneModel = new MilestoneModel();
@@ -24,11 +25,15 @@ class Admin extends BaseController
         $this->CourseModel = new CourseModel();
         $this->SubCourseModel = new SubCourseModel();
         $this->TeamModel = new TeamModel();
-        $this->ArtikelModel = new ArtikelModel();
+        $this->ArtikelModel = new ArtikelModel();        
+        $this->UsersModel = new UsersModel();        
+        $this->user =  $this->UsersModel->where('email',session()->get('swevel_email'))->first();
     }
     public function index()
     {
+        
         $data = [
+            'user' => $this->user,
             'title' => 'Dashboard'
         ];
         return view('swevel/admin/dashboard', $data);
@@ -37,6 +42,7 @@ class Admin extends BaseController
     public function aboutus()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'About Us'
         ];
         return view('swevel/admin/admin-about-us', $data);
@@ -58,6 +64,7 @@ class Admin extends BaseController
     public function tambah_artikel()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'Tambah Artikel',
             'validation' => $this->validation,
         ];
@@ -67,6 +74,7 @@ class Admin extends BaseController
     {
 
         $data = [
+            'user' => $this->user,
             'title' => 'Edit Artikel',
             'artikel' => $this->ArtikelModel->where('slug', $slug)->first(),
             'validation' => $this->validation,
@@ -92,6 +100,7 @@ class Admin extends BaseController
     public function article()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'Artikel',
         ];
         return view('swevel/admin/admin-artikel', $data);
@@ -181,6 +190,7 @@ class Admin extends BaseController
         $judul = $this->request->getVar('judul');
         $slug = str_replace(' ', '-', $judul);
         $data = [
+            'user' => $this->user,
             'judul' => htmlspecialchars($judul),
             'slug' => $slug,
             'isi_artikel' => $this->request->getVar('isi_artikel'),
@@ -201,6 +211,7 @@ class Admin extends BaseController
     public function event()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'Event',
         ];
         return view('swevel/admin/admin-event', $data);
@@ -208,6 +219,7 @@ class Admin extends BaseController
     public function moreEvent()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'More Event',
         ];
         return view('swevel/admin/admin-more-event', $data);
@@ -215,6 +227,7 @@ class Admin extends BaseController
     public function portofolio()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'Portofolio',
             'portofolio' => $this->PortofolioModel->findAll(),
             'validation' => $this->validation,
@@ -269,6 +282,7 @@ class Admin extends BaseController
     public function payment()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'Payment',
         ];
         return view('swevel/payment/payment', $data);
@@ -278,6 +292,7 @@ class Admin extends BaseController
     public function profile()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'profile',
             'profile' => $this->ProfileModel->findAll(),
         ];
@@ -287,6 +302,7 @@ class Admin extends BaseController
     {
         $profile = $this->ProfileModel->find($id);
         $data = [
+            'user' => $this->user,
             'title' => "edit profile " . $profile['title'],
             'profile' => $profile,
         ];
@@ -314,6 +330,7 @@ class Admin extends BaseController
             return redirect()->back()->withInput();
         } else {
             $data = [
+                'user' => $this->user,
                 'title' => $this->request->getVar('title'),
                 'description' => $this->request->getVar('description'),
             ];
@@ -333,6 +350,7 @@ class Admin extends BaseController
     public function milestone()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'Milestone',
             'milestone' => $this->MilestoneModel->orderBy('year', 'asc')->findAll(),
         ];
@@ -341,6 +359,7 @@ class Admin extends BaseController
     public function addMilestone()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'Add Milestone',
             'validation' => $this->validation,
         ];
@@ -350,6 +369,7 @@ class Admin extends BaseController
     {
         $milestone = $this->MilestoneModel->find($id);
         $data = [
+            'user' => $this->user,
             'title' => 'Edit Milestone',
             'validation' => $this->validation,
             'milestone' => $milestone,
@@ -436,6 +456,7 @@ class Admin extends BaseController
             unlink('img/milestone/' . $this->request->getVar('file_old'));
         }
         $data = [
+            'user' => $this->user,
             'image' => $fileName,
             'year' => $this->request->getVar('year'),
             'description' => $this->request->getVar('description')
@@ -461,6 +482,7 @@ class Admin extends BaseController
     public function kontak()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'Kontak',
             'kontak' => $this->KontakModel->findAll(),
             'validation' => $this->validation,
@@ -499,6 +521,7 @@ class Admin extends BaseController
         }
 
         $data = [
+            'user' => $this->user,
             'name' => $kontak,
             'description' => htmlspecialchars($this->request->getVar('number_link')),
             'icon' => $icon,
@@ -529,7 +552,8 @@ class Admin extends BaseController
         }
 
         $id = $this->request->getVar('edit_id_kontak');
-        $data = ['description' => htmlspecialchars($this->request->getVar('edit_number_link'))];
+        $data = [
+            'user' => $this->user,'description' => htmlspecialchars($this->request->getVar('edit_number_link'))];
         $update = $this->KontakModel->update($id, $data);
         if ($update) {
             session()->setFlashdata('message', 'Data kontak berhasil di perbaharui');
@@ -559,6 +583,7 @@ class Admin extends BaseController
     public function faq()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'FAQ',
             'faq' => $this->FaqModel->findAll(),
             'validation' => $this->validation,
@@ -588,6 +613,7 @@ class Admin extends BaseController
         }
 
         $data = [
+            'user' => $this->user,
             'from' => 'Swevel',
             'question' => $this->request->getVar('add-question'),
             'answer' => $this->request->getVar('add-answer'),
@@ -619,7 +645,8 @@ class Admin extends BaseController
         }
 
         $id = $this->request->getVar('detail-id');
-        $data = ['answer' => $this->request->getVar('update-answer'),];
+        $data = [
+            'user' => $this->user,'answer' => $this->request->getVar('update-answer'),];
         $update = $this->FaqModel->update($id, $data);
         if ($update) {
             session()->setFlashdata('message', 'Data faq berhasil di publish');
@@ -648,6 +675,7 @@ class Admin extends BaseController
     public function course()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'Admin Course',
             'course' => $this->CourseModel->findAll(),
         ];
@@ -658,6 +686,7 @@ class Admin extends BaseController
         $course = $this->CourseModel->where('slug_course', $slug)->first();
         $step_course = $this->SubCourseModel->where('id_course', $course['id'])->findAll();
         $data = [
+            'user' => $this->user,
             'title' => 'View Course ' . $course['nama_course'],
             'course' => $course,
             'step_course' => $step_course,
@@ -673,6 +702,7 @@ class Admin extends BaseController
         $step_course = $this->SubCourseModel->where('id_course', $course['id'])->findAll();
 
         $data = [
+            'user' => $this->user,
             'title' => 'Tambah Step Course ' . $course['nama_course'],
             'course' => $course,
             'step_course' => $step_course,
@@ -718,6 +748,7 @@ class Admin extends BaseController
         $judul = $this->request->getVar('judul');
         $slug_sub_course = strtolower(str_replace(' ', '-', $judul));
         $data = [
+            'user' => $this->user,
             'id_course' => $this->request->getVar('id'),
             'title' => $judul,
             'slug_sub_course' => $slug_sub_course,
@@ -741,6 +772,7 @@ class Admin extends BaseController
     public function team()
     {
         $data = [
+            'user' => $this->user,
             'title' => 'Team',
             'team' => $this->TeamModel->findAll(),
             'validation' => $this->validation,
@@ -834,6 +866,7 @@ class Admin extends BaseController
         }
         $id = $this->request->getVar('edit_id');
         $data = [
+            'user' => $this->user,
             'nama' => htmlspecialchars($this->request->getVar('nama')),
             'jabatan' => htmlspecialchars($this->request->getVar('jabatan')),
             'image' => $fileName,

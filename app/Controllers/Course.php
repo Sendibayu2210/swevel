@@ -27,8 +27,7 @@ class Course extends BaseController
         $data = [
             'title' => 'Course',
             'category' => $category,
-            'kontak' => $this->KontakModel->findAll(),
-            'course' => $this->CourseModel->findAll(),
+            'kontak' => $this->KontakModel->findAll(),            
         ];
         return view('swevel/course/course', $data);
     }
@@ -38,36 +37,9 @@ class Course extends BaseController
         $data = [
             'title' => 'Detail Course',
             'kontak' => $this->KontakModel->findAll(),
-            'id' => $id,
-            'related_course' => $this->CourseModel->findAll(),
-            // 'step_course' => $this->SubCourseModel->where('id_course', $detail_course['id'])->orderBy('step', 'asc')->findAll(),
+            'id' => $id,                        
         ];
         return view('swevel/course/detail_course', $data);
-    }
-
-    public function materi($slug_course, $id_materi = null)
-    {
-        $get_id = $this->CourseModel->where('slug_course', $slug_course)->first();
-        $get_sub = $this->SubCourseModel->where('id_course', $get_id['id'])->orderBy('step', 'asc')->findAll();
-        $get_title_materi = $this->MateriModel->where('id_course', $get_id['id'])->findAll();
-
-        if ($id_materi) {
-            $get_materi = $this->MateriModel->where('id_course', $get_id['id'])->where('id_materi', $id_materi)->first();
-            if (!$get_materi) {
-                pageNotFound();
-            }
-        } else {
-            $get_materi = '';
-        }
-
-        $data = [
-            'title' => 'Materi ' . $get_id['nama_course'],
-            'step_course' => $get_sub,
-            'title_materi' => $get_title_materi,
-            'slug_course' => $slug_course,
-            'materi' => $get_materi,
-        ];
-        return view('swevel/user/materi', $data);
     }
 
     public function detailKurikulum()
