@@ -57,9 +57,9 @@
                     <h6 class="fw-semibold ls-2 text-dark-purple text-end">More..</h6>
                 </div>
             </div>
-            <div class="row ">                
-                <?php for ($i = 0; $i < 5; $i++) : ?>
-                    <div class="col-lg-4 col-md-4 m-2">
+            <div class="row mt-3">                
+                <?php for ($i = 0; $i < 3; $i++) : ?>
+                    <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card card-event">
                             <div class="card-body p-3">
                                 <img src="asset/image/event/card.png" alt="" width="100%">

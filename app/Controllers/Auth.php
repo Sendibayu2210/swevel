@@ -13,11 +13,14 @@ class Auth extends BaseController
 
     public function auth()
     {
-        if(session()->get('swevel_email')){
+        $payment = $this->request->getVar('payment');
+
+        if(session()->get('swevel_email')){            
             return redirect('dashboard');
         }
         $data = [
             'title' => 'Login',
+            'payment' => $payment
         ];
         return view('swevel/auth', $data);
     }
@@ -25,6 +28,7 @@ class Auth extends BaseController
     public function verifikasi_login(){
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
+        $payment = $this->request->getVar('payment');
         
         $user = $this->UsersModel->where('email',$email)->first();
         if($user){
@@ -35,10 +39,15 @@ class Auth extends BaseController
                     'swevel_logged_in' => true,
                 ];
                 session()->set($data);
+                if($payment != ''){
+                    $redirect = 'payment/'.$payment;
+                }else{
+                    $redirect = 'dashboard';
+                }
                 return json_encode([
                     'code' => '200',
                     'message' => 'login success',
-                    'redirect'  => 'dashboard'               
+                    'redirect'  => $redirect,
                 ]);
             }else{
                 return json_encode([

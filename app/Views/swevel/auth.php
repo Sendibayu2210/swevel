@@ -51,6 +51,7 @@
                                 <div class="mb-3">
                                     <button id="btnLogin" type="button" class="btn btn-login w-100" name="login">LOGIN</button>
                                 </div>
+                                <input type="hidden" name="payment" id="" value="<?= $payment; ?>">
                             </form>
                             <div class="text-center">
                                 <code class="text-dark">
@@ -110,7 +111,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
         </section>
 
         <div class="wave2"></div>

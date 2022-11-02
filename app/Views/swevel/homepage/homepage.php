@@ -55,9 +55,6 @@ function circle1(){makeCircle();}
             display:none;
         }
     }
-
-
-
 </style>
 
 <div id="about-us">
@@ -572,6 +569,8 @@ function circle1(){makeCircle();}
 <script>
     $(document).ready(function() {
 
+        $('body').css('overflow-x','hidden');
+
         // About Us
         $(".card-profile").click(function(){
             $('.deskripsi-profile').hide(400);            
@@ -598,7 +597,6 @@ function circle1(){makeCircle();}
         $('.modal-content-milestone').css('border-radius', '20px');
     })
 </script>
-
 
 
 <?= $this->include('swevel/homepage/footer'); ?>

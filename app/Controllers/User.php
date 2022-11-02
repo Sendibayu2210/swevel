@@ -2,12 +2,14 @@
 
 namespace App\Controllers;
 use App\Models\PurchaseModel;
+use App\Models\UsersModel;
 
 class User extends BaseController
 {
 
     public function __construct(){
         $this->PurchaseModel = new PurchaseModel();
+        $this->UsersModel = new UsersModel();
     }
     
     public function index()
@@ -18,11 +20,19 @@ class User extends BaseController
         return view('swevel/admin/dashboard', $data);
     }
     public function materi($id)
-    {
-        $cek_purchase = $this->PurchaseModel->where('id_course',$id)->where('status','approved')->first();
-        if(!$cek_purchase){
+    {        
+        $email = session()->get('swevel_email');
+        $id_user = $this->UsersModel->where('email',$email)->first();
+        $cek_purchase = $this->PurchaseModel->where('id_user',$id_user['id'])->where('id_course',$id)->first();            
+        if(!$cek_purchase){            
+            session()->setFlashdata('message','Maaf! Anda belum membeli course ini');
             return redirect('notyetapproved');
-        }
+        }else{
+            if($cek_purchase['status'] != 'approved'){
+                session()->setFlashdata('message','Maaf! course yang anda beli sedang dalam proses approval');
+                return redirect('notyetapproved');
+            }
+        }        
 
         $data = [
             'title' => 'Materi',

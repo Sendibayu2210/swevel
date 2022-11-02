@@ -142,7 +142,7 @@
     
     .kotak-text {
         position: absolute;
-        display: flex;        
+        /* display: flex;         */
         z-index: 2;        
         width: 383px;
         min-height : 200px;
@@ -153,11 +153,7 @@
         font-weight: bold;
         font-size: 25px;
         background-color: #45188B;      
-    }
-    
-    /* .kotak-text .row {
-        margin: 50px 90px 50px 30px;
-    } */
+    }    
     
     .detail-img {
         max-width: 600px;
@@ -285,13 +281,7 @@
         }
         .borderkotak {
             display: none;
-        }
-        /* .kotak-text {
-            margin: auto;
-            position: relative;
-            top: -14em;
-            right: auto;
-        } */
+        }      
         .responsive .row {
             display: block;
             margin: auto;
@@ -329,19 +319,7 @@
         }
         .bi-alarm-fill {
             font-size: 30px;
-        }
-        /* .kotak-text {
-            width: 200px;
-            height: 150px;
-            position: relative;
-            top: -10em;
-            right: auto;
-        } */
-        /* .kotak-text h3 {
-            text-align: center;
-            font-size: 20px;
-            transform: translate(24%, -30%);
-        } */
+        }        
         .responsive .row {
             display: block;
             margin: auto;

@@ -3,27 +3,22 @@
         <div class="most-popular mx-5 px-4">
             <h2 class="fw-bold">Most Popular</h2>
             <div class="box-training pt-5">
-                <div class="row pb-5">
-                    <div class="splide splide-training">
-                        <div class="splide__track">
-                            <div class="splide__list">
-                                <?php for ($i = 0; $i < 9; $i++) : ?>
-                                <?php endfor; ?>
-                                <div class="splide__slide">
+                <div class="row pb-5">                                   
+                                <div class="col-lg-4 col-md-6">
                                     <div class="card card-training  mx-2 border-0">
                                         <div class="card-body text-center">
                                             <img src="/img/Frame 57.png" alt="" class="img-primary">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="splide__slide">
+                                <div class="col-lg-4 col-md-6">
                                     <div class="card card-training  mx-2 border-0">
                                         <div class="card-body text-center">
                                             <img src="/img/Frame 58.png" alt="" class="img-primary">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="splide__slide">
+                                <div class="col-lg-4 col-md-6">
                                     <div class="card card-training  mx-2 border-0">
                                         <div class="card-body text-center">
                                             <img src="/img/Image 9.png" alt="" class="img-primary">

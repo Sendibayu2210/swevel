@@ -45,8 +45,8 @@
             <a href="#" class="sidebar-nav-item sidebar-nav-dropdown-toggle">Layanan <i class="fa-solid fa-angle-right"></i></a>
             <div class="sidebar-nav-dropdown-menu">
                 <a href="/admin-event" class="sidebar-nav-dropdown-item">Event <i class="fa-solid fa-angle-right"></i></a>
-                <a href="/admin-course" class="sidebar-nav-dropdown-item">Course <i class="fa-solid fa-angle-right"></i></a>
-                <a href="/admin-training" class="sidebar-nav-dropdown-item">Training <i class="fa-solid fa-angle-right"></i></a>
+                <a href="/course" class="sidebar-nav-dropdown-item">Course <i class="fa-solid fa-angle-right"></i></a>
+                <a href="/training" class="sidebar-nav-dropdown-item">Training <i class="fa-solid fa-angle-right"></i></a>
             </div>
         </div>
         <a href="/admin-artikel" class="sidebar-nav-item">Artikel <i class="fa-solid fa-angle-right"></i></a>

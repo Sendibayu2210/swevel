@@ -28,6 +28,7 @@ function circlecourse()
             <div class="text-white kotak-text title-course"></div>
             <img src="/img/skeleton2.gif" class="detail-img" alt="course">
         </div>
+        <div class="h3 title-course text-center d-lg-none my-3 text-purple fw-bold"></div>
         <div class=" row" id="section1" style="margin:auto;">
             <div class="col" style="margin: auto;">
                 <div class="circle-4 d-sm-none d-lg-block">
@@ -45,8 +46,7 @@ function circlecourse()
             <div class="text-lg-end text-md-start mb-lg-0 mb-md-5 mb-sm-5 border-kotak">
                 <h5><s class="old_price">Rp </s></h5>
                 <h4 class="text-red new_price">Rp </h4>                
-                <?= $link; ?>
-                                
+                <?= $link; ?>                              
             </div>
             <div class="text2. mb-5 h2 title-benefits-course col-lg-4">Benefits you get when join our course</div>
 

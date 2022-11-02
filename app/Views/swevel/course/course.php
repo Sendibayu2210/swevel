@@ -93,7 +93,7 @@
                     $.each(result, function(i, data) {
                         $('#card-popular-course').append(`
                         <div class="col-md-4 col-lg-4 col-sm-12 .splide__slide mb-5">
-                                <div class="card card-course border-0 shadow">
+                                <div class="card card-course border-0 cursor-pointer shadow" data-id="`+data.course_id+`">
                                     <div class="course-circle-time small"><small>`+data.suitable_for+`</small></div>
                                     <div class="image-content">
                                         <div class="card-image.">
@@ -130,6 +130,11 @@
                     </div>
                 `)
                 }
+                
+                $('.card-course').click(function(){
+                    let id = $(this).data('id');
+                    window.location.href = '/course/detail/'+id;
+                })
             },
             error: function(result, ajaxOptions, thrownError) {
                 $('.skeleton').addClass('hide')

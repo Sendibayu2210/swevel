@@ -27,8 +27,7 @@
                                 <div class="col-sm-12 col-md-12 col-lg-12 my-auto">
                                     <div class="d-flex justify-content-center skeleton">
                                         <img src="/img/skeleton4.gif" alt="">
-                                    </div>
-                                    <!-- <h3><img src="/img/Visual-Studio-Logo.png" alt="" class="rounded float-end" style="max-width: 60px;"></h3> -->
+                                    </div>                                    
                                     <h3 class="fw-bold judul-course"></h3>
                                     <p class="text-muted"></p>
                                     <p class="deskripsi-course"></p>
@@ -67,6 +66,7 @@
                                             </div>
                                             <div class="col-6">
                                                 <p class="text-end fw-bold new_price"></p>
+                                                <input type="hidden" id="harga-bayar">
                                             </div>
                                         </div>
                                     </div>
@@ -101,39 +101,43 @@
                                                     <div class="accordion-body">
                                                         <div class="row logo-bank satu">
                                                             <?php foreach($bank_limit as $x) : ?>
-                                                            <div class="col-4 mb-3">
-                                                                <button class="btn bank" data-norek="<?= $x['no_rekening']; ?>">
+                                                            <div class="col-4 mb-3">                                                                
+                                                                <button class="btn bank" data-norek="<?= $x['no_rekening']; ?>" data-nama="<?= $x['nama_bank']; ?>">
                                                                     <img src="/img/bank/<?= $x['gambar']; ?>" alt="<?= $x['nama_bank']; ?>">
-                                                                </button>
+                                                                </button>                                                                
                                                             </div>
                                                             <?php endforeach; ?>                                                            
-                                                            <div class="col-4 mb-3 btn-lainnya">
-                                                                <button class="btn text-center">
-                                                                    <i class="fa-solid fa-building-columns me-3 text-secondary"></i>
-                                                                    <div class="small text-muted">lainnya</div>
+                                                            <div class="col-4 mb-3 more-bank">
+                                                                <button class="btn text-center">                                                                                                                                        
+                                                                    <div class="small text-muted">Lihat Semua</div>
                                                                 </button>
                                                             </div>
                                                         </div>
                                                         <div class="row logo-bank dua hide">
                                                             <?php foreach($bank as $x) : ?>
-                                                            <div class="col-4 mb-3">
-                                                                <button class="btn bank" data-norek="<?= $x['no_rekening']; ?>">
+                                                            <div class="col-4 mb-3">                                                                
+                                                                <button class="btn bank" data-norek="<?= $x['no_rekening']; ?>"  data-nama="<?= $x['nama_bank']; ?>">
                                                                     <img src="/img/bank/<?= $x['gambar']; ?>" alt="<?= $x['nama_bank']; ?>">
-                                                                </button>
+                                                                </button>                                                                                                                                                                                    
                                                             </div>
-                                                            <?php endforeach; ?>                                                                                                                        
+                                                            <?php endforeach; ?> 
+                                                            <div class="col-4 mb-3 sedikit-bank">
+                                                                <button class="btn text-center">                                                                                                                                        
+                                                                    <div class="small text-muted">Tutup</div>
+                                                                </button>
+                                                            </div>                                                                                                                       
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row text-end mt-3">
                                                 <div class="fw-bold">Pay Within</div>
-                                                <div id="time-part" class="text-purple mt-3">23.09.44</div>
+                                                <div id="time-part" class="text-purple mt-3"></div>
                                             </div>
                                             <div class="row mt-3">
-                                                <p style="font-size: 10px;">Order ID #0deaa41e-b467-49f6-8b2b-1f7fd7c2a72e</p>
+                                                <!-- <p style="font-size: 10px;">Order ID #0deaa41e-b467-49f6-8b2b-1f7fd7c2a72e</p>
                                                 <p style="font-size: 10px;">Complete payment from BRI to the virtual account number below.</p>
-                                                <br>
+                                                <br> -->
                                                 <h6>Virtual account number</h6>
                                                 <div class="col-8">
                                                     <div class="fw-bold" id="virtual_kode">-</div>
@@ -146,37 +150,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
-                                <!-- <div class="row flex-row-reverse">
-                                    <div class="text-end">How to Pay</div>
-                                    <div class="accordion-payment">
-                                        <div class="row">
-                                            <h5 class="fw-bold mb-3 cursor-pointer">ATM BCA</h5>
-                                            <p class="ps-4">1.Lorem</p>
-                                            <p class="ps-4">1.Lorem</p>
-                                            <p class="ps-4">1.Lorem</p>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <h5 class="fw-bold mb-3 cursor-pointer">ATM BNI</h5>
-                                            <p class="ps-4">1.Lorem</p>
-                                            <p class="ps-4">1.Lorem</p>
-                                            <p class="ps-4">1.Lorem</p>
-                                        </div>
-                                        <hr>
-                                        <div class="row">
-                                            <h5 class="fw-bold mb-3 cursor-pointer">ATM BRI</h5>
-                                            <p class="ps-4">1.Lorem</p>
-                                            <p class="ps-4">1.Lorem</p>
-                                            <p class="ps-4">1.Lorem</p>
-                                        </div>
-                                        <hr>
-                                    </div>
-                                </div> -->
+                                <hr>                                
                             </div>
                         </div>
-                        <div class="mt-2 mb-4 w-100">
-                            <a href="" class="btn btn-purple-100 d-block p-2">View Status</a>
+                        <div class="mt-2 mb-4 w-100 card-selanjutnya">
+                            <?php if(session()->get('swevel_email')) : ?>
+                                <button type="button" class="btn btn-purple-100 d-block p-2 w-100 show-detail-pembayaran selanjutnya">Selanjutnya</button>
+                            <?php else : ?>
+                                <a href="/login?payment=<?= $id; ?>" class="btn btn-purple-100 d-block p-2 w-100 show-detail-pembayaran">Login untuk pembelian</a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -199,14 +181,57 @@
 </div>
 <script>
     $(document).ready(function() {
+
+        $('.show-detail-pembayaran').click(function(){
+            let checkNorek = $('#virtual_kode').html();            
+            if(checkNorek == '-'){
+                $(".show-detail-pembayaran.selanjutnya").removeClass('btn-purple').addClass('btn-danger').html('Pilih Metode Pembayaran');
+                setTimeout(() => {
+                    $(".show-detail-pembayaran.selanjutnya").addClass('btn-purple').removeClass('btn-danger').html('Selanjutnya');                
+                }, 3000);
+            }else{
+                $(".show-detail-pembayaran.selanjutnya").html(`<div class="spinner-border text-light" role="status"><span class="visually-hidden">Loading...</span></div>`);                
+                let norek = $('#virtual_kode').html();
+                let harga = $('#harga-bayar').val();
+                $.ajax({
+                    url : '/save-purchase',
+                    type : 'post',
+                    dataType : 'json',
+                    data : {
+                        course : '<?= $id; ?>',
+                        bank : norek,
+                        harga : harga,
+                    },
+                    success: function(result){
+                        if(result.code == '200'){
+                            window.location.href = result.redirect;
+                        }
+                        if(result.code == '500' && result.message == 'sudah-beli'){
+                            $(".show-detail-pembayaran.selanjutnya").addClass('btn-purple').removeClass('btn-danger').html('anda sudah membeli course ini.\n anda bisa melanjutkan ke halaman materi');                
+                            $('.card-selanjutnya').append(`
+                                <a href="/`+result.redirect+`" class="btn btn-primary mt-3 w-100 text-decoration-none">kembali ke materi</a>
+                            `);
+                            
+                        }                        
+                    }
+                })
+            }
+        })
+        
         $('.bank').click(function() {
             let norek = $(this).data('norek');
+            let nama = $(this).data('nama');
             $('#virtual_kode').html(norek)
+            $('#time-part').html(nama);
         })
 
-        $('.btn-lainnya').click(function(){
+        $('.more-bank').click(function(){
             $('.logo-bank.satu').addClass('hide');
-            $('.logo-bank.dua').removeClass('hide');
+            $('.logo-bank.dua').removeClass('hide');            
+        })
+        $(".sedikit-bank").click(function(){
+            $('.logo-bank.satu').removeClass('hide');
+            $('.logo-bank.dua').addClass('hide');            
         })
 
         let id_course = $('#id_course').val();
@@ -221,6 +246,7 @@
                 $('.old_price').html('Rp ' + formatRupiah(result.old_price));
                 $('.new_price').html('Rp ' + formatRupiah(result.new_price));
                 $('.diskon_price').html('-Rp ' + formatRupiah(result.old_price - result.new_price));
+                $('#harga-bayar').val(result.new_price);
             }
         })
     })
@@ -235,8 +261,7 @@
         $("body").append($temp);
         $temp.val($(element).text()).select();
         document.execCommand("copy");
-        $temp.remove();
-        console.log(norek);
+        $temp.remove();        
         $('.toast-body').html(norek);
         $('.toast').toast('show');
     }

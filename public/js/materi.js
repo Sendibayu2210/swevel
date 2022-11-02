@@ -10,7 +10,7 @@ $(document).ready(function() {
             $.each(result.video, function(i, data) {
                 $("#menu-materi").append(`
                     <div class="accordion-item mb-3 border-bottom" data-order="` + data.order + `" data-video="` + data.video_id + `">
-                        <h2 class="accordion-header btn-list-materi" id="flush-materi" data-video="` + data.video_id + `">
+                        <h2 class="accordion-header btn-list-materi order-`+data.order+`" id="flush-materi" data-video="` + data.video_id + `">
                             <button class="accordion-button accordion-button-primary bg-white text-dark collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse` + data.order + `" aria-expanded="false" aria-controls="flush-collapseOne">
                                 <div class="row">
                                     <div class="col-3">
@@ -36,8 +36,7 @@ $(document).ready(function() {
                         </div>
                     </div>
                     `);
-            });
-
+                });              
             // sorting ascending list menu sidebar materi
             var $parentMenu = $("#menu-materi"),
             $listMenu = $parentMenu.children("div.accordion-item");
@@ -54,10 +53,10 @@ $(document).ready(function() {
             });
             $listMenu.detach().appendTo($parentMenu);     
             // end sorting
-
             
             // cek kuis apakah ada atau tidak dan show video and title materi            
             $(".btn-list-materi").click(function() {      
+                $(".video1, .card-next-prev").removeClass("hide");                
                 $(".loader").removeClass("d-flex").addClass("hide");          
                 $('.skeleton-video').attr('src','/img/skeleton4.gif')
 
@@ -94,9 +93,24 @@ $(document).ready(function() {
                             }
                         }                                            
                     },
+                    error: function(result, ajaxOptions, thrownError) {
+                        $('.penjelasan-materi').html('')
+                        $(".video1, .card-next-prev, .loader, .skeleton-video").addClass("hide");                                                 
+                        $('.skeleton-video').attr('src','')
+                        $('.penjelasan-materi').append(`
+                            <div class="alert alert-danger w-100 text-center" role="alert">
+                            Maaf, untuk saat ini course belum bisa di akses.
+                            </div>
+                        `)
+                    }
                 });
             });
 
+            
+            $('.mulai-belajar').click(function(){                  
+                $('.btn-list-materi.order-1').click();
+            })
+           
         
 
             // cek kondisi apakah ada di halaman matari atau halaman kuis untuk membuat tombol menjadi anchor
