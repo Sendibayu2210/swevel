@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 class User extends BaseController
 {
+    
     public function index()
     {
         $data = [
@@ -62,13 +63,5 @@ class User extends BaseController
             'title' => 'submission'
         ];
         return view('swevel/user/submission', $data);
-    }
-    public function payment($id)
-    {
-        $data = [
-            'title' => 'Payment',
-            'id' => $id
-        ];
-        return view('swevel/payment/payment', $data);
-    }
+    }  
 }

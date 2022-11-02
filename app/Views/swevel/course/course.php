@@ -109,12 +109,12 @@
                                                 <p class="card-text h6 text-decoration-line-through text-secondary">Rp ` + formatRupiah(data.old_price) + `</p>
                                                 <p class="card-text h5 fw-bold text-red">Rp ` + formatRupiah(data.new_price) + `</p>
                                             </div>
-                                            <div class="col-sm-4 col-md-6 col-lg-12 text-sm-end  text-lg-start">
-                                                <a href="/payment/`+data.course_id+`" class="btn btn-sm btn-purple-100 mt-2">Join Now</a>
+                                            <div class="col-sm-4 col-md-6 col-lg-12 text-sm-end text-lg-start">
+                                                <a href="/payment/`+data.course_id+`" class="btn btn-sm btn-purple-100 mt-2 me-md-4 me-sm-4">Join Now</a>
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="/course/detail/` + data.course_id + `" class="text-decoration-none btn btn-sm btn-light fw-bold course-btn-read-more">Read More</a>
+                                    <a href="/course/detail/` + data.course_id + `" class="text-decoration-none btn btn-sm btn-light fw-bold course-btn-read-more ms-lg-0 ms-md-5 ms-sm-5">Read More</a>
                                 </div>
                             </div>
                         `);

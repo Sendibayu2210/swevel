@@ -99,38 +99,29 @@
                                                 </h4>
                                                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <div class="row logo-bank">
+                                                        <div class="row logo-bank satu">
+                                                            <?php foreach($bank_limit as $x) : ?>
                                                             <div class="col-4 mb-3">
-                                                                <button class="btn bank" data-norek="BCA-94249372498789">
-                                                                    <img src="/img/bank/bca.png" alt="BCA">
+                                                                <button class="btn bank" data-norek="<?= $x['no_rekening']; ?>">
+                                                                    <img src="/img/bank/<?= $x['gambar']; ?>" alt="<?= $x['nama_bank']; ?>">
                                                                 </button>
                                                             </div>
-                                                            <div class="col-4 mb-3">
-                                                                <button class="btn bank" data-norek="BNI-94249372498789">
-                                                                    <img src="/img/bank/bni.png" alt="BNI">
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-4 mb-3">
-                                                                <button class="btn bank" data-norek="BRI-94249372498789">
-                                                                    <img src="/img/bank/bri.png" alt="BRI">
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-4 mb-3">
-                                                                <button class="btn bank" data-norek="MANDIRI-94249372498789">
-                                                                    <img src="/img/bank/mandiri.png" alt="MANDIRI">
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-4 mb-3">
-                                                                <button class="btn bank" data-norek="PERMATA-94249372498789">
-                                                                    <img src="/img/bank/permata.png" alt="PERMATA">
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-4 mb-3">
+                                                            <?php endforeach; ?>                                                            
+                                                            <div class="col-4 mb-3 btn-lainnya">
                                                                 <button class="btn text-center">
                                                                     <i class="fa-solid fa-building-columns me-3 text-secondary"></i>
                                                                     <div class="small text-muted">lainnya</div>
                                                                 </button>
                                                             </div>
+                                                        </div>
+                                                        <div class="row logo-bank dua hide">
+                                                            <?php foreach($bank as $x) : ?>
+                                                            <div class="col-4 mb-3">
+                                                                <button class="btn bank" data-norek="<?= $x['no_rekening']; ?>">
+                                                                    <img src="/img/bank/<?= $x['gambar']; ?>" alt="<?= $x['nama_bank']; ?>">
+                                                                </button>
+                                                            </div>
+                                                            <?php endforeach; ?>                                                                                                                        
                                                         </div>
                                                     </div>
                                                 </div>
@@ -211,6 +202,11 @@
         $('.bank').click(function() {
             let norek = $(this).data('norek');
             $('#virtual_kode').html(norek)
+        })
+
+        $('.btn-lainnya').click(function(){
+            $('.logo-bank.satu').addClass('hide');
+            $('.logo-bank.dua').removeClass('hide');
         })
 
         let id_course = $('#id_course').val();

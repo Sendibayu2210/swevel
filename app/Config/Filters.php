@@ -119,6 +119,10 @@ class Filters extends BaseConfig
                 'delete-fortofolio',
 
                 'admin-event',                
+                'pembayaran',
+                'save-pembayaran',
+                'update-pembayaran',
+                'delete-pembayaran',
             ]
         ],
     ];

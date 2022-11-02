@@ -12,6 +12,7 @@ use App\Models\TeamModel;
 use App\Models\PortofolioModel;
 use App\Models\ArtikelModel;
 use App\Models\UsersModel;
+use App\Models\PembayaranModel;
 
 class Admin extends BaseController
 {
@@ -25,8 +26,10 @@ class Admin extends BaseController
         $this->CourseModel = new CourseModel();
         $this->SubCourseModel = new SubCourseModel();
         $this->TeamModel = new TeamModel();
+        $this->PortofolioModel = new PortofolioModel();
         $this->ArtikelModel = new ArtikelModel();        
         $this->UsersModel = new UsersModel();        
+        $this->PembayaranModel = new PembayaranModel();        
         $this->user =  $this->UsersModel->where('email',session()->get('swevel_email'))->first();
     }
     public function index()
@@ -55,9 +58,11 @@ class Admin extends BaseController
     public function daftar_artikel()
     {
         $artikel = $this->ArtikelModel->findAll();
-        $data['title'] = 'Daftar Artikel';
-        $data['artikel'] = $artikel;
-
+        $data = [
+            'title' => 'Daftar Artikel',
+            'artikel' => $artikel,
+            'user' => $this->user,
+        ];        
         return view('swevel/admin/artikel/daftar-artikel', $data);
     }
 
@@ -85,8 +90,9 @@ class Admin extends BaseController
     {
         $id = $this->request->getVar('id');
         $artikel = $this->ArtikelModel->find($id);
-        if ($artikel['poster'] != 'default.jpg') {
-            unlink('img/artikel/' . $artikel['poster']);
+        $file_lama = 'img/artikel/' . $artikel['poster'];
+        if (file_exists($file_lama)) {
+            unlink($file_lama);
         }
         $hapus = $this->ArtikelModel->delete($id);
         if ($hapus) {
@@ -277,16 +283,7 @@ class Admin extends BaseController
             session()->setFlashdata('message1', 'Error');
         }
         return redirect('admin-portofolio');
-    }
-
-    public function payment()
-    {
-        $data = [
-            'user' => $this->user,
-            'title' => 'Payment',
-        ];
-        return view('swevel/payment/payment', $data);
-    }
+    }  
 
     // profile
     public function profile()
@@ -893,5 +890,137 @@ class Admin extends BaseController
             session()->setFlashdata('message1', 'error');
         }
         return redirect('admin-team');
+    }
+
+    public function pembayaran(){
+        $data= [
+            'user' => $this->user,
+            'title' => 'Kelola Pembayaran',
+            'validation' => $this->validation,
+            'bank' => $this->PembayaranModel->findAll(),
+        ];
+        return view('swevel/admin/admin-pembayaran',$data);
+    }
+
+    public function simpan_pembayaran(){
+
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama Bank Tidak boleh kosong'
+                ]
+            ],
+            'norek' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nomor Rekening Tidak boleh kosong'
+                ]
+            ],
+            'berkas' => [
+                'rules' => 'uploaded[berkas]|mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png,image/svg/]|max_size[berkas,2048]',
+                'errors' => [
+                    'uploaded' => 'Harus Ada File yang diupload',
+                    'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png,svg',
+                    'max_size' => 'Ukuran File Maksimal 2 MB'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
+            return redirect()->back()->withInput();
+        }
+        $dataBerkas = $this->request->getFile('berkas');
+        $fileName = $dataBerkas->getRandomName();
+        $dataBerkas->move('img/bank/', $fileName);
+        $data = [
+            'nama_bank' => htmlspecialchars($this->request->getVar('nama')),
+            'no_rekening' => htmlspecialchars($this->request->getVar('norek')),
+            'gambar' =>$fileName,
+        ];
+        $simpan = $this->PembayaranModel->insert($data);
+        if($simpan){
+            session()->setFlashdata('message','Data pembayaran berhasil ditambahkan');
+            session()->setFlashdata('message1', 'Success');
+        }else{
+            session()->setFlashdata('message','Data pembayaran gagal ditambahkan');    
+            session()->setFlashdata('message1', 'Error');
+        }
+        return redirect('pembayaran');
+    }
+
+    public function update_pembayaran(){
+
+        $id = $this->request->getVar('id');
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama Bank Tidak boleh kosong'
+                ]
+            ],
+            'norek' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nomor Rekening Tidak boleh kosong'
+                ]
+            ],
+            'berkas' => [
+                'rules' => 'mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png,image/svg/]|max_size[berkas,2048]',
+                'errors' => [                    
+                    'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png,svg',
+                    'max_size' => 'Ukuran File Maksimal 2 MB'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');            
+            return redirect()->back()->withInput();
+        }
+        $dataBerkas = $this->request->getFile('berkas');
+        $bank = $this->PembayaranModel->where('id',$id)->first();
+        if ($dataBerkas->getError() == 4) {
+            $fileName = $bank['gambar'];
+        } else {
+            $fileName = $dataBerkas->getRandomName();
+            $dataBerkas->move('img/bank/', $fileName);
+            $filelama = 'img/bank/' . $bank['gambar'];
+            if(file_exists($filelama)){
+                unlink($filelama);
+            }
+        }
+        $data = [
+            'nama_bank' => htmlspecialchars($this->request->getVar('nama')),
+            'no_rekening' => htmlspecialchars($this->request->getVar('norek')),
+            'gambar' =>$fileName,
+        ];
+        $simpan = $this->PembayaranModel->update($id,$data);
+        if($simpan){
+            session()->setFlashdata('message','Data pembayaran berhasil diubah');
+            session()->setFlashdata('message1', 'Success');
+        }else{
+            session()->setFlashdata('message','Data pembayaran gagal diubah');    
+            session()->setFlashdata('message1', 'Error');
+        }
+        return redirect('pembayaran');
+    }
+
+     public function hapus_pembayaran()
+    {
+        $id = $this->request->getVar('id');
+        $pembayaran = $this->PembayaranModel->find($id);
+        $file_lama = 'img/bank/' . $pembayaran['gambar'];
+        if (file_exists($file_lama)) {
+            unlink($file_lama);
+        }
+        $hapus = $this->PembayaranModel->delete($id);
+        if ($hapus) {
+            session()->setFlashdata('message', 'Data berhasil dihapus');
+            session()->setFlashdata('message1', 'Success');
+        } else {
+            session()->setFlashdata('message', 'Data gagal dihapus');
+            session()->setFlashdata('message1', 'Error');
+        }
+        return redirect('pembayaran');
     }
 }

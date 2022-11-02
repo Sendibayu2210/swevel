@@ -1,28 +1,5 @@
 
-        .circle-3 {
-            position: absolute;            
-            z-index: 5;
-            right: 50px;
-            top: 0px;        
-        }
-        .circle-3 .circle {
-            background-color: #c4a4f7;
-            width: 27px;
-            height: 27px;
-            margin: -5px 9px;
-            border-radius: 50px;
-        }               
-        
-        .gambar {
-            position: absolute;
-            width: 400px;
-            right: 0;                          
-        }
-        .gambar img{
-            position: absolute;
-            z-index: 3;
-        }
-        
+                              
         .btn-more{
             padding: 10px 24px;
         }

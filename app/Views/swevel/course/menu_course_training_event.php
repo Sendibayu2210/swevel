@@ -1,22 +1,10 @@
-<main>
+<main id="menu-course-training">
     <section>
         <div class="container">
-            <div class="row text-center">
-                <div class="col-category col-4 text-end">
-                    <a class="btn btn-category text-decoration-none" href="/course" role="button">
-                        <h2>Course.</h2>
-                    </a>
-                </div>
-                <div class="col-category col-4">
-                    <a class="btn btn-category text-decoration-none" href="/event" role="button">
-                        <h2>Event.</h2>
-                    </a>
-                </div>
-                <div class="col-category col-4 text-start">
-                    <a class="btn btn-category text-decoration-none" href="/training" role="button">
-                        <h2>Training.</h2>
-                    </a>
-                </div>
+            <div class="d-flex justify-content-center text-center">            
+                <a class="btn btn-category text-decoration-none mx-2 h3" href="/course" role="button">Course</a>                            
+                <a class="btn btn-category text-decoration-none mx-2 h3" href="/event" role="button">Event</a>                            
+                <a class="btn btn-category text-decoration-none mx-2 h3" href="/training" role="button">Training</a>                
             </div>
         </div>
     </section>

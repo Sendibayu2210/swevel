@@ -9,7 +9,7 @@ function circle()
     <div class="box">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mt-5 mb-5">
+                <div class="col-lg-8 col-md-12 col-12 mt-5 mb-5">
                     <div class="text pt-5">
                         <h1 class="fw-bold">One of <span class="ch_color">Information Technology</span> Service Industry</h1>
                         <p class="cover-text my-5">PT. Swevel Universal Media is one of Information Technology Service Industry that gives service excellence quality. Point of product of PT. Swevel Universal Media prioritize System End User and gives creative solution IT. PT. Swevel

@@ -8,6 +8,7 @@ use App\Models\KontakModel;
 use App\Models\TeamModel;
 use App\Models\PortofolioModel;
 use App\Models\ArtikelModel;
+use App\Models\PembayaranModel;
 
 class Home extends BaseController
 {
@@ -19,6 +20,7 @@ class Home extends BaseController
         $this->TeamModel = new TeamModel();
         $this->PortofolioModel = new PortofolioModel();
         $this->ArtikelModel = new ArtikelModel();
+        $this->PembayaranModel = new PembayaranModel();
     }
     public function index()
     {
@@ -32,7 +34,7 @@ class Home extends BaseController
             'portofolio' => $this->PortofolioModel->findAll(),
             'artikel' => $this->ArtikelModel->limit(3)->findAll(),
         ];
-        return view('swevel/index_homepage', $data);
+        return view('swevel/homepage/homepage', $data);
     }
 
     public function artikel()
@@ -73,4 +75,14 @@ class Home extends BaseController
         ];
         return view('swevel/kebijakan_privasi', $data);
     }
+    public function payment($id)
+    {
+        $data = [
+            'title' => 'Payment',
+            'id' => $id,
+            'bank_limit' => $this->PembayaranModel->findAll(5),
+            'bank' => $this->PembayaranModel->findAll(),
+        ];
+        return view('swevel/payment/payment', $data);
+    }  
 }

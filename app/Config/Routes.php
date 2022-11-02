@@ -62,6 +62,11 @@ $routes->get('/detail-artikel/(:any)', 'Home::detailArtikel/$1');
 
 // ================== ADMIN ===================
 $routes->get('/dashboard', 'Admin::index');
+$routes->get('/pembayaran','Admin::pembayaran');
+$routes->post("/save-pembayaran",'Admin::simpan_pembayaran');
+$routes->post("/update-pembayaran",'Admin::update_pembayaran');
+$routes->delete('/delete-pembayaran','Admin::hapus_pembayaran');
+
 // milestone
 $routes->get('/admin-milestone', 'Admin::milestone');
 $routes->get('/add-milestone', 'Admin::addMilestone');
@@ -136,8 +141,7 @@ $routes->delete('/delete-portofolio', 'Admin::deletePortofolio');
 $routes->get('/admin-event', 'Admin::event');
 
 $routes->get('/more-event', 'Admin::moreEvent');
-$routes->get('/payment', 'Admin::payment');
-$routes->get('/payment/(:any)', 'User::payment/$1');
+$routes->get('/payment/(:any)', 'Home::payment/$1');
 
 
 
