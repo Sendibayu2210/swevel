@@ -147,7 +147,7 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="row flex-row-reverse">
+                                <!-- <div class="row flex-row-reverse">
                                     <div class="text-end">How to Pay</div>
                                     <div class="accordion-payment">
                                         <div class="row">
@@ -172,7 +172,7 @@
                                         </div>
                                         <hr>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="mt-2 mb-4 w-100">

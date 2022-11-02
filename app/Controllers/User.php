@@ -1,9 +1,14 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\PurchaseModel;
 
 class User extends BaseController
 {
+
+    public function __construct(){
+        $this->PurchaseModel = new PurchaseModel();
+    }
     
     public function index()
     {
@@ -14,6 +19,11 @@ class User extends BaseController
     }
     public function materi($id)
     {
+        $cek_purchase = $this->PurchaseModel->where('id_course',$id)->where('status','approved')->first();
+        if(!$cek_purchase){
+            return redirect('notyetapproved');
+        }
+
         $data = [
             'title' => 'Materi',
             'category' => 'materi',

@@ -30,7 +30,7 @@
             </ul>
             <?php if(!session()->get('swevel_email')) : ?>
             <div>
-                <a href="/login" class="btn btn-purple text-decoration-none br-20">Login</a>                
+                <a href="/login" class="btn fw-bold text-purple text-decoration-none br-20">Login</a>                
             </div>
             <?php endif; ?>
         </div>

@@ -44,11 +44,9 @@ function circlecourse()
         <div class="row mb-5 pb-5" id="section2.">
             <div class="text-lg-end text-md-start mb-lg-0 mb-md-5 mb-sm-5 border-kotak">
                 <h5><s class="old_price">Rp </s></h5>
-                <h4 class="text-red new_price">Rp </h4>
-                <a href="/payment/<?= $id; ?>" class="btn btn-sm btn-purple-100">Join Now</a>
-                <?php if(session()->get('swevel_email')) : ?>
-                    <a href="/course/materi/<?= $id; ?>" class="btn btn-sm btn-purple-100">Start Class</a>
-                <?php endif; ?>
+                <h4 class="text-red new_price">Rp </h4>                
+                <?= $link; ?>
+                                
             </div>
             <div class="text2. mb-5 h2 title-benefits-course col-lg-4">Benefits you get when join our course</div>
 
@@ -82,9 +80,9 @@ function circlecourse()
             </div>
         </div>
 
-        <div class="row mb-5 ">
+        <!-- <div class="row mb-5 ">
             <h2 class="fw-bold text-dark">Related Course</h2>
-        </div>
+        </div> -->
 
     </div>
 

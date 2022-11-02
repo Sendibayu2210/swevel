@@ -143,13 +143,15 @@ $routes->get('/admin-event', 'Admin::event');
 $routes->get('/more-event', 'Admin::moreEvent');
 $routes->get('/payment/(:any)', 'Home::payment/$1');
 
+$routes->get('/notyetapproved','Course::not_yet_approved');
+
 
 
 
 // ===================== User =====================
 // materi
-$routes->get('/course-materi/(:any)/', 'Course::materi/$1');
-$routes->get('/course-materi/(:any)/(:num)', 'Course::materi/$1/$2');
+// $routes->get('/course-materi/(:any)/', 'Course::materi/$1');
+// $routes->get('/course-materi/(:any)/(:num)', 'Course::materi/$1/$2');
 $routes->get('/status', 'User::status');
 $routes->get("/course/materi/(:any)", "User::materi/$1");
 $routes->get("/video", "Course::getVideo");

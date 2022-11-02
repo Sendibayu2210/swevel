@@ -6,6 +6,7 @@ use App\Models\KontakModel;
 use App\Models\CourseModel;
 use App\Models\SubCourseModel;
 use App\Models\MateriModel;
+use App\Models\PurchaseModel;
 
 class Course extends BaseController
 
@@ -16,6 +17,7 @@ class Course extends BaseController
         $this->CourseModel = new CourseModel();
         $this->SubCourseModel = new SubCourseModel();
         $this->MateriModel = new MateriModel();
+        $this->PurchaseModel = new PurchaseModel();
     }
 
     public function index($category = null)
@@ -34,10 +36,26 @@ class Course extends BaseController
 
     public function detailCourse($id)
     {
+
+        if(session()->get('swevel_email')){
+            $cek_purchase = $this->PurchaseModel->where('id_course', $id)->first();        
+            if($cek_purchase){
+                if($cek_purchase['status'] == 'approved'){
+                    $link = '<a href="/course/materi/'. $id .'" class="btn btn-sm btn-purple-100">Start Class</a>';
+                }else{
+                    $link = '<div class="btn btn-sm btn-purple-100">Menunggu approval</div>';
+                }
+            }else{
+                $link = '<a href="/payment/'. $id .'" class="btn btn-sm btn-purple-100">Join Now</a>';
+            }
+        }else{
+            $link = '<a href="/payment/'. $id .'" class="btn btn-sm btn-purple-100">Join Now</a>';
+        }
         $data = [
             'title' => 'Detail Course',
             'kontak' => $this->KontakModel->findAll(),
             'id' => $id,                        
+            'link' => $link,
         ];
         return view('swevel/course/detail_course', $data);
     }
@@ -102,5 +120,13 @@ class Course extends BaseController
         $output = curl_exec($ch);
         echo $output;
         curl_close($ch);
+    }
+
+
+    public function not_yet_approved(){
+        $data = [
+            'title' => 'Not yet Approved',            
+        ];
+        return view('swevel/course/not-yet-approved',$data);
     }
 }
