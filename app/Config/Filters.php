@@ -116,7 +116,13 @@ class Filters extends BaseConfig
 
                 'admin-portofolio',
                 'add-portofolio',
-                'delete-fortofolio',
+                'edit-portofolio',
+                'update-portofolio',
+                'delete-portofolio',
+
+                'admin-klien',
+                'add-klien',
+                'delete-klien',
 
                 'admin-event',                
                 'pembayaran',

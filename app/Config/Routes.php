@@ -47,12 +47,16 @@ $routes->get("/privacy", 'Home::kebijakanPrivasi');
 
 // training page
 $routes->get('/training', 'Training::index');
-$routes->get('/detail-training', 'Training::detailTraining');
+// $routes->get('/detail-training', 'Training::detailTraining');
+$routes->get('/pelatihan/detail/(:any)', 'Training::detail_training/$1');
+
 
 $routes->get('/event', 'Event::index');
 $routes->get('/detail-event', 'Event::detailEvent');
+$routes->get('/event-detail', 'Event::detailEvent');
 
 $routes->get('/faq', 'Home::faq');
+$routes->get('/getFaq/(:any)', 'Home::get_faq/$1');
 $routes->get('/kebijakan-privasi', 'Home::kebijakanPrvasi');
 
 // Artikel
@@ -92,6 +96,7 @@ $routes->get('/admin-faq', 'Admin::faq');
 $routes->post('/add-faq', 'Admin::addFaq');
 $routes->post('/answer-question', 'Admin::updateAnswerFaq');
 $routes->delete('/delete-faq', 'Admin::deleteFaq');
+$routes->post('/kirim-faq', 'Admin::faq_from_user');
 
 $routes->get('/admin-about-us', 'Admin::aboutus');
 
@@ -136,7 +141,14 @@ $routes->delete('/delete-team', "Admin::deleteTeam");
 // Portofolio
 $routes->get('/admin-portofolio', 'Admin::portofolio');
 $routes->post('/add-portofolio', 'Admin::addPortofolio');
+$routes->post('/update-portofolio', 'Admin::update_portofolio');
 $routes->delete('/delete-portofolio', 'Admin::deletePortofolio');
+
+// Admin klien
+$routes->get('/admin-klien', 'Admin::klien');
+$routes->post('/add-klien', 'Admin::add_klien');
+$routes->post('/update-klien', 'Admin::update_klien');
+$routes->delete('/delete-klien', 'Admin::delete_klien');
 
 $routes->get('/admin-event', 'Admin::event');
 
@@ -146,6 +158,9 @@ $routes->get('/payment/detail', 'Home::detail_payment');
 $routes->post('/save-purchase','Home::save_purchase');
 
 $routes->get('/notyetapproved','Course::not_yet_approved');
+$routes->get('purchase-done','Home::purchase_message');
+$routes->get('/pendampingan','Home::pendampingan');
+
 
 
 

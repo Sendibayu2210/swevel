@@ -225,7 +225,7 @@ footer .bg-white {
 
 /* contactUs */
 #contact #contactUs .card {
-  border-radius: 30px;
+/*  border-radius: 30px;*/
 }
 
 #contact #contactUs form label {
@@ -272,8 +272,8 @@ footer .bg-white {
     padding-left: 1.5rem;
   }
   #contact #contactUs .col1 {
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
+    /*border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;*/
   }
   #contact #contactUs .col1 .col {
     margin-top: 3rem;

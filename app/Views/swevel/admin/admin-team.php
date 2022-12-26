@@ -13,15 +13,15 @@
     <?php endif; ?>
 
     <div class="d-flex justify-content-between mb-5">
-        <button type="button" class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#modalAddTeam">Add Team</button>
-        <div class="h4 fw-bold text-purple">Team</div>
+        <button type="button" class="btn btn-purple" data-bs-toggle="modal" data-bs-target="#modalAddTeam">Tambah Tim</button>
+        <div class="h4 fw-bold text-purple">Tim Swevel</div>
     </div>
 
     <div class="card-group">
         <div class="row">
             <?php foreach ($team as $x) : ?>
-                <div class="col-lg-4">
-                    <div class="card mb-3">
+                <div class="col-lg-4 d-flex">
+                    <div class="card mb-3 w-100">
                         <img src="/img/team/<?= $x['image']; ?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><?= $x['nama']; ?></h5>
@@ -34,7 +34,7 @@
                             </div>
                             <div class="d-flex mt-4">
                                 <button class="btn btn-purple btn-sm me-2 btn-update-team" data-bs-toggle="modal" data-bs-target="#modalEditTeam" data-id="<?= $x['id']; ?>" data-nama="<?= $x['nama']; ?>" data-jabatan="<?= $x['jabatan']; ?>" data-gambar="<?= $x['image']; ?>" data-linkedin="<?= $x['linkedin']; ?>" data-instagram="<?= $x['instagram']; ?>" data-facebook="<?= $x['facebook']; ?>">Edit</button>
-                                <button class="btn btn-purple btn-sm me-2 btn-delete-team" data-bs-toggle="modal" data-bs-target="#modalDeleteTeam" data-id="<?= $x['id']; ?>" data-image="<?= $x['image']; ?>">Delete</button>
+                                <button class="btn btn-purple btn-sm me-2 btn-delete-team" data-bs-toggle="modal" data-bs-target="#modalDeleteTeam" data-id="<?= $x['id']; ?>" data-image="<?= $x['image']; ?>">Hapus</button>
                             </div>
                         </div>
                     </div>
@@ -102,8 +102,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-purple">Save</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-purple">Simpan</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </form>
         </div>
@@ -114,14 +114,14 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="/delete-team" method="post">
                 <div class="modal-body">
                     <div class="text-center">
-                        <div class="h4">Are you sure ? </div>
-                        <div>You won't be able to revert this!</div>
+                        <div class="h4">Yakin akan menghapus data ini ? </div>
+                        <div>setalah dihapus data tidak dapat dipulihkan!</div>
                     </div>
                     <?= csrf_field(); ?>
                     <input type="hidden" name="_method" value="DELETE">
@@ -129,13 +129,14 @@
                     <input type="hidden" readonly name="file_old" id="file_old">
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-sm btn-purple">Delete</button>
-                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm btn-purple">Hapus</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
 <!-- Modal Edit Team -->
 <div class="modal fade" id="modalEditTeam" tabindex="-1" aria-labelledby="modalEditTeamLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">

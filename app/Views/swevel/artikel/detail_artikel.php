@@ -18,7 +18,7 @@
                             <img src="/img/artikel/<?= $artikel['poster']; ?>" class="card-img-top" alt="..." style="max-width: 400px;">
                         </div>
                         <div class="card-body mt-2">
-                            <h5 class="card-title h3 lh-lg"><?= $artikel['judul']; ?></h5>
+                            <h5 class="card-title h5 lh-base"><?= $artikel['judul']; ?></h5>
                             <p class="card-text">
                                 <?= $artikel['isi_artikel']; ?>
                             </p>
@@ -26,22 +26,22 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="my-3 fw-bold">Related Article</div>
-                    <?php foreach ($artikel_all as $x) : ?>
-                        <div class="card  border-0">
-                            <div class="row">
-                                <div class="col-lg-4 my-auto">
-                                    <img src="/img/artikel/<?= $x['poster']; ?>" class="img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col-lg-8">
-                                    <div class="card-body">
+                    <div class="my-3 fw-bold">Artikel lainnya</div>
+                    <?php foreach ($artikel_all as $x) : ?>                        
+                        <div class="card border-0 shadow br-15 mb-3">                            
+                            <div class="card-body">                                                                    
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 text-center">                                        
+                                            <img src="/img/artikel/<?= $x['poster']; ?>" class="img-fluid " alt="...">                                        
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8">                                        
                                         <h5 class="card-title small"><?= $x['judul']; ?></h5>
                                         <p class="card-text"></p>
-                                        <p class="card-text"><a href="/detail-artikel/<?= $x['slug']; ?>" class="text-decoration-none"><small class="text-muted">Read more</small></a></p>
-                                    </div>
+                                        <p class="card-text"><a href="/detail-artikel/<?= $x['slug']; ?>" class="text-decoration-none"><small class="text-muted">Selengkapnya</small></a></p>                                        
+                                    </div>                                                                                                
                                 </div>
                             </div>
-                        </div>
+                        </div>                        
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -49,5 +49,4 @@
     </div>
 </section>
 <?= $this->include('swevel/homepage/footer'); ?>
-<?= $this->include('swevel/training/footer'); ?>
 <?= $this->endSection(); ?>

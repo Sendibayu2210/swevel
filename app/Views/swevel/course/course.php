@@ -1,262 +1,316 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('content'); ?>
-<?= $this->include('swevel/navbar'); ?>
-<?= $this->include('swevel/training/page_first'); ?>
-<?= $this->include('swevel/course/menu_course_training_event'); ?>
+<?= $this->include('swevel/navbar-course'); ?>
+
+<section id="course-top">
+    <div class="wrapper">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-12 col-12">
+                    <div class="fw-bold h1 text-center" style="letter-spacing: 0;">Tingkatkan <span class="text-purple">Level Keahlian</span> Anda!</div>
+                    <p class="cover-text my-4 text-center" style="line-height: 1.8;font-size: 17px;">Kami menyediakan berbagai topik kursus di bidang engineering seperti implementasi BIM dan estimasi biaya proyek konstruksi sesuai kebutuhan dan kemampuan Anda</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section id="course" class="pb-5 mb-5">
-    <div class="container mt-5">      
+    <div class="container mt-5">
         <section id="popular-course">
-            <div class="h1 mt-5 pt-4 pb-5 fw-bold"><span class="text-purple-100">Course</span></div>
-            <div class="d-flex justify-content-center">
-                <img src="/img/loaderpurple1.gif" alt="" class="skeleton">
+            <div class="h1 fw-bold"><span class="text-purple-100">Kursus</span></div>
+            <div class="row mb-5 mt-2 pb-3">
+                <div class="col-lg-7">
+                    <input type="hidden" name="" id="limit-course" value="0">
+                    <div class="list-category-course">
+                        <span class="fw-bold">Kategori : </span>                        
+                        <button class="btn btn-purple text-white btn-sm mx-1 px-3 rounded-pill btn-category-course" data-categ="">Semua</button>
+                        <button class="btn btn-light btn-sm mx-1 px-3 rounded-pill btn-category-course" data-categ="basic">Basic</button>
+                        <button class="btn btn-light btn-sm mx-1 px-3 rounded-pill btn-category-course" data-categ="intermediate">Intermediate</button>
+                        <button class="btn btn-light btn-sm mx-1 px-3 rounded-pill btn-category-course" data-categ="advanced">Advanced</button>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-search-course">                    
+                    <div class="input-group w-100">
+                        <input type="text" class="form-control" name="search" data-kategori="course" id="search-course-training" placeholder="Ketik kursus yang ingin anda ikuti">
+                        <button class="btn btn-purple" type="button" id="btn-search-course-training">Cari</button>
+                    </div>                    
+                </div>
             </div>
-            <div class="row.">
-                <div class="splide. popular-course">
-                    <div class="splide.__track">
-                        <div class="splide.__list pb-5 row" id="card-popular-course">
+
+            <div class="d-flex justify-content-center">                
+                <div class="spinner-border text-purple skeleton" role="status"><span class="visually-hidden">Loading...</span></div>
+            </div>
+            <div class="pb-5 row" id="card-list-course"></div>            
+        </section>
+    </div>
+    <!-- <div class="container mt-5">
+        <main id="faq">
+            <section id="faqTop">
+                <div class="container">
+                    <div class="row justify-content-between flex-row-reverse mt-5">
+
+                        <div class="col-sm-12 col-md-4 img">
+                            <img src="/img/File Musika/FAQ.png" width="100%" alt="">
+                        </div>
+
+                        <div class="col-sm-12 col-md-7">
+                            <h1 class="fw-light lh-base" style="letter-spacing: 0px;">
+                                Masih Ada <span class="fw-bold text-dark-purple">Pertanyaan </span>?</br>
+                                Lihat Disini
+                            </h1>
+                            <div class="row search">
+                                <div class="col-8">
+                                    <div class="input-group inputfaq">
+                                        <span class="input-group-text border-0 bg-transparent" id="basic-addon1">
+                                            <i class="bi bi-search text-secondary fs-5"></i>
+                                        </span>
+                                        <input type="text" class="form-control border-0" placeholder="Ketik disini ..." aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section id="question">
+                <div class="container pb-5 ">
+                    <div class="row mt-5">
+                        <div class="col-sm-12 col-md-5 justify-content-center d-flex">
+                            <ul class="nav flex-column nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                                <button class="nav-link active fw-normal" data-bs-toggle="pill" data-bs-target="#pertanyaan" type="button" role="tab" aria-selected="true">Umum</button>
+                                <button class="nav-link fw-normal" data-bs-toggle="pill" data-bs-target="#services" type="button" role="tab" aria-selected="false">Layanan</button>
+                                <button class="nav-link fw-normal" data-bs-toggle="pill" data-bs-target="#aboutUs" type="button" role="tab" aria-selected="false">Tentang kami</button>
+                                <button class="nav-link fw-normal" data-bs-toggle="pill" data-bs-target="#event" type="button" role="tab" aria-selected="false">Kursus</button>
+                                <button class="nav-link fw-normal" data-bs-toggle="pill" data-bs-target="#course" type="button" role="tab" aria-selected="false">Pelatihan</button>
+                                <button class="nav-link fw-normal" data-bs-toggle="pill" data-bs-target="#training" type="button" role="tab" aria-selected="false">Konsultasi</button>
+                            </ul>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                            <div class="tab-content" id="pills-tabContent">
+
+                                <div class="tab-pane fade show active" id="pertanyaan" role="tabpanel" aria-labelledby="pertanyaan-tab" tabindex="0">
+                                    <div class="accordion accordion-flush" id="accordionFlushExample">
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed fw-bold text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#general1" aria-expanded="false">
+                                                    1. Apa itu Multi Visi Karya ?
+                                                </button>
+                                            </h2>
+                                            <div id="general1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">Sebuah Biro Jasa Konsultasi yang bergerak dalam bidang asa Perencana dan Pengawas Konstruksi yang terdiri dari bidang Arsitektur, Sipil, Jasa Inspeksi Teknis, Tata Lingkungan dan Survey, bahkan Jasa Non Konstruksi (Pendidikan, Perindustrian, Perdagangan, dan lainya).</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingTwo">
+                                                <button class="accordion-button collapsed fw-bold text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#general2" aria-expanded="false">
+                                                    2. Dimanakah saya bisa menghubungi admin website ?
+                                                </button>
+                                            </h2>
+                                            <div id="general2" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">Melalui fitur hubungi kami. Dan nanti akan diarahkan menuju whatsapp</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingThree">
+                                                <button class="accordion-button collapsed fw-bold text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#general3" aria-expanded="false">
+                                                    3. Apakah kita perlu membuat sebuah akun untuk mengakses website ini ?
+                                                </button>
+                                            </h2>
+                                            <div id="general3" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">Jika kita hanya melihat website maka tidak perlu membuat akun. Namun jika kita ingin mengakses layanan kursus maka kita perlu akses login akun.</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="services" role="tabpanel" aria-labelledby="services-tab" tabindex="0">
+                                    <div class="accordion accordion-flush" id="accordionFlushExample">
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed fw-bold text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#services1" aria-expanded="false">
+                                                    1. Bagaimana cara mengakses kursus dalam website ini?
+                                                </button>
+                                            </h2>
+                                            <div id="services1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">
+                                                    <ul>
+                                                        <li>Yang pertama pilihlah materi kursus yang diinginkan.</li>
+                                                        <li>Klik beli kursus, bisa melihat dulu deskripsi singkat tentang kursus dengan klik thumbnail, kemudian beli kursus</li>
+                                                        <li>Kemudian login akun</li>
+                                                        <li>Akhirnya anda dapat mengakses kursus dengan materi, video pembelajaran, dan kuis yang perlu dikerjakan bertahap</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed fw-bold text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#services1" aria-expanded="false">
+                                                    2. Bagaimana cara mengakses pelatihan dalam website ini?
+                                                </button>
+                                            </h2>
+                                            <div id="services1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">
+                                                    <ul>
+                                                        <li>Yang pertama pilihlah materi pelatihan yang diinginkan.</li>
+                                                        <li>Klik beli gabung sekarang, bisa melihat dulu deskripsi singkat tentang kursus dengan klik thumbnail, kemudian beli kursus</li>
+                                                        <li>Anda dapat mengakses pelatihan dengan materi dan modul pembelajaran bersama mentor</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed fw-bold text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#services1" aria-expanded="false">
+                                                    3. Bagaimana cara melaukan konsutasi projek dalam website ini?
+                                                </button>
+                                            </h2>
+                                            <div id="services1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">
+                                                    <ul>
+                                                        <li>Yang pertama pilihlah bagian konsultasi projek.</li>
+                                                        <li>Klik hubungi kami</li>
+                                                        <li>Anda dapat mencoba menghubungi admin grup melalui nomer whatsapp</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="aboutUs" role="tabpanel" aria-labelledby="aboutUs-tab" tabindex="0">
+                                    <div class="accordion accordion-flush" id="accordionFlushExample">
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed fw-bold text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#aboutus1" aria-expanded="false">
+                                                    bagaimana cara menghubungi perusahaan ?
+                                                </button>
+                                            </h2>
+                                            <div id="aboutus1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">pada halaman homepage atau halaman depan, klik tombol kontak kami, kemudian akan di arahkan pada halaman kontak. pada halaman tersebut tersedia nomor dan email perusahaan.</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="event" role="tabpanel" aria-labelledby="event-tab" tabindex="0">
+                                    <div class="accordion accordion-flush" id="accordionFlushExample">
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed fw-bold text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#event1" aria-expanded="false">
+                                                    bagaimana cara membeli kursus ?
+                                                </button>
+                                            </h2>
+                                            <div id="event1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">Course dapat dibeli dengan mengklik tombol beli kursus pada halaman course</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="course" role="tabpanel" aria-labelledby="course-tab" tabindex="0">
+                                    <div class="accordion accordion-flush" id="accordionFlushExample">
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed fw-normal fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#course1" aria-expanded="false">
+                                                    bagaimana cara membeli kursus ?
+                                                </button>
+                                            </h2>
+                                            <div id="course1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">Course dapat dibeli dengan mengklik tombol beli kursus pada halaman course</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="training" role="tabpanel" aria-labelledby="training-tab" tabindex="0">
+                                    <div class="accordion accordion-flush" id="accordionFlushExample">
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed fw-normal" type="button" data-bs-toggle="collapse" data-bs-target="#training1" aria-expanded="false">
+                                                </button>
+                                            </h2>
+                                            <div id="training1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body"></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <div class="h1 mt-5 pt-4 pb-3 fw-bold">Paket <span class="text-purple-100">Bundling</span></div>
-        <div class="h3 text-muted col-lg-5 mb-5 ">Ambil paket bundling untuk raih lebih banyak</div>
-        <section id="bundling-course">
-        <div class="d-flex justify-content-center"><img src="/img/loaderpurple1.gif" alt="" class="skeleton-bundling"></div>
-            <div class="row bundling-course card-group"></div>
-        </section>
-    </div>
+            </section>
+        </main>
+    </div> -->
 </section>
 
 <script>
     $(document).ready(function() {
 
-        getCourse('https://lms.lazy2.codes/api/course');
-        getBundling();
+        // searchHover = function() {
+        //     let input = $('#faq .inputfaq input');
+        //     let i = $('#faq .inputfaq i');
+        //     input.on('focus', function() {
+        //         $(this).parent().addClass('focus');
+        //         i.addClass('text-dark-purple');
+        //     })
+        //     input.on('blur', function() {
+        //         if ($(this).val().length == 0) {
+        //             $(this).parent().removeClass('focus');
+        //             i.removeClass('text-dark-purple');
+        //         }
+        //     })
+        // }
+        // searchHover();
 
-        $("img").bind("error", function() {
-            $(this).attr("src", "/img/imagenotavailable.jpg");
-        });
-        $('#btn-search-course-training').click(function() {
-            refreshCourse();
-        })
-        $('#search-course-training').on('keypress', function(e) {
-            if (e.which == 13) {
-                refreshCourse();
-            }
-        });        
-        // popularCourse();
-        // saleCourse();
-    })
+        // questionFunc = function() {
+        //     let mediaSm = window.matchMedia("(max-width: 576px)");
+        //     let mediaMd = window.matchMedia("(min-width: 577px)");
+        //     let ul = $('#question ul');
+        //     let parentUl = ul.parent();
+        //     if (mediaSm.matches) {
+        //         if (ul.hasClass('flex-column') && parentUl.hasClass('d-flex')) {
+        //             ul.removeClass('flex-column');
+        //             parentUl.removeClass('d-flex');
+        //         }
+        //     }
+        //     if (mediaMd.matches) {
+        //         if (!ul.hasClass('flex-column') && !parentUl.hasClass('d-flex')) {
+        //             ul.addClass('flex-column');
+        //             parentUl.addClass('d-flex');
+        //         }
+        //     }
+        // }
+        // questionFunc();
+        // $(window).resize(function() {
+        //     questionFunc();
+        // });
 
-    function refreshCourse() {
-        $('.skeleton').removeClass('hide')
-        $('#card-popular-course').html('');
-        let inputSearch = $('#search-course-training').val();
-        if (inputSearch == '') {
-            getCourse('https://lms.lazy2.codes/api/course');
-        } else {
-            getCourse('https://lms.lazy2.codes/api/course/find/' + inputSearch);
-        }
-    }
-
-    function getCourse(url, searchCourse) {
-        let getUrl = url;
-        $.ajax({
-            url: getUrl,
-            type: 'GET',
-            dataType: 'json',
-            success: function(result) {
-                $.each(result, function(i, data) {
-                    $.each(data.tag, function(i, dataa) {
-                        $('.menu-tag').append(`                                                    
-                            <button type="button" class="btn btn-light mx-3 tag-name">` + dataa.name + `</button>
-                        `);
-
-                        // remove duplicate
-                        var seen = {};
-                        $('.tag-name').each(function() {
-                            var txt = $(this).text();
-                            if (seen[txt])
-                                $(this).remove();
-                            else
-                                seen[txt] = true;
-                        });
-                        // end remove
-                    })
-                })
-                let countData = result.length;
-                if (countData >= 1) {
-                    $('.skeleton').addClass('hide')
-                    $('#card-popular-course').html('');
-                    $.each(result, function(i, data) {
-                        $('#card-popular-course').append(`
-                        <div class="col-md-4 col-lg-4 col-sm-12 .splide__slide mb-5">
-                                <div class="card card-course border-0 cursor-pointer shadow" data-id="`+data.course_id+`">
-                                    <div class="course-circle-time small"><small>`+data.suitable_for+`</small></div>
-                                    <div class="image-content">
-                                        <div class="card-image.">
-                                            <div class="course-img-polygon">
-                                                <img src="` + data.thumbnail + `" alt="" class="card-img">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-content ps-4 py-4">
-                                        <h5 class="card-title fw-bold lh-base">` + data.title + ` </h5>                                        
-                                        <div class="row">
-                                            <div class="col-sm-8 col-md-6 col-lg-12">
-                                                <p class="card-text h6 text-decoration-line-through text-secondary">Rp ` + formatRupiah(data.old_price) + `</p>
-                                                <p class="card-text h5 fw-bold text-red">Rp ` + formatRupiah(data.new_price) + `</p>
-                                            </div>
-                                            <div class="col-sm-4 col-md-6 col-lg-12 text-sm-end text-lg-start">
-                                                <a href="/payment/`+data.course_id+`" class="btn btn-sm btn-purple-100 mt-2 me-md-4 me-sm-4">Join Now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="/course/detail/` + data.course_id + `" class="text-decoration-none btn btn-sm btn-light fw-bold course-btn-read-more ms-lg-0 ms-md-5 ms-sm-5">Read More</a>
-                                </div>
-                            </div>
-                        `);
-                    })
-                    $("img").bind("error", function() {
-                        $(this).attr("src", "/img/loaderpurple2.gif");
-                    });
-                } else {
-                    $('.skeleton').addClass('hide')
-                    $('#card-popular-course').append(`
-                    <div class="alert alert-warning w-100 text-center" role="alert">
-                    Maaf, keyword yang anda cari tidak ditemukan.
-                    </div>
-                `)
-                }
-                
-                $('.card-course').click(function(){
-                    let id = $(this).data('id');
-                    window.location.href = '/course/detail/'+id;
-                })
-            },
-            error: function(result, ajaxOptions, thrownError) {
-                $('.skeleton').addClass('hide')
-                $('#card-popular-course').append(`
-                    <div class="alert alert-danger w-100 text-center" role="alert">
-                    Maaf, untuk saat ini course belum bisa di akses.
-                    </div>
-                `)
-            }
-        })
-    }
-
-    function getBundling(){
-        $.ajax({
-                url : 'https://lms.lazy2.codes/public/api/bundling',
-                type : 'get',
-                dataType : 'json',
-                success : function(result){            
-                    $('.skeleton-bundling').addClass('hide').attr('src','');
-                        $.each(result, function(index, bundling){   
-                                $('.bundling-course').append(`
-                                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-                                         <div class="card border-0 shadow card-bundling cursor-pointer" style="border-radius: 10px;">
-                                         <div class="card-body">
-                                                 <div class="d-flex justify-content-between">
-                                                    <div class="title-bundling fw-bold text-purple">`+bundling.title+`</div>
-                                                    <div class="title-bundling fw-bold text-purple">`+bundling.category_name+`</div>
-                                                 </div>
-                                                 <div class="my-2 description-bundling">`+bundling.description+`</div>
-                                                 <div class="list-course-bundling-`+bundling.bundling_id+` small text-white">`+getDetailBundling(bundling.bundling_id)+`</div>  
-                                                 <div class="col-sm-8 col-md-6 col-lg-12">
-                                                         <p class="card-text h6 text-decoration-line-through text-secondary">Rp ` + formatRupiah(bundling.old_price) + `</p>
-                                                         <p class="card-text h5 fw-bold text-red">Rp ` + formatRupiah(bundling.new_price) + `</p>
-                                                 </div>            
-                                                 <div class="col-sm-4 col-md-6 col-lg-12 text-sm-end mt-4 text-lg-start">
-                                                         <button class="btn btn-sm btn-purple-100 mt-2 w-100">Join Now</button>
-                                                 </div>                                          
-                                         </div>
-                                         </div>
-                                 </div>
-                                 `);
-
-                                 function getDetailBundling(id){                                        
-                                        $.ajax({
-                                                url : 'https://lms.lazy2.codes/public/api/bundling/detail/'+id,
-                                                type : 'get',
-                                                dataType : 'json',
-                                                success : function(result){                                                                                                                                                                    
-                                                        if(result.course.length > 0){
-                                                                $.each(result.course, function(index, data){                                                                            
-                                                                        $('.list-course-bundling-'+id).append(`                                                                        
-                                                                                <div class="row">
-                                                                                    <div class="col-2">
-                                                                                        <div class="mb-3 text-dark"><i class="fa-solid fa-check text-purple small"></i></div>
-                                                                                    </div>
-                                                                                    <div class="col-9">
-                                                                                        <div class="mb-3 text-dark">`+data.title+`</div>
-                                                                                    </div>
-                                                                                </div>
-                                                                        `);
-                                                                })                                                                
-                                                        }
-                                                        if(result.course.length == 0){
-                                                            $('.list-course-bundling-'+id).append(`<div class="mb-3 text-dark">course belum tersedia</div>`);
-                                                        }
-                                                }
-                                        })
-                                 }                             
-                        })
-                }
-        })
-    }
-
-
-
-    // let popularCourse = () => {
-    //     let mediaSm = window.matchMedia("(max-width: 576px)");
-    //     let mediaMd = window.matchMedia("(max-width: 577px)");
-    //     if (mediaSm.matches) {
-    //         var perPage = 1;
-    //     } else if (mediaMd.matches) {
-    //         var perPage = 3;
-    //     } else {
-    //         var perPage = 3;
-    //     }
-    //     var splide = new Splide('.splide.popular-course', {
-    //         // type: 'loop',
-    //         perPage: perPage,
-    //         rewind: true,
-    //         arrows: false,
-    //         // autoplay: true,
-    //         // speed: 2000,
-    //         // width: '100%',
-    //         // padding: '10px',
-    //     });
-
-    //     splide.mount();
-    // }
-    // let saleCourse = () => {
-    //     let mediaSm = window.matchMedia("(max-width: 576px)");
-    //     let mediaMd = window.matchMedia("(max-width: 577px)");
-    //     if (mediaSm.matches) {
-    //         var perPage = 1;
-    //     } else if (mediaMd.matches) {
-    //         var perPage = 3;
-    //     } else {
-    //         var perPage = 3;
-    //     }
-    //     var splide = new Splide('.splide.sale-course', {
-    //         // type: 'loop',
-    //         perPage: perPage,
-    //         rewind: true,
-    //         arrows: false,
-    //         // autoplay: true,
-    //         // speed: 2000,
-    //         // width: '100%',
-    //         // padding: '10px',
-    //     });
-
-    //     splide.mount();
-    // }
+        setTimeout(function(){
+            getCourse('https://stufast.id/api/course/author/2');
+        },500)
+        // getBundling();          
+    })    
 </script>
-<?= $this->include('swevel/homepage/footer'); ?>
-<?= $this->include('swevel/training/footer'); ?>
+
+<script src="/js/course.js"></script>
+<?= $this->include('swevel/course/footer-course'); ?>
 <?= $this->endSection(); ?>

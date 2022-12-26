@@ -24,6 +24,14 @@ class Faq extends Migration
             'answer' => [
                 'type' => 'text',
             ],
+             'email' => [
+                'type' => 'VARCHAR',
+                'constraint' => 50,
+            ],
+             'telepon' => [
+                'type' => 'VARCHAR',
+                'constraint' => 50,
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true

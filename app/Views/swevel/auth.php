@@ -9,12 +9,12 @@
     <script src="asset/custom_vendor/jquery/jquery-3.6.1.min.js"></script>
     <link rel="stylesheet" href="/asset/custom_vendor/bootstrap5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/asset/custom_vendor/fontawesome612/css/all.css">
-    <link rel="stylesheet" href="/asset/css/custom.css">
-    <title>Swevel | Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Masuk - PT Swevel Universal Media</title>
 </head>
 
 <body id="auth">
-    <nav class="navbar navbar-expand-lg bg-transparent position-absolute w-100 shadow-none" style="top: 0;">
+  <!--   <nav class="navbar navbar-expand-lg bg-transparent position-absolute w-100 shadow-none" style="top: 0;">
         <div class="container">
             <a class="navbar-brand fw-bold" href="/"><img src="/img/logo-swevel.png" alt="" style="max-width: 110px;"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,36 +24,37 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-3"></ul>            
             </div>
         </div>
-    </nav>
+    </nav> -->
     <div class="container h-100 w-100">
         <div class="wave1"></div>
 
         <section id="login">
             <div class="row justify-content-center h-100">
-                <div class="col-sm-12 col-md-5 my-auto px-4">
-                    <div class="card p-3">
+                <div class="col-sm-12 col-md-6 my-auto px-4">
+                    <div class="card p-3 shadow">
                         <div class="card-body">
-                            <div class="text-center fw-bold fs-5 my-4">
-                                User Login
+                            <div class="text-center">
+                                <a href="/"><img src="/img/logo-swevel.png" alt="" style="max-width: 200px;"></a>
                             </div>
+                            <div class="text-center fs-5 mb-4 text-purple-100">PT Swevel Universal Media</div>
                             <div class="message-register success my-3"></div>
                             <form action="#" method="POST" autocomplete="off" id="form-login">
                                 <?= csrf_field(); ?>
                                 <div class="mb-3">
-                                    <input id="email" type="text" class="form-control" name="email" placeholder="email" autofocus>
+                                    <input id="email" type="text" class="form-control" name="email" placeholder="Masukan email anda" autofocus>
                                     <div class="invalid-feedback email"></div>
                                 </div>
                                 <div class="mb-3">
-                                    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                                    <input id="password" type="password" class="form-control" name="password" placeholder="Masukan kata sandi">
                                     <div class="invalid-feedback password"></div>
-                                    <div class="small text-end"><input type="checkbox" name="" id="show-password-login"><label for="show-password-login" class="text-muted ms-2 mt-2 cursor-pointer">Lihat password</label></div>
+                                    <!-- <div class="small text-end"><input type="checkbox" name="" id="show-password-login"><label for="show-password-login" class="text-muted ms-2 mt-2 cursor-pointer">Lihat password</label></div> -->
                                 </div>
                                 <div class="mb-3">
-                                    <button id="btnLogin" type="button" class="btn btn-login w-100" name="login">LOGIN</button>
+                                    <button id="btnLogin" type="button" class="btn btn-login w-100 btn-purple" name="login">MASUK</button>
                                 </div>
                                 <input type="hidden" name="payment" id="" value="<?= $payment; ?>">
                             </form>
-                            <div class="text-center">
+                           <!--  <div class="text-center">
                                 <code class="text-dark">
                                     <em>forget password? klik </em>
                                     <a href="#">here</a><br>
@@ -61,7 +62,7 @@
                                 <code class="text-dark">
                                     <a id="toRegister" href="#register" class="w-100">Create Your Account</a>
                                 </code>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -171,7 +172,7 @@
                         dataType: 'json',
                         data: $('#form-login').serialize(),
                         success : function(result){
-                            $('#btnLogin').html('LOGIN');
+                            $('#btnLogin').html('Masuk');
                             if(result.message == 'email tidak ditemukan'){
                                 $("#email").addClass('is-invalid').focus();
                                 $('.invalid-feedback.email').html(result.message);

@@ -204,7 +204,7 @@
                     },
                     success: function(result){
                         if(result.code == '200'){
-                            window.location.href = result.redirect;
+                            $(".show-detail-pembayaran.selanjutnya").addClass('btn-purple').removeClass('btn-danger').html('Done');                
                         }
                         if(result.code == '500' && result.message == 'sudah-beli'){
                             $(".show-detail-pembayaran.selanjutnya").addClass('btn-purple').removeClass('btn-danger').html('anda sudah membeli course ini.\n anda bisa melanjutkan ke halaman materi');                

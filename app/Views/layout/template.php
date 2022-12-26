@@ -13,11 +13,13 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,300&display=swap" rel="stylesheet">
 
+    <!-- carouse -->
+    <link rel="stylesheet" href="/css/flickity.min.css">
+    <script src="/js/flickity.pkgd.min.js"></script>
+    <!-- end carausel -->
+
     <!-- custom -->
-    <link rel="stylesheet" href="/css/swevel_style.css">
-    <link rel="stylesheet" href="/asset/css/custom.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/course.css">
+    <link rel="stylesheet" href="/css/style.css">    
 </head>
 
 <body>
@@ -30,6 +32,8 @@
 
 
     <script>
+        
+        
         $(document).ready(function() {
             // scroll link
             let lastId,
@@ -56,7 +60,8 @@
         });
     </script>
 
-    <script src="/js/swevel.js"></script>
+    <script src="/js/swevel.js"></script>    
+
 
 
 

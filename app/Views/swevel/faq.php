@@ -17,32 +17,14 @@
     <section id="faqTop">
         <div class="container">
             <div class="row justify-content-between flex-row-reverse mt-5">
-
-                <div class="col-sm-12 col-md-4 img">
-                    <!-- <div class="card border-0">
-                    <div class="card-body p-0"> -->
-                    <img src="asset/image/faq/Question.png" width="100%" alt="">
-                    <!-- </div>
-                </div> -->
+                <div class="col-sm-12 col-md-4 img">                    
+                    <img src="asset/image/faq/Question.png" width="100%" alt="">                    
                 </div>
-
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-6 d-flex align-items-center">
                     <h1 class="fw-light lh-base">
-                        Have Any <span class="fw-bold text-dark-purple">Question </span>?</br>
-                        Look Here
-                    </h1>
-                    <div class="row search">
-                        <div class="col-8">
-                            <div class="input-group inputfaq">
-                                <span class="input-group-text border-0 bg-transparent" id="basic-addon1">
-                                    <i class="bi bi-search text-secondary fs-5"></i>
-                                </span>
-                                <input type="text" class="form-control border-0" placeholder="Type here ..." aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                        </div>
-                    </div>
+                        Masih ada <span class="fw-bold text-dark-purple">Pertanyaan </span>?</br>                        
+                    </h1>                 
                 </div>
-
             </div>
         </div>
     </section>
@@ -52,66 +34,83 @@
             <div class="row mt-5">
                 <div class="col-sm-12 col-md-5 justify-content-center d-flex">
                     <ul class="nav flex-column nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
-                        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#general" type="button" role="tab" aria-selected="true">general</button>
-                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#services" type="button" role="tab" aria-selected="false">services</button>
-                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#aboutUs" type="button" role="tab" aria-selected="false">about us</button>
-                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#event" type="button" role="tab" aria-selected="false">event</button>
-                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#course" type="button" role="tab" aria-selected="false">course</button>
-                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#training" type="button" role="tab" aria-selected="false">training</button>
+                        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#kursus" type="button" role="tab" aria-selected="true">Kursus</button>
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pelatihan" type="button" role="tab" aria-selected="false">Pelatihan</button>
+                        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#lainnya" type="button" role="tab" aria-selected="false">Lainnya</button>                        
                     </ul>
                 </div>
                 <div class="col-sm-12 col-md-7">
                     <div class="tab-content" id="pills-tabContent">
+                       
 
-                        <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab" tabindex="0">
+                        <div class="tab-pane fade" id="kursus" role="tabpanel" aria-labelledby="kursus-tab" tabindex="0">
                             <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <?php foreach($faq as $x) : ?>
+                                    <?php if($x['kategori'] == 'kursus' && $x['answer'] != '') :  ?>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#kursus<?= $x['id'];?>" aria-expanded="false">
+                                                    <?= $x['question']; ?>
+                                                </button>
+                                            </h2>
+                                            <div id="kursus<?= $x['id'];?>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body"><?= $x['answer']; ?></div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
 
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#general1" aria-expanded="false">
-                                            General #1
-                                        </button>
-                                    </h2>
-                                    <div id="general1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pelatihan" role="tabpanel" aria-labelledby="pelatihan-tab" tabindex="0">
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <?php foreach($faq as $x) : ?>
+                                    <?php if($x['kategori'] == 'pelatihan' && $x['answer'] != '') :  ?>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pelatihan<?= $x['id']; ?>" aria-expanded="false">
+                                                    <?= $x['question']; ?>
+                                                </button>
+                                            </h2>
+                                            <div id="pelatihan<?= $x['id']; ?>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body"><?= $x['answer']; ?></div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
 
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#general2" aria-expanded="false">
-                                            General #2
-                                        </button>
-                                    </h2>
-                                    <div id="general2" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#general3" aria-expanded="false">
-                                            General #3
-                                        </button>
-                                    </h2>
-                                    <div id="general3" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
+                         <div class="tab-pane fade" id="lainnya" role="tabpanel" aria-labelledby="lainnya-tab" tabindex="0">
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <?php foreach($faq as $x) : ?>
+                                    <?php if($x['kategori'] == 'lainnya' && $x['answer'] != '') :  ?>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lainnya<?= $x['id'];?>" aria-expanded="false">
+                                                    <?= $x['question']; ?>
+                                                </button>
+                                            </h2>
+                                            <div id="lainnya<?= $x['id'];?>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body"><?= $x['answer']; ?></div>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
 
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="services" role="tabpanel" aria-labelledby="services-tab" tabindex="0">
+                         <div class="tab-pane fade" id="pelatihan" role="tabpanel" aria-labelledby="pelatihan-tab" tabindex="0">
                             <div class="accordion accordion-flush" id="accordionFlushExample">
 
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#services1" aria-expanded="false">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pelatihan1" aria-expanded="false">
                                             Services #1
                                         </button>
                                     </h2>
-                                    <div id="services1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                    <div id="pelatihan1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
                                     </div>
                                 </div>
@@ -119,12 +118,12 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="aboutUs" role="tabpanel" aria-labelledby="aboutUs-tab" tabindex="0">
+                        <div class="tab-pane fade" id="lainnya" role="tabpanel" aria-labelledby="lainnya-tab" tabindex="0">
                             <div class="accordion accordion-flush" id="accordionFlushExample">
 
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aboutus1" aria-expanded="false">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#lainnya1" aria-expanded="false">
                                             About Us #1
                                         </button>
                                     </h2>
@@ -134,59 +133,7 @@
                                 </div>
 
                             </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="event" role="tabpanel" aria-labelledby="event-tab" tabindex="0">
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#event1" aria-expanded="false">
-                                            Event #1
-                                        </button>
-                                    </h2>
-                                    <div id="event1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="course" role="tabpanel" aria-labelledby="course-tab" tabindex="0">
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#course1" aria-expanded="false">
-                                            Course #1
-                                        </button>
-                                    </h2>
-                                    <div id="course1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="training" role="tabpanel" aria-labelledby="training-tab" tabindex="0">
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#training1" aria-expanded="false">
-                                            Training #1
-                                        </button>
-                                    </h2>
-                                    <div id="training1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
+                        </div>                     
                     </div>
 
                 </div>

@@ -23,16 +23,16 @@ class User extends BaseController
     {        
         $email = session()->get('swevel_email');
         $id_user = $this->UsersModel->where('email',$email)->first();
-        $cek_purchase = $this->PurchaseModel->where('id_user',$id_user['id'])->where('id_course',$id)->first();            
-        if(!$cek_purchase){            
-            session()->setFlashdata('message','Maaf! Anda belum membeli course ini');
-            return redirect('notyetapproved');
-        }else{
-            if($cek_purchase['status'] != 'approved'){
-                session()->setFlashdata('message','Maaf! course yang anda beli sedang dalam proses approval');
-                return redirect('notyetapproved');
-            }
-        }        
+        // $cek_purchase = $this->PurchaseModel->where('id_user',$id_user['id'])->where('id_course',$id)->first();            
+        // if(!$cek_purchase){            
+        //     session()->setFlashdata('message','Maaf! Anda belum membeli course ini');
+        //     return redirect('notyetapproved');
+        // }else{
+        //     if($cek_purchase['status'] != 'approved'){
+        //         session()->setFlashdata('message','Maaf! course yang anda beli sedang dalam proses approval');
+        //         return redirect('notyetapproved');
+        //     }
+        // }        
 
         $data = [
             'title' => 'Materi',

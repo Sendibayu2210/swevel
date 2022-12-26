@@ -10,6 +10,7 @@ use App\Models\CourseModel;
 use App\Models\SubCourseModel;
 use App\Models\TeamModel;
 use App\Models\PortofolioModel;
+use App\Models\KlienModel;
 use App\Models\ArtikelModel;
 use App\Models\UsersModel;
 use App\Models\PembayaranModel;
@@ -27,6 +28,7 @@ class Admin extends BaseController
         $this->SubCourseModel = new SubCourseModel();
         $this->TeamModel = new TeamModel();
         $this->PortofolioModel = new PortofolioModel();
+        $this->KlienModel = new KlienModel();
         $this->ArtikelModel = new ArtikelModel();        
         $this->UsersModel = new UsersModel();        
         $this->PembayaranModel = new PembayaranModel();        
@@ -230,6 +232,7 @@ class Admin extends BaseController
         ];
         return view('swevel/admin/admin-more-event', $data);
     }
+    // admin portofolio
     public function portofolio()
     {
         $data = [
@@ -243,6 +246,12 @@ class Admin extends BaseController
     public function addPortofolio()
     {
         if (!$this->validate([
+            'judul' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Judul harus diisi',
+                ],
+            ],
             'berkas' => [
                 'rules' => 'uploaded[berkas]|mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png]|max_size[berkas,2048]',
                 'errors' => [
@@ -262,7 +271,8 @@ class Admin extends BaseController
         $dataBerkas = $this->request->getFile('berkas');
         $fileName = $dataBerkas->getRandomName();
         $this->PortofolioModel->insert([
-            'image' => $fileName,
+            'judul' => htmlspecialchars($this->request->getVar('judul')),
+            'gambar' => $fileName,
         ]);
         $dataBerkas->move('img/portofolio/', $fileName);
         session()->setFlashdata('message', 'Data portofolio Berhasil di Upload');
@@ -270,10 +280,57 @@ class Admin extends BaseController
         return redirect('admin-portofolio');
     }
 
+    public function update_portofolio()
+    {
+        if (!$this->validate([
+            'judul' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Judul harus diisi',
+                ],
+            ],
+            'berkas' => [
+                'rules' => 'mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png]|max_size[berkas,2048]',
+                'errors' => [                    
+                    'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png',
+                    'max_size' => 'Ukuran File Maksimal 2 MB'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
+            return redirect()->back()->withInput();
+        }        
+        // $berkas = new BerkasModel();
+        $dataBerkas = $this->request->getFile('berkas');
+         if ($dataBerkas->getError() == 4) {
+            $fileName = $this->request->getVar('file_old');
+        } else {
+            $fileName = $dataBerkas->getRandomName();
+            $dataBerkas->move('img/portofolio/', $fileName);
+            $filelama = 'img/portofolio/' . $this->request->getVar('file_old');
+            if(file_exists($filelama)){
+                unlink($filelama);
+            }
+        }        
+        $id = $this->request->getVar('id');
+        $data = [
+            'judul' => htmlspecialchars($this->request->getVar('judul')),
+            'gambar' => $fileName,
+        ];
+        $this->PortofolioModel->update($id, $data);        
+        session()->setFlashdata('message', 'Data portofolio Berhasil diupdate');
+        session()->setFlashdata('message1', 'Success');
+        return redirect('admin-portofolio');
+    }
+
     public function deletePortofolio()
     {
         $id = $this->request->getVar('id_portofolio');
-        unlink('img/portofolio/' . $this->request->getVar('old_file'));
+        $file_lama = 'img/portofolio/' . $this->request->getVar('old_file');
+        if (file_exists($file_lama)) {
+        unlink($file_lama);
+        }
         $delete = $this->PortofolioModel->delete($id);
         if ($delete) {
             session()->setFlashdata('message', 'data portofolio berhasil di hapus');
@@ -284,6 +341,66 @@ class Admin extends BaseController
         }
         return redirect('admin-portofolio');
     }  
+    // end admin portofolio
+
+    // admin klien
+     public function klien()
+    {
+        $data = [
+            'user' => $this->user,
+            'title' => 'Klien',
+            'klien' => $this->KlienModel->findAll(),
+            'validation' => $this->validation,
+        ];
+        return view('swevel/admin/admin-klien', $data);
+    }
+    public function add_klien()
+    {
+        if (!$this->validate([         
+            'berkas' => [
+                'rules' => 'uploaded[berkas]|mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png]|max_size[berkas,2048]',
+                'errors' => [
+                    'uploaded' => 'Harus Ada File yang diupload',
+                    'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png',
+                    'max_size' => 'Ukuran File Maksimal 2 MB'
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('message', $this->validator->listErrors());
+            session()->setFlashdata('message1', 'Error');
+
+            return redirect()->back()->withInput();
+        }
+
+        // $berkas = new BerkasModel();
+        $dataBerkas = $this->request->getFile('berkas');
+        $fileName = $dataBerkas->getRandomName();
+        $this->KlienModel->insert([            
+            'gambar' => $fileName,
+        ]);
+        $dataBerkas->move('img/klien/', $fileName);
+        session()->setFlashdata('message', 'Data klien Berhasil di Upload');
+        session()->setFlashdata('message1', 'Success');
+        return redirect('admin-klien');
+    }
+     public function delete_klien()
+    {
+        $id = $this->request->getVar('id_portofolio');
+        unlink('img/klien/' . $this->request->getVar('old_file'));
+        $delete = $this->KlienModel->delete($id);
+        if ($delete) {
+            session()->setFlashdata('message', 'data klien berhasil di hapus');
+            session()->setFlashdata('message1', 'Success');
+        } else {
+            session()->setFlashdata('message', 'data klien gagal di hapus');
+            session()->setFlashdata('message1', 'Error');
+        }
+        return redirect('admin-klien');
+    }  
+
+    // end admin klien
+
+
 
     // profile
     public function profile()
@@ -511,7 +628,7 @@ class Admin extends BaseController
 
         $kontak = $this->request->getVar('kontak');
 
-        if ($kontak == 'phone' || $kontak == 'envelope') {
+        if ($kontak == 'phone' || $kontak == 'envelope' || $kontak == 'location-dot') {
             $icon = '<i class="fa-solid fa-' . $kontak . '"></i>';
         } else {
             $icon = '<i class="fa-brands fa-' . $kontak . '"></i>';
@@ -590,7 +707,13 @@ class Admin extends BaseController
     public function addFaq()
     {
         if (!$this->validate([
-            'add-question' => [
+            'add-kategori' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kategori harus diisi'
+                ]
+            ],
+             'add-question' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Pertanyaan harus diisi'
@@ -612,6 +735,7 @@ class Admin extends BaseController
         $data = [
             'user' => $this->user,
             'from' => 'Swevel',
+            'kategori' => $this->request->getVar('add-kategori'),
             'question' => $this->request->getVar('add-question'),
             'answer' => $this->request->getVar('add-answer'),
         ];
@@ -666,6 +790,37 @@ class Admin extends BaseController
             session()->setFlashdata('message1', 'error');
         }
         return redirect('admin-faq');
+    }
+
+
+    public function faq_from_user()
+    {    
+        $nama = $this->request->getVar('nama');
+        $email = $this->request->getVar('email');
+        $telepon = $this->request->getVar('telepon');
+        $pesan = $this->request->getVar('pesan');
+        $kategori = $this->request->getVar('kategori');
+
+        $data = [
+            'from' => htmlspecialchars($nama),
+            'question' => htmlspecialchars($pesan),
+            'answer' => '',
+            'email' => htmlspecialchars($email),
+            'telepon' => htmlspecialchars($telepon),
+            'kategori' => htmlspecialchars($kategori),
+        ];
+        $insert = $this->FaqModel->insert($data);
+        if($insert){
+            return json_encode([
+                'code' => '200',
+                'status' => 'success'
+            ]);
+        }else{
+            return json_encode([
+                'code' => '500',
+                'status' => 'error'
+            ]);
+        }
     }
 
     // Admin Course
@@ -839,7 +994,7 @@ class Admin extends BaseController
                 ]
             ],
             'berkas' => [
-                'rules' => 'uploaded[berkas]|mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png]|max_size[berkas,2048]',
+                'rules' => 'mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png]|max_size[berkas,2048]',
                 'errors' => [
                     'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png',
                     'max_size' => 'Ukuran File Maksimal 2 MB'

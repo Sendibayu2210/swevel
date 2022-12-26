@@ -7,8 +7,7 @@
         <div class="container mt-0">
             <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Beranda</a></li>
-                    <li class="breadcrumb-item"><a href="/event/software-development">Software Development</a></li>
+                    <li class="breadcrumb-item"><a href="#">Beranda</a></li>                    
                     <li class="breadcrumb-item"><a href="/event">Event</a></li>
                     <li class="breadcrumb-item ls-1" aria-current="page">Detail Event</li>
                 </ol>

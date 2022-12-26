@@ -12,16 +12,20 @@
     <?php endif; ?>
 
     <div class="row">
-        <h3>Portfolio</h3>
+        <h3>Portofolio</h3>
         <div id="portfolioImg" class="col-sm-12 mt-3 col-md-8">
             <div class="card h-100 border-0">
                 <div class="card-body">
-                    <h5 class="my-3">Review Portfolio</h5>
+                    <h5 class="my-3">Portofolio</h5>
                     <div class="row">
                         <?php foreach ($portofolio as $x) : ?>
-                            <div class="col-12 col-md-4 mb-4 card-portofolio">
-                                <img src="/img/portofolio/<?= $x['image']; ?>" class="w-100 cursor-pointer img-portofolio" alt="...">
-                                <button type="button" class="btn btn-purple btn-sm mt-3 hide btn-delete-portofolio" data-id="<?= $x['id']; ?>" data-image="<?= $x['image']; ?>" data-bs-toggle="modal" data-bs-target="#modalDeletePortofolio">Delete</button>
+                            <div class="col-12 col-md-4 mb-4 card-portofolio" data-bs-toggle="modal" data-bs-target="#modal-view-portofolio">
+                                <img src="/img/portofolio/<?= $x['gambar']; ?>" class="w-100 cursor-pointer img-portofolio" alt="...">
+                                <div class="small text-center judul-portofolio"><?= $x['judul']; ?></div>
+                                <div class="d-flex">
+                                    <div class="text-start"><button type="button" class="btn btn-purple btn-sm mt-3 hide btn-delete-portofolio" data-id="<?= $x['id']; ?>" data-image="<?= $x['gambar']; ?>" data-bs-toggle="modal" data-bs-target="#modalDeletePortofolio">Hapus</button></div>
+                                    <div class="text-start ms-2"><button type="button" class="btn btn-purple btn-sm mt-3 hide btn-edit-portofolio" data-id="<?= $x['id']; ?>" data-image="<?= $x['gambar']; ?>" data-judul="<?= $x['judul']; ?>" data-bs-toggle="modal" data-bs-target="#none">Edit</button></div>                                    
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -31,18 +35,28 @@
 
         <div class="col-sm-12 col-md-4 mt-3 p-0">
             <form action="/add-portofolio" method="post" id="form-portofolio" enctype="multipart/form-data">
+                <?= csrf_field(); ?>
+                <input type="hidden" name="id" id="input-id-portofolio">
+                <input type="hidden" name="file_old" id="file-old-portofolio">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card border-0 overflow-hidden">
                             <div class="card-body">
+                                <div class="h4 "><span class="title-action">Tambah</span> Portofolio</div>
+                                <div>
+                                    <label for="">Judul</label>
+                                    <input type="text" class="form-control mt-3 <?= ($validation->hasError('judul')) ? 'is-invalid' : ''; ?>" name="judul" id="judul" value="<?= old('judul'); ?>" autocomplete="off">
+                                    <div class="invalid-feedback"><?= $validation->getError('judul'); ?></div>
+                                </div>
+
                                 <div class="row">
-                                    <h5 class="my-3">Add Files</h5>
+                                    <div class="my-3">Tambah file</div>
                                     <div class="input-group input-group-sm">
-                                        <button type="button" id="inputfile" class="btn btn-sm rounded shadow-none btn-secondary opacity-50">choose from files</button>
+                                        <button type="button" id="inputfile" class="btn btn-sm rounded shadow-none btn-secondary text-white">pilih file</button>
                                         <input type="file" class="form-control d-none <?= ($validation->hasError('berkas')) ? 'is-invalid' : ''; ?>" id="formfile" name="berkas" accept="image/*" onchange="imgPreview()">
                                         <div class="invalid-feedback"><?= $validation->getError('berkas'); ?></div>
                                     </div>
-                                    <code class="my-3 text-danger">*required only jpg,jpeg</code>
+                                    <code class="my-3 text-danger">*jenis file yang diterima png,jpg,jpeg,gif</code>
                                 </div>
                                 <div class="card card-image-preview hide border-0">
                                     <div class="card-body text-center">
@@ -50,24 +64,31 @@
                                         <img src="" alt="" class="img-thumbnail img-preview">
                                     </div>
                                 </div>
+                                <button class="btn btn-purple my-3 w-100 btn-publish-portofolio" type="button">Simpan</button>
                             </div>
-                        </div>
-                        <div class="col-sm-12 mt-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <!-- <div class="row"> -->
-                                    <h5>Publish Date</h5>
-                                    <input id="datt" type="date" class="form-control my-3">
-                                    <!-- <div id="datepicker" class="input-group"></div> -->
-                                    <!-- </div> -->
-                                </div>
-                            </div>
-                        </div>
+                        </div>                       
                     </div>
                 </div>
             </form>
+        </div>        
+    </div>
+</div>
+
+
+<!-- Modal view portofolio -->
+<div class="modal fade" id="modal-view-portofolio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>            
+                <div class="modal-body position-relative">
+                   <img src="" alt="" class="img-view-portofolio w-100">
+                </div>
+                <div class="modal-footer">                    
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>            
         </div>
-        <button class="btn btn-purple my-5 w-100 btn-publish-portofolio" type="button">Publish</button>
     </div>
 </div>
 
@@ -76,14 +97,14 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="/delete-portofolio" method="post">
                 <div class="modal-body">
                     <div class="text-center">
-                        <div class="h4">Are you sure ? </div>
-                        <div>You won't be able to revert this!</div>
+                        <div class="h4">Apakah kamu yakin ingin menghapus data ini ? </div>
+                        <div>setelah dihapus data ini tidak dapat dipulihkan</div>
                     </div>
                     <?= csrf_field(); ?>
                     <input type="hidden" name="_method" value="DELETE">
@@ -91,27 +112,59 @@
                     <input type="hidden" name="old_file" id="old_file">
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-sm btn-purple">Delete</button>
-                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm btn-purple">Hapus</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
+
+
+
+
 <script>
     $(document).ready(function() {
         $('.card-portofolio').hover(function() {
+            $(this).addClass('shadow p-2').css('transition','all .3s')
             $(this).find('.btn-delete-portofolio').removeClass('hide')
+            $(this).find('.btn-edit-portofolio').removeClass('hide')
+            let imgWidth = $(this).find('img')[0].scrollWidth;
+            $(this).find('.judul-portofolio').addClass('active').css('width',imgWidth);            
         })
+
         $('.card-portofolio').mouseleave(function() {
             $(this).find('.btn-delete-portofolio').addClass('hide')
+            $(this).find('.btn-edit-portofolio').addClass('hide')
+            $(this).removeClass('shadow p-2')
+            $(this).find('.judul-portofolio').removeClass('active');
         })
+        $('.card-portofolio img').click(function(){
+            let src = $(this).attr('src');
+            $('.img-view-portofolio').attr('src',src);
+        })       
         $('.btn-delete-portofolio').click(function() {
             let id = $(this).data('id');
             let image = $(this).data('image');
             $("#id_portofolio").val(id);
             $("#old_file").val(image);
+        })
+        $(".btn-edit-portofolio").click(function(){
+            $("#modal-view-portofolio").modal('hide');
+            $('.btn-publish-portofolio').html('Update')
+            $("#form-portofolio").attr('action','/update-portofolio');
+            let id = $(this).data('id');
+            let judul = $(this).data('judul');
+            let image = $(this).data('image');
+
+            $("#input-id-portofolio").val(id);
+            $("#judul").val(judul);            
+            $(".img-preview").attr('src','/img/portofolio/'+image)
+            $("#file-old-portofolio").val(image);
+            $('.card-image-preview').removeClass("hide");
+            $(".title-action").html('Update')
+
         })
 
         $('#inputfile').click(function() {

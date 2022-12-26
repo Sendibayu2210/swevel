@@ -19,15 +19,15 @@
 
         <div class="row">
             <?php foreach ($artikel as $x) : ?>
-                <div class="col-lg-4 col-md-6 col-12 mb-4">
-                    <div class="card">
-                        <img src="/img/artikel/<?= $x['poster']; ?>" class="card-img-top" alt="">
-                        <div class="card-body">
+                <div class="col-lg-4 col-md-6 col-12 mb-4 d-flex">
+                    <div class="card border-0 shadow">
+                        <img src="/img/artikel/<?= $x['poster']; ?>" class="card-img-top img-artikel-admin cursor-pointer" data-slug="<?= $x['slug']; ?>" alt="">
+                        <div class="card-body card-body-artikel-admin cursor-pointer" data-slug="<?= $x['slug']; ?>">
                             <p class="card-text"><?= $x['judul']; ?></p>
                         </div>
                         <div class="card-footer">
-                            <div class="d-flex">
-                                <a href="/artikel-edit/<?= $x['slug'] ?>" class="me-3 text-purple"><i class="fa fa-solid fa-file-pen"></i> Edit</a>
+                            <div class="d-flex justify-content-center">
+                                <a href="/artikel-edit/<?= $x['slug'] ?>" class="me-3 text-purple text-decoration-none"><i class="fa fa-solid fa-file-pen"></i> Edit</a>
                                 <div class="text-purple cursor-pointer btn-hapus-artikel" data-id="<?= $x['id']; ?>" data-bs-toggle="modal" data-bs-target="#delete-artikel"><i class="fa-solid fa-trash"></i> Hapus</div>
                             </div>
                         </div>
@@ -50,8 +50,8 @@
             <form action="/hapus-artikel" method="post">
                 <div class="modal-body">
                     <div class="text-center">
-                        <div class="h4">Are you sure ? </div>
-                        <div>You won't be able to revert this!</div>
+                        <div class="h4">Yakin akan menghapus data ini ? </div>
+                        <div>setelah dihapus, data tidak dapat dipulikan</div>
                     </div>
                     <?= csrf_field(); ?>
                     <input type="hidden" name="_method" value="DELETE">
@@ -69,6 +69,11 @@
 
 <script>
     $(document).ready(function() {
+
+        $(".img-artikel-admin, .card-body-artikel-admin").click(function(){
+            let slug = $(this).data('slug');
+            window.location.href = '/detail-artikel/'+slug;
+        })
 
         $('.btn-hapus-artikel').click(function() {
             let getId = $(this).data('id');

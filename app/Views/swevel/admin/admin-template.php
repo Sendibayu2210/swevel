@@ -32,12 +32,12 @@
                 <div class="row w-100">
                     <div class="col-sm-12 p-0 align-items-center" style="display:inline-flex">
                         <span class="menu-toggle h-100" role="button"><i class="fa-solid fa-bars"></i></span>
-                        <i id="search-phone" class="fa-solid fa-magnifying-glass ms-3" role="button"></i>
-                        <form id="search-toolbar" class="ms-auto show" role="search">
+                        <!-- <i id="search-phone" class="fa-solid fa-magnifying-glass ms-3" role="button"></i> -->
+                   <!--      <form id="search-toolbar" class="ms-auto show" role="search">
                             <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             <input class="form-control" type="text" placeholder="search here" aria-label="Search">
-                        </form>
-                        <a href="/dashboard" class="swevel-brand ms-auto">Swevel</a>
+                        </form> -->
+                        <a href="/dashboard" class="swevel-brand ms-auto text-purple">Swevel</a>
                     </div>
                 </div>
             </header>

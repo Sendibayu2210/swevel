@@ -89,14 +89,22 @@
                                         </span><span class="text-capitalize">facebook</span>
                                     </label>
                                 </div>
+                                   <div class="form-check mb-2">
+                                    <input class="form-check-input <?= ($validation->hasError('kontak')) ? 'is-invalid' : ''; ?>" type="radio" name="kontak" id="lokasi" data-name="lokasi" value='location-dot'>
+                                    <label class="form-check-label" for="lokasi">
+                                        <span class="me-2">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                        </span><span class="text-capitalize">lokasi</span>
+                                    </label>
+                                </div>
                                 <div class="invalid-feedback"><?= $validation->getError('kontak'); ?></div>
                             </div>
                             <div class="col-lg-8">
-                                <label for="exampleFormControlInput1" class="form-label">Add number or link for <span id="name-kontak"></span></label>
-                                <input type="text" class="form-control <?= ($validation->hasError('number_link')) ? 'is-invalid' : ''; ?>" name="number_link" placeholder="add number or link" value="<?= old('number_link'); ?>">
+                                <label for="exampleFormControlInput1" class="form-label">Ketikan nomor atau link <span id="name-kontak"></span></label>
+                                <input type="text" class="form-control <?= ($validation->hasError('number_link')) ? 'is-invalid' : ''; ?>" name="number_link" placeholder="" value="<?= old('number_link'); ?>">
                                 <div class="invalid-feedback"><?= $validation->getError('number_link'); ?></div>
                                 <div class="mt-5 text-end">
-                                    <button type="submit" class="btn btn-sm btn-purple w-50">publish</button>
+                                    <button type="submit" class="btn btn-sm btn-purple w-50">Simpan</button>
                                 </div>
                             </div>
                         </div>
@@ -107,12 +115,12 @@
         <div>
             <div class="h5 mb-5">Kontak yang tersimpan</div>
             <div class="row">
-                <?php foreach ($kontak_all as $x) : ?>
+                <?php foreach ($kontak as $x) : ?>
                     <div class="col-lg-3">
                         <div class="card card-kontak mb-3">
                             <a href="<?= $x['description']; ?>" target="_blank" class="text-decoration-none">
                                 <div class="card-body text-center">
-                                    <div><?= $x['name']; ?></div>
+                                    <!-- <div><?= $x['name']; ?></div> -->
                                     <div class="h2 my-2"><?= $x['icon']; ?></div>
                                     <div class="small"><?= $x['description']; ?></div>
                                 </div>
@@ -120,7 +128,7 @@
                             <div class="card-footer d-none">
                                 <div class="d-flex justify-content-center">
                                     <button class="btn btn-sm btn-purple btn-edit-kontak me-2" data-bs-toggle="modal" data-bs-target="#modalEditKontak" data-id="<?= $x['id']; ?>" data-link="<?= $x['description']; ?>">Edit</button>
-                                    <button class="btn btn-sm btn-purple btn-delete-kontak" data-bs-toggle="modal" data-bs-target="#modalDeleteKontak" data-id="<?= $x['id']; ?>">Delete</button>
+                                    <button class="btn btn-sm btn-purple btn-delete-kontak" data-bs-toggle="modal" data-bs-target="#modalDeleteKontak" data-id="<?= $x['id']; ?>">Hapus</button>
                                 </div>
                             </div>
                         </div>
@@ -138,22 +146,22 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="/delete-kontak" method="post">
                 <div class="modal-body">
                     <div class="text-center">
-                        <div class="h4">Are you sure ? </div>
-                        <div>You won't be able to revert this!</div>
+                        <div class="h4">Apakah kamu yakin ingin menghapus data ini ? </div>
+                        <div>setelah dihapus data ini tidak dapat dipulihkan</div>
                     </div>
                     <?= csrf_field(); ?>
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="idKontak" id="idKontak">
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-sm btn-purple">Delete</button>
-                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm btn-purple">Hapus</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </form>
         </div>
@@ -176,7 +184,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-sm btn-purple">Update</button>
-                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </form>
         </div>
